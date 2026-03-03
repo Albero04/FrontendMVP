@@ -1,0 +1,20 @@
+<div class="layout">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">NEXUM</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="layout-body">
+  <!-- SIDEBAR FISSA -->
+   <aside class="sidebar">
+  <p-menu [model]="items"/>
+   </aside>
+  <!-- CONTENUTO -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  </div>
+</div>

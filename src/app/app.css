@@ -1,0 +1,52 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* TOP BAR */
+.topbar {
+  background: #242424;
+  color: white;
+  height: 60px;
+  border: none;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* BODY */
+.layout-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  padding-top: 20px;
+  border: none; /* 👈 aggiungi questo */
+} 
+
+
+
+.sidebar li:hover {
+  background: #e9e9e9;
+}
+
+
+/* CONTENUTO */
+.content {
+  flex: 1;
+  padding: 2rem;
+  background: #ebebeb;
+  overflow-y: auto;
+}
+
