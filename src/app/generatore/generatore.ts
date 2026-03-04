@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
-import { IftaLabelModule } from 'primeng/iftalabel';
+import { Menutendina } from '../components/menutendina/menutendina';
 @Component({
   selector: 'app-generatore',
-  imports: [FormsModule, FloatLabelModule, InputTextModule, SelectModule, ButtonModule, IftaLabelModule],
+  imports: [FormsModule, FloatLabelModule, InputTextModule, Menutendina, ButtonModule],
   templateUrl: './generatore.html',
   styleUrl: './generatore.css',
 })
