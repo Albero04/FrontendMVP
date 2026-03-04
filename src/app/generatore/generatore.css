@@ -30,6 +30,7 @@ p-button.genera {
     padding: 2rem;
     min-height: 180px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    max-width: 100%;
 }
 
 /* Prompt full width */

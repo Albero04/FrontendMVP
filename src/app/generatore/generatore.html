@@ -6,9 +6,6 @@
 
 </div>
 <div class="body">
-    <p-floatlabel variant="on">
-        <input id="Prompt" pInputText [(ngModel)]="prompt" autocomplete="off" />
-        <label for="Prompt">Prompt</label>
-    </p-floatlabel>
+    <app-prompt [(prompt)]="prompt"></app-prompt>
 </div>
 </div>
