@@ -1,0 +1,39 @@
+.item-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.item-label {
+  flex: 1;            /* prende tutto lo spazio disponibile */
+}
+
+.delete-btn {
+  margin-left: auto;  /* spinge il bottone completamente a destra */
+}
+.HeaderMenu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+:host ::ng-deep .p-select-filter{
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Fix icona lente centrata verticalmente */
+:host ::ng-deep .p-select-filter-container {
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+}
+
+:host ::ng-deep .p-inputicon {
+    top: 50% !important;
+    transform: translateY(0) !important;
+    margin-top: calc(-1 * (var(--p-icon-size) / 2)) !important;
+}
+:host ::ng-deep .p-inputtext {
+    padding-block-start: 0.5rem !important;
+}

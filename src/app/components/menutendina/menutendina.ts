@@ -16,4 +16,17 @@ export class Menutendina {
 @Input()  selected: any;
 @Input() placeholder: string = '';
 @Output() selectedChange = new EventEmitter<any>();
+removeOption(option: any, event: Event) {
+  event.stopPropagation(); // evita selezione dell'item
+
+  if (!this.options) return;
+
+  this.options = this.options.filter(o => o !== option);
+
+  // Se l'opzione eliminata era selezionata, la deseleziono
+  if (this.selected === option) {
+    this.selected = null;
+    this.selectedChange.emit(null);
+  }
+}
 }
