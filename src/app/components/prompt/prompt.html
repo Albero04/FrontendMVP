@@ -1,4 +1,4 @@
     <p-floatlabel variant="on">
-        <textarea id="Prompt" pTextarea [(ngModel)]="prompt" (ngModelChange)="promptChange.emit($event)" autocomplete="off"></textarea>
-        <label for="Prompt">Prompt</label>
+        <textarea id="Prompt" pTextarea [(ngModel)]="prompt" (ngModelChange)="promptChange.emit($event)" autocomplete="off" [autoResize]="autoResize"></textarea>
+        <label for="Prompt">{{label}}</label>
     </p-floatlabel>

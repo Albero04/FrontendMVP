@@ -11,5 +11,7 @@ import { TextareaModule } from 'primeng/textarea';
 })
 export class Prompt {
 @Input()  prompt: string = '';
+@Input()  autoResize: boolean = false;
+@Input()  label: string = '';
 @Output() promptChange = new EventEmitter<string>();
 }

@@ -1,1 +1,17 @@
+<div class="menu">
+<div class="actions">
+    <app-button label="Rigenera" severity="primary" [fluid]="true" (clicked)="onRigenera()"></app-button>
+    <app-button label="Salva" severity="secondary" [fluid]="true" (clicked)="onSalva()"></app-button>
+</div>
+<div class="discard">
+    <app-button icon="pi pi-times" variant="primary" (clicked)="onDiscard()" />
+</div>
+</div>
+<div class="body">
+<div class="image-container">
 <app-immagine-titolo [(imageTitle)]="imageTitle" [imageUrl]="imagePath" [altText]="imageAltText"></app-immagine-titolo>
+</div>
+<div class="output-container">
+    <app-prompt [(prompt)]="testoGenerato" label="Testo Generato" [autoResize]="true"></app-prompt>
+</div>
+</div>
