@@ -3,9 +3,10 @@ import { ImmagineTitolo } from '../components/immagine-titolo/immagine-titolo';
 import { FormsModule } from '@angular/forms';
 import { Button } from '../components/button/button';
 import { Prompt } from '../components/prompt/prompt';
+import { Valutazione } from '../components/valutazione/valutazione';
 @Component({
   selector: 'app-risultato-generazione',
-  imports: [ImmagineTitolo, FormsModule, Button, Prompt],
+  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Valutazione],
   templateUrl: './risultato-generazione.html',
   styleUrl: './risultato-generazione.css',
 })
@@ -14,6 +15,7 @@ imageTitle: string = 'Risultato della Generazione';
 imagePath: string = 'PlaceHolder-GufoBagnato.jpg';
 imageAltText: string = 'Immagine del risultato della generazione';
 testoGenerato: string = 'Questo è il testo generato.';
+valutazione: number = 0;
 onRigenera(): void {
   console.log('Rigenerazione richiesta');
   // Qui puoi aggiungere la logica per rigenerare l'immagine, ad esempio chiamando un servizio
@@ -25,5 +27,9 @@ onSalva(): void {
 onDiscard(): void {
   console.log('Scarto richiesto');
   // Qui puoi aggiungere la logica per scartare l'immagine, ad esempio resettando lo stato o navigando via
+}
+onModifica(): void{
+  console.log('Modifica richiesta');
+  // Qua si andra alla pagina di modifica
 }
 }

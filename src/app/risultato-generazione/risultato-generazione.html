@@ -14,4 +14,15 @@
 <div class="output-container">
     <app-prompt [(prompt)]="testoGenerato" label="Testo Generato" [autoResize]="true"></app-prompt>
 </div>
+<div class="valutazione-modifica-container">
+    <div class="valutazione">
+        <label class="rating-label">VALUTA</label>
+        <div class="valutazione-container">
+            <app-valutazione (valutazione)="valutazione" label="Valutazione"></app-valutazione>
+        </div>
+    </div>
+    <div class="modifica">
+        <app-button label="Modifica" severity="primary" [fluid]="true" (clicked)="onModifica()"></app-button>
+    </div>
+</div>
 </div>

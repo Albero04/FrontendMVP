@@ -43,3 +43,24 @@
   gap: 1rem;
   margin-top: 2rem;
 }
+.valutazione-modifica-container{
+    display: flex;
+    align-items: flex-end;
+}
+.valutazione{
+  margin-right: auto;
+  max-width: fit-content;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.valutazione-container {
+  background: #ffffff;
+  padding: 1rem;
+}
+.rating-label {
+  font-size: 0.8rem;
+  color: #000000;
+  font-weight: bold;
+}
