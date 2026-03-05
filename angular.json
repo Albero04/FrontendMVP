@@ -23,7 +23,6 @@
               {
                 "glob": "**/*",
                 "input": "public",
-                "assets": "src/assets"
               }
             ],
             "styles": [
