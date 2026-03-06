@@ -1,4 +1,5 @@
     <p-floatlabel variant="on">
-        <textarea id="Prompt" pTextarea [(ngModel)]="prompt" (ngModelChange)="promptChange.emit($event)" autocomplete="off" [autoResize]="autoResize"></textarea>
+        <!-- [disabled] rende il campo non modificabile e non focalizzabile quando @Input disabled è true -->
+        <textarea id="Prompt" pTextarea [(ngModel)]="prompt" (ngModelChange)="promptChange.emit($event)" autocomplete="off" [autoResize]="autoResize" [disabled]="disabled"></textarea>
         <label for="Prompt">{{label}}</label>
     </p-floatlabel>

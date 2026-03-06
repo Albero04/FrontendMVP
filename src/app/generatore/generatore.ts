@@ -19,7 +19,15 @@ export class Generatore {
   selectedStyle: any;
   prompt: string = '';
   NavigateToRisultatoGenerazione() {
-    this.router.navigate(['/risultato-generazione']);
+    // Passa prompt, tono e stile come stato di navigazione
+    // in RisultatoGenerazione vengono letti via history.state
+    this.router.navigate(['/risultato-generazione'], {
+      state: {
+        prompt: this.prompt,
+        tono: this.selectedTone,
+        stile: this.selectedStyle
+      }
+    });
   }
   ngOnInit() {
     

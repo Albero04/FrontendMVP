@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Button } from '../components/button/button';
 import { Prompt } from '../components/prompt/prompt';
 import { Valutazione } from '../components/valutazione/valutazione';
+import { Menutendina } from '../components/menutendina/menutendina';
 @Component({
   selector: 'app-risultato-generazione',
-  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Valutazione],
+  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Valutazione, Menutendina],
   templateUrl: './risultato-generazione.html',
   styleUrl: './risultato-generazione.css',
 })
@@ -16,6 +17,19 @@ imagePath: string = 'PlaceHolder-GufoBagnato.jpg';
 imageAltText: string = 'Immagine del risultato della generazione';
 testoGenerato: string = 'Questo è il testo generato.';
 valutazione: number = 0;
+
+// Parametri ricevuti dalla pagina Generatore tramite lo stato di navigazione (history.state)
+promptInserito: string = '';
+tonoSelezionato: any = null;
+stileSelezionato: any = null;
+
+constructor() {
+  // history.state contiene i dati passati da generatore via router.navigate({ state: {...} })
+  const state = history.state;
+  this.promptInserito  = state?.prompt ?? '';
+  this.tonoSelezionato  = state?.tono   ?? null;
+  this.stileSelezionato = state?.stile  ?? null;
+}
 onRigenera(): void {
   console.log('Rigenerazione richiesta');
   // Qui puoi aggiungere la logica per rigenerare l'immagine, ad esempio chiamando un servizio

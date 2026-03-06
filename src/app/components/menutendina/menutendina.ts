@@ -15,6 +15,8 @@ export class Menutendina {
 @Input()  label: string='';
 @Input()  selected: any;
 @Input() placeholder: string = '';
+/** Se true, il menu è in sola lettura: non apribile e non focalizzabile */
+@Input() disabled: boolean = false;
 @Output() selectedChange = new EventEmitter<any>();
 removeOption(option: any, event: Event) {
   event.stopPropagation(); // evita selezione dell'item
