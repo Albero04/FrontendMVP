@@ -1,4 +1,12 @@
 .valutazione-container {
   display: flex;
   align-items: center;
+  background: #ffffff;
+  padding: 1rem;
 }
+.rating-label {
+  font-size: 0.8rem;
+  color: #000000;
+  font-weight: bold;
+}
+

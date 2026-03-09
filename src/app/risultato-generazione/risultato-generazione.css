@@ -43,10 +43,6 @@
   gap: 1rem;
   margin-top: 2rem;
 }
-.valutazione-modifica-container{
-    display: flex;
-    align-items: flex-end;
-}
 .valutazione{
   margin-right: auto;
   max-width: fit-content;
@@ -55,16 +51,10 @@
   flex-direction: column;
   margin-top: 2rem;
 }
-.valutazione-container {
-  background: #ffffff;
-  padding: 1rem;
+.valutazione-modifica-container{
+    display: flex;
+    align-items: flex-end;
 }
-.rating-label {
-  font-size: 0.8rem;
-  color: #000000;
-  font-weight: bold;
-}
-
 /* Sezione "PARAMETRI INSERITI" - riepilogo in sola lettura dei dati dal Generatore */
 .parametri-container {
   margin-top: 2rem;
