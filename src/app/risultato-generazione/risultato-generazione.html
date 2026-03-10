@@ -17,9 +17,9 @@
         <app-immagine-titolo [(imageTitle)]="imageTitle" [imageUrl]="imagePath"
             [altText]="imageAltText"></app-immagine-titolo>
     </div>
-    <div class="output-container">
-        <app-prompt [(prompt)]="testoGenerato" label="Testo Generato" [autoResize]="true"></app-prompt>
-    </div>
+<div class="output-container">
+    <app-editor [(text)]="testoGenerato" [readonly]="readonly"></app-editor>
+</div>
     <div class="valutazione-modifica-container">
         <div class="valutazione">
             <app-valutazione></app-valutazione>

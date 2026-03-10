@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ImmagineTitolo } from '../components/immagine-titolo/immagine-titolo';
 import { FormsModule } from '@angular/forms';
 import { Button } from '../components/button/button';
+import { Editor } from '../components/editor/editor';
 import { Prompt } from '../components/prompt/prompt';
 import { Valutazione } from '../components/valutazione/valutazione';
 import { Menutendina } from '../components/menutendina/menutendina';
 @Component({
   selector: 'app-risultato-generazione',
-  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Valutazione, Menutendina, CommonModule],
+  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Editor, Valutazione, Menutendina, CommonModule],
   templateUrl: './risultato-generazione.html',
   styleUrl: './risultato-generazione.css',
 })
@@ -18,6 +19,7 @@ imagePath: string = 'PlaceHolder-GufoBagnato.jpg';
 imageAltText: string = 'Immagine del risultato della generazione';
 testoGenerato: string = 'Questo è il testo generato.';
 valutazione: number = 0;
+readonly: boolean = true;
 
 // Parametri ricevuti dalla pagina Generatore tramite lo stato di navigazione (history.state)
 promptInserito: string = '';
