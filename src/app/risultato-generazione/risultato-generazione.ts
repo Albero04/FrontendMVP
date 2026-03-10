@@ -42,7 +42,7 @@ onSalva(): void {
   console.log('Salvataggio richiesto');
   // Qui puoi aggiungere la logica per salvare l'immagine, ad esempio scaricandola o inviandola a un server
 }
-onDiscard(): void {
+deleteGeneration(): void {
   console.log('Scarto richiesto');
   // Qui puoi aggiungere la logica per scartare l'immagine, ad esempio resettando lo stato o navigando via
 }

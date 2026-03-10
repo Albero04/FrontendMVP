@@ -6,9 +6,8 @@
 
     <div class="discard p-2 bg-body rounded-4 ng-star-inserted">
         <div class="text-nowrap ng-star-inserted">
-            <app-button class="btn-exit" variant="primary" (clicked)="onDiscard()" >
-                <img src="assets/icons/cross.svg"/>
-            </app-button>
+<app-dialog Icon="assets/icons/cross.svg" message="Vuoi cancellare questa generazione?" header="Attenzione" (confirmed)="deleteGeneration()">
+</app-dialog>
         </div>
     </div>
 </div>
