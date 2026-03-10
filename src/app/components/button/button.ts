@@ -12,6 +12,6 @@ export class Button {
 @Input() icon: string = '';
 @Input() disabled: boolean = false;
 @Input() fluid: boolean = false;
-@Input() severity: ButtonSeverity = 'primary';
+@Input() class: string = '';
 @Output() clicked = new EventEmitter<void>();
 }
