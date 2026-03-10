@@ -3,12 +3,12 @@
         <app-button label="Rigenera" class="btn btn-secondary" [fluid]="true" (clicked)="onRigenera()"></app-button>
         <app-button label="Salva" class="btn btn-primary" [fluid]="true" (clicked)="onSalva()"></app-button>
     </div>
-    <div class="discard">
-        <app-button icon="pi pi-times" variant="primary" (clicked)="onDiscard()" />
-    </div>
-    <div class="p-2 bg-body rounded-4 ng-star-inserted">
+
+    <div class="discard p-2 bg-body rounded-4 ng-star-inserted">
         <div class="text-nowrap ng-star-inserted">
-            <span class="btn-exit"></span>
+            <app-button class="btn-exit" variant="primary" (clicked)="onDiscard()" >
+                <img src="assets/icons/cross.svg"/>
+            </app-button>
         </div>
     </div>
 </div>
