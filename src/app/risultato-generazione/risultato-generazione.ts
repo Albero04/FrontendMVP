@@ -7,9 +7,10 @@ import { Editor } from '../components/editor/editor';
 import { Prompt } from '../components/prompt/prompt';
 import { Valutazione } from '../components/valutazione/valutazione';
 import { Menutendina } from '../components/menutendina/menutendina';
+import { Dialog } from '../components/dialog/dialog';
 @Component({
   selector: 'app-risultato-generazione',
-  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Editor, Valutazione, Menutendina, CommonModule],
+  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Editor, Valutazione, Menutendina, CommonModule, Dialog],
   templateUrl: './risultato-generazione.html',
   styleUrl: './risultato-generazione.css',
 })
@@ -47,6 +48,7 @@ onDiscard(): void {
 }
 onModifica(): void{
   console.log('Modifica richiesta');
-  // Qua si andra alla pagina di modifica
+  this.readonly = false;
+  // Qua si andrà alla pagina di modifica
 }
 }
