@@ -5,6 +5,7 @@ body{
     box-sizing: border-box;
     font-family: "Open Sans";
     font-size: var(--bs-body-font-size);
+    background-color: var(--bg-light) !important;
 }
 /* Rimuove eventuale bordo */
 .p-menu {
@@ -28,4 +29,7 @@ body{
   --p-rating-icon-hover-color: #383838 !important;
   --p-rating-icon-active-color: #383838 !important;
   --bs-body-font-size: 0.875rem;
+  --txt-color: rgba(12, 12, 13, 0.8509803922);
+  --btn-border-radius: 0.75rem;
+  --bg-light: #f8f9fa;
 }
