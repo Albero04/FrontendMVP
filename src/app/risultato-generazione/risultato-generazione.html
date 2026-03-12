@@ -13,8 +13,12 @@
 </div>
 <div class="body">
     <div class="image-container">
-        <app-immagine-titolo [(imageTitle)]="imageTitle" [imageUrl]="imagePath"
-            [altText]="imageAltText"></app-immagine-titolo>
+        <app-immagine-titolo
+        [(imageTitle)]="imageTitle"
+        [imageUrl]="imagePath"
+        [altText]="imageAltText"
+        (imageChange)="onImageSelected($event)">
+    </app-immagine-titolo>
     </div>
 <div class="output-container">
     <app-editor [(text)]="testoGenerato" [readonly]="readonly"></app-editor>

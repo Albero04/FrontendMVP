@@ -17,4 +17,20 @@
       fluid
     />
   </div>
+<div class="hero-imagemodifier">
+  <p-fileUpload
+   [hidden]="hidden"
+   mode="basic" 
+   chooseIcon="pi pi-link" 
+   name="file" 
+   url="./upload" 
+   accept="image/*" 
+   [auto]="true" 
+   [showUploadButton]="false" 
+   [showCancelButton]="false" 
+   chooseLabel="Modifica Immagine" 
+   [customUpload]="true"
+   (uploadHandler)="onImageChange($event)">
+  </p-fileUpload>
+</div>
 </div>

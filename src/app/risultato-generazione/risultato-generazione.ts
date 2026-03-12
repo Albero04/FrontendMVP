@@ -46,6 +46,13 @@ deleteGeneration(): void {
   console.log('Scarto richiesto');
   // Qui puoi aggiungere la logica per scartare l'immagine, ad esempio resettando lo stato o navigando via
 }
+onImageSelected(file: File): void {
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.imagePath = reader.result as string;
+  };
+  reader.readAsDataURL(file);
+}
 onModifica(): void{
   console.log('Modifica richiesta');
   this.readonly = false;

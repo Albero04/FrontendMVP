@@ -24,7 +24,7 @@
   background: rgba(255, 255, 255, 0.92) ;
   padding: 8px 14px ;
   color: #333;
-  min-width: 220px;
+  min-width: 280px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   line-height: normal;
   font-weight: bold;
@@ -32,6 +32,12 @@
 
 .hero-input::placeholder {
   color: #888;
+}
+
+.hero-imagemodifier{
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 }
 
 .hero-input:focus {
