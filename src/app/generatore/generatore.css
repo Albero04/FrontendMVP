@@ -19,10 +19,14 @@ p-button.genera {
 }
 
 /* Larghezza select */
-.MenuToniStili p-select {
-    width: 250px;
+.menu-row {
+    display: flex;      /* Mette i figli in riga */
+    gap: 16px;          /* Spazio tra un menu e l'altro */
+    align-items: flex-end; /* Allinea i menu in basso se le label hanno altezze diverse */
 }
-
+.menu-row menutendina{
+    width: 300px;
+}
 /* Area corpo */
 .body {
     background: #ffffff;

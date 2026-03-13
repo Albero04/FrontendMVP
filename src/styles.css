@@ -32,4 +32,13 @@ body{
   --txt-color: rgba(12, 12, 13, 0.8509803922);
   --btn-border-radius: 0.75rem;
   --bg-light: #f8f9fa;
+  
+}
+/* MENUATENDINA */
+:root{
+  --p-select-list-header-padding: 0.5rem !important;
+  --p-inputtext-focus-border-color: rgba(194, 194, 194, 0.8) !important;
+  --p-select-border-radius: 0.75rem !important;
+  --p-select-focus-border-color: black !important;
+  --p-select-option-padding:0.5em 0em !important;
 }
