@@ -14,3 +14,12 @@
   color: var(--txt-color) !important;
   border-color: var(--p-button-secondary-border-color) !important;
 }
+
+
+:host ::ng-deep .btn-secondary:hover {
+  background-color: var(--p-button-secondary-hover-background) !important;
+}
+
+:host ::ng-deep .btn-primary:hover {
+  background-color: var(--p-button-primary-hover-background) !important;
+}
