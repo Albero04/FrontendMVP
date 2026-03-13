@@ -39,11 +39,11 @@
             <app-prompt [prompt]="promptInserito" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
             <!-- Tono selezionato, in sola lettura -->
             <!-- p-select richiede che il valore selezionato sia presente in [options] per poterlo visualizzare -->
-            <app-menutendina [options]="tonoSelezionato ? [tonoSelezionato] : []" [selected]="tonoSelezionato"
-                label="Tono" placeholder="Nessun tono selezionato" [disabled]="true"></app-menutendina>
+            <menutendina [options]="tonoSelezionato ? [tonoSelezionato] : []" [selected]="tonoSelezionato"
+                label="Tono" placeholder="Nessun tono selezionato" [disabled]="true"></menutendina>
             <!-- Stile selezionato, in sola lettura -->
-            <app-menutendina [options]="stileSelezionato ? [stileSelezionato] : []" [selected]="stileSelezionato"
-                label="Stile" placeholder="Nessuno stile selezionato" [disabled]="true"></app-menutendina>
+            <menutendina [options]="stileSelezionato ? [stileSelezionato] : []" [selected]="stileSelezionato"
+                label="Stile" placeholder="Nessuno stile selezionato" [disabled]="true"></menutendina>
         </div>
     </div>
 

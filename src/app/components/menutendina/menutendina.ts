@@ -5,30 +5,29 @@ import { IftaLabelModule } from 'primeng/iftalabel';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-menutendina',
+  selector: 'menutendina',
   imports: [FormsModule, SelectModule, IftaLabelModule, ButtonModule],
   templateUrl: './menutendina.html',
   styleUrl: './menutendina.css',
 })
 export class Menutendina {
-@Input()  options: any[] | undefined;
-@Input()  label: string='';
-@Input()  selected: any;
-@Input() placeholder: string = '';
-/** Se true, il menu è in sola lettura: non apribile e non focalizzabile */
-@Input() disabled: boolean = false;
-@Output() selectedChange = new EventEmitter<any>();
-removeOption(option: any, event: Event) {
-  event.stopPropagation(); // evita selezione dell'item
+  @Input() options: any[] | undefined;
+  @Input() label: string='';
+  @Input() selected: any;
+  @Input() placeholder: string = '';
+  @Input() disabled: boolean = false;   /** Rende la select parametrica per usarla in più pagine */
+  @Output() selectedChange = new EventEmitter<any>();
+  removeOption(option: any, event: Event) {
+    event.stopPropagation(); // evita selezione dell'item
 
-  if (!this.options) return;
+    if (!this.options) return;
 
-  this.options = this.options.filter(o => o !== option);
+    this.options = this.options.filter(o => o !== option);
 
-  // Se l'opzione eliminata era selezionata, la deseleziono
-  if (this.selected === option) {
-    this.selected = null;
-    this.selectedChange.emit(null);
+    // Se l'opzione eliminata era selezionata, la deseleziono
+    if (this.selected === option) {
+      this.selected = null;
+      this.selectedChange.emit(null);
+    }
   }
-}
 }
