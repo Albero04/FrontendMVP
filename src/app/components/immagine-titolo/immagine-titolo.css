@@ -1,3 +1,8 @@
+::ng-deep .p-fileupload button {
+    border-radius: var(--btn-border-radius) !important;
+    font-size: var(--btn-body-font-size) !important;
+    min-height: 2.5rem;
+}
 .hero-banner {
   position: relative;
   width: 100%;
@@ -48,3 +53,4 @@
 .p-image-preview {
  display: block;
 }
+

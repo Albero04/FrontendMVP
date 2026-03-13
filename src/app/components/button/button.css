@@ -1,4 +1,4 @@
-:host ::ng-deep .btn{
+::ng-deep .btn{
   border-radius: var(--btn-border-radius) !important;
   font-size:  var(--btn-body-font-size) !important;
   min-height: 2.5rem;

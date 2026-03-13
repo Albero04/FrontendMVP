@@ -8,7 +8,9 @@ import { FileUploadModule } from 'primeng/fileupload';
   selector: 'app-immagine-titolo',
   imports: [ImageModule, FormsModule, InputTextModule, FileUploadModule],
   templateUrl: './immagine-titolo.html',
-  styleUrl: './immagine-titolo.css',
+  styleUrls: [
+    './immagine-titolo.css'
+  ]
 })
 export class ImmagineTitolo {
 @Input() hidden: boolean = false;
