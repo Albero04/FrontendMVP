@@ -4,25 +4,22 @@
         <app-button label="Salva" class="btn btn-primary" [fluid]="true" (clicked)="onSalva()"></app-button>
     </div>
 
-    <div class="discard p-2 bg-body rounded-4 ng-star-inserted">
-        <div class="text-nowrap ng-star-inserted">
-<app-dialog Icon="assets/icons/cross.svg" message="Vuoi cancellare questa generazione?" header="Attenzione" (confirmed)="deleteGeneration()">
-</app-dialog>
-        </div>
+    <div class="p-2 mb-3">
+        <app-dialog Icon="assets/icons/cross.svg" message="Vuoi cancellare questa generazione?" header="Attenzione"
+            (confirmed)="deleteGeneration()">
+        </app-dialog>
     </div>
 </div>
 <div class="body">
     <div class="image-container">
-        <app-immagine-titolo
-        [(imageTitle)]="imageTitle"
-        [imageUrl]="imagePath"
-        [altText]="imageAltText"
-        (imageChange)="onImageSelected($event)">
-    </app-immagine-titolo>
+        <app-immagine-titolo [(imageTitle)]="imageTitle" [imageUrl]="imagePath" [altText]="imageAltText"
+            (imageChange)="onImageSelected($event)"
+        >
+        </app-immagine-titolo>
     </div>
-<div class="output-container">
-    <app-editor [(text)]="testoGenerato" [readonly]="readonly"></app-editor>
-</div>
+    <div class="output-container">
+        <app-editor [(text)]="testoGenerato" [readonly]="readonly"></app-editor>
+    </div>
     <div class="valutazione-modifica-container">
         <div class="valutazione">
             <app-valutazione></app-valutazione>
