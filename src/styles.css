@@ -37,6 +37,8 @@ body{
   --p-button-primary-background: #383838 !important;
   --p-button-primary-border-color: #383838 !important;
   --p-button-primary-hover-background: #4a4a4a !important;
+  --p-button-secondary-background: #f3f3f3 !important;
+  --p-button-secondary-hover-background: #e0e0e0 !important;
   --p-button-primary-hover-border-color: #4a4a4a !important;
   --p-rating-icon-hover-color: #383838 !important;
   --p-rating-icon-active-color: #383838 !important;
@@ -52,9 +54,11 @@ body{
   --p-inputtext-focus-border-color: rgba(194, 194, 194, 0.8) !important;
   --p-select-border-radius: 0.75rem !important;
   --p-select-focus-border-color: black !important;
+  --p-select-option-focus-background: #f3f3f3 !important;
+  --p-select-option-selected-background: #f3f3f3 !important;
   --p-textarea-focus-border-color: black !important;
   --p-select-option-padding:0.5em 0em !important;
-  --bg-p-select: #f1f5f9;
+  --bg-p-select: #f3f3f3;
 }
 
 .label{
