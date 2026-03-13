@@ -27,7 +27,7 @@ export class App implements OnInit{
           {
              label: 'Storico',
             icon: 'pi pi-history',
-            routerLink: '/storico'
+            routerLink: '/storico-ai-assistant'
           }
         ]
       },
