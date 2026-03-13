@@ -12,11 +12,11 @@
 }
 
 :host ::ng-deep .p-select-label {
- font-size: 0.875rem !important;
+    font-size: 0.875rem !important;
 }
 :host ::ng-deep .p-overlay span{
     font-weight: 400;
-  font-size: 0.875rem;
+    font-size: 0.875rem;
 }
 
 :host ::ng-deep .p-select-filter{
@@ -33,10 +33,3 @@
   padding-right: 0.875rem;
 }
 
-.select-label{
-    display: block;
-    font-weight: 700;
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    text-align: left;
-}

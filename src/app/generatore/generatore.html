@@ -1,12 +1,11 @@
 <div class="generator-container">
-<div class="d-flex">
-    <app-button label="Genera" class="ms-auto genera btn btn-primary" [fluid]="true" (onClick)="NavigateToRisultatoGenerazione()"></app-button>
-</div>
-<div class="menu-row mb-4" >
-    <menutendina [options]="tones" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono"></menutendina>
-    <menutendina [options]="styles" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile"></menutendina>
-</div>
-<div class="body">
+    <div class="d-flex">
+        <app-button label="Genera" class="ms-auto genera btn btn-primary" [fluid]="true" (onClick)="NavigateToRisultatoGenerazione()"></app-button>
+    </div>
+    <div class="menu-row mb-4" >
+        <menutendina [options]="tones" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono"></menutendina>
+        <menutendina [options]="styles" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile"></menutendina>
+    </div>
+
     <app-prompt [(prompt)]="prompt" label="Prompt" [autoResize]="true"></app-prompt>
-</div>
 </div>

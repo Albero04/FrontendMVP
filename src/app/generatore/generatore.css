@@ -10,13 +10,6 @@ p-button.genera {
     right: 0;
 }
 
-/* Contenitore Toni + Stili */
-.MenuToniStili {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    margin-bottom: 2rem;
-}
 
 /* Larghezza select */
 .menu-row {
@@ -29,15 +22,6 @@ p-button.genera {
     width: 100%;
     max-width: 300px;
     min-width: 0;
-}
-/* Area corpo */
-.body {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 2rem;
-    min-height: 180px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    max-width: 100%;
 }
 
 /* Prompt full width */
@@ -56,14 +40,6 @@ p-button.genera {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .MenuToniStili {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .MenuToniStili p-select {
-        width: 100%;
-    }
 
     p-button {
         position: static;
