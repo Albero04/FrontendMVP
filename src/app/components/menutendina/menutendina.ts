@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { ButtonModule } from 'primeng/button';
+import { Button } from '../button/button';
 
 @Component({
   selector: 'menutendina',
-  imports: [FormsModule, SelectModule, IftaLabelModule, ButtonModule],
+  imports: [FormsModule, SelectModule, IftaLabelModule, ButtonModule, Button],
   templateUrl: './menutendina.html',
   styleUrl: './menutendina.css',
 })

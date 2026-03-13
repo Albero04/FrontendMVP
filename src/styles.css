@@ -53,4 +53,5 @@ body{
   --p-select-border-radius: 0.75rem !important;
   --p-select-focus-border-color: black !important;
   --p-select-option-padding:0.5em 0em !important;
+  --bg-p-select: #f1f5f9;
 }
