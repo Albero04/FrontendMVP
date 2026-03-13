@@ -61,6 +61,11 @@ body{
   --bg-p-select: #f3f3f3;
 }
 
+:root{
+  --p-rating-icon-size: 1.5rem !important;
+  --p-rating-icon-hover-color:black !important;
+}
+
 .label{
     display: block;
     font-weight: 700;
