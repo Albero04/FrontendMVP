@@ -22,6 +22,18 @@ body{
   font-weight: 600;
 }
 :root{
+  --p-button-primary-active-background: #4a4a4a !important;
+  --p-select-focus-border-color: #383838 !important;
+  --p-select-option-selected-color: #4a4a4a !important;
+  --p-select-option-selected-focus-color: #4a4a4a !important;
+  --p-select-option-selected-background: #f8f9fa !important;
+  --p-select-option-hover-background: #e6e6e6 !important;
+  --p-select-option-selected-focus-background: #f8f9fa !important;
+  --p-paginator-nav-button-selected-background: #383838 !important;
+  --p-paginator-nav-button-hover-background: #e6e6e6 !important;
+  --p-paginator-nav-button-selected-color: #f8f9fa !important;
+  --p-datatable-header-cell-selected-background: #f8f9fa !important;
+  --p-datatable-header-cell-selected-color: #4a4a4a !important;
   --p-button-primary-background: #383838 !important;
   --p-button-primary-border-color: #383838 !important;
   --p-button-primary-hover-background: #4a4a4a !important;

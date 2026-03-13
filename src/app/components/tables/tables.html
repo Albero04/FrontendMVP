@@ -1,0 +1,25 @@
+<div class="card">
+            <p-table [value]="Generazioni" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
+                <ng-template #header>
+                    <tr>
+                        <th pSortableColumn="Prompt" style="width:23%">Prompt <p-sortIcon field="Prompt"></p-sortIcon></th>
+                        <th pSortableColumn="Tono" style="width:23%">Tono <p-sortIcon field="Tono"></p-sortIcon></th>
+                        <th pSortableColumn="Stile" style="width:23%">Stile <p-sortIcon field="Stile"></p-sortIcon></th>
+                        <th pSortableColumn="Data" style="width:23%">Data <p-sortIcon field="Data"></p-sortIcon></th>
+                        <th style="width:8%">Azioni</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-generazione>
+                    <tr>
+                        <td>{{ generazione.Prompt }}</td>
+                        <td>{{ generazione.Tono }}</td>
+                        <td>{{ generazione.Stile }}</td>
+                        <td>{{ generazione.Data | date:'dd/MM/yyyy' }}</td>
+                        <td>
+                            <p-menu #menu [model]="items" [popup]="true" appendTo="body" />
+                            <p-button (click)="menu.toggle($event)" icon="pi pi-ellipsis-h" />
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
