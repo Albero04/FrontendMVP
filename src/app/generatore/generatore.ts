@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { Menutendina } from '../components/menutendina/menutendina';
+import { Button } from '../components/button/button';
 import { Prompt } from '../components/prompt/prompt';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 @Component({
   selector: 'app-generatore',
-  imports: [FormsModule, Prompt, Menutendina, ButtonModule],
+  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button],
   templateUrl: './generatore.html',
   styleUrl: './generatore.css',
 })

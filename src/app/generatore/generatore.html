@@ -1,9 +1,10 @@
 <div class="generator-container">
-<p-button class="genera" label="Genera" severity="primary" (onClick)="NavigateToRisultatoGenerazione()"></p-button>
-<div class="menu-row">
+<div class="d-flex">
+    <app-button label="Genera" class="ms-auto genera btn btn-primary" [fluid]="true" (onClick)="NavigateToRisultatoGenerazione()"></app-button>
+</div>
+<div class="menu-row d-flex gap-3 mb-4" >
     <menutendina [options]="tones" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono"></menutendina>
     <menutendina [options]="styles" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile"></menutendina>
-
 </div>
 <div class="body">
     <app-prompt [(prompt)]="prompt" label="Prompt" [autoResize]="true"></app-prompt>
