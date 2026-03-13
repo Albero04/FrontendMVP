@@ -46,6 +46,7 @@ body{
   --txt-color: rgba(12, 12, 13, 0.8509803922);
   --btn-border-radius: 0.75rem;
   --bg-light: #f8f9fa;
+  --p-textarea-border-color: #b2b2b2 !important;
   
 }
 /* MENUATENDINA */
@@ -59,6 +60,7 @@ body{
   --p-textarea-focus-border-color: black !important;
   --p-select-option-padding:0.5em 0em !important;
   --bg-p-select: #f3f3f3;
+  --p-select-border-color: #b2b2b2 !important;
 }
 
 :root{
