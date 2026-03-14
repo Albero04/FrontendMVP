@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImmagineTitolo } from '../components/immagine-titolo/immagine-titolo';
+import { ImageTitle } from '../components/image-title/image-title';
 import { FormsModule } from '@angular/forms';
 import { Button } from '../components/button/button';
 import { Editor } from '../components/editor/editor';
@@ -10,7 +10,7 @@ import { Menutendina } from '../components/menutendina/menutendina';
 import { Dialog } from '../components/dialog/dialog';
 @Component({
   selector: 'app-risultato-generazione',
-  imports: [ImmagineTitolo, FormsModule, Button, Prompt, Editor, Valutazione, Menutendina, CommonModule, Dialog],
+  imports: [ImageTitle, FormsModule, Button, Prompt, Editor, Valutazione, Menutendina, CommonModule, Dialog],
   templateUrl: './risultato-generazione.html',
   styleUrl: './risultato-generazione.css',
 })

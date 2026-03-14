@@ -5,14 +5,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 
 @Component({
-  selector: 'app-immagine-titolo',
+  selector: 'abb-image-title',
   imports: [ImageModule, FormsModule, InputTextModule, FileUploadModule],
-  templateUrl: './immagine-titolo.html',
+  templateUrl: './image-title.html',
   styleUrls: [
-    './immagine-titolo.css'
+    './image-title.css'
   ]
 })
-export class ImmagineTitolo {
+export class ImageTitle {
 @Input() hidden: boolean = false;
 @Input() imageUrl: string = '';
 @Input() caption: string = '';
