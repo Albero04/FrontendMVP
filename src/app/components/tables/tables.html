@@ -1,5 +1,11 @@
+<div class="filters-menu">
+<app-filters TypeOfFilter="searchbar" [(searchvalue)]="searchvalue" (searchvalueChange)="onSearchChange($event)"></app-filters>
+<app-filters TypeOfFilter="dateRange" [(dates)]="dates" (datesChange)="onDateChange($event)"></app-filters>
+<app-filters TypeOfFilter="text" TextFilterLabel="Tono" [textOptions]="tonoOptions" [(selectedTextOption)]="selectedTono" (selectedTextOptionChange)="onTonoChange($event)"></app-filters>
+<app-filters TypeOfFilter="text" TextFilterLabel="Stile" [textOptions]="stileOptions" [(selectedTextOption)]="selectedStile" (selectedTextOptionChange)="onStileChange($event)"></app-filters>
+</div>
 <div class="card">
-            <p-table [value]="Generazioni" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
+            <p-table [value]="GenerazioniFiltrate" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]">
                 <ng-template #header>
                     <tr>
                         <th pSortableColumn="Prompt" style="width:23%">Prompt <p-sortIcon field="Prompt"></p-sortIcon></th>
