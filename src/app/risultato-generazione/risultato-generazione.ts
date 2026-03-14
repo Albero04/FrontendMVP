@@ -15,6 +15,7 @@ import { Dialog } from '../components/dialog/dialog';
   styleUrl: './risultato-generazione.css',
 })
 export class RisultatoGenerazione {
+isEditable: boolean = false;
 imageTitle: string = 'Risultato della Generazione';
 imagePath: string = 'PlaceHolder-GufoBagnato.jpg';
 imageAltText: string = 'Immagine del risultato della generazione';
@@ -46,6 +47,9 @@ deleteGeneration(): void {
   console.log('Scarto richiesto');
   // Qui puoi aggiungere la logica per scartare l'immagine, ad esempio resettando lo stato o navigando via
 }
+saveChanges(e:any){// e in realtà sarà un Result (bisogna emetterlo da immagine-titolo quando si cambia titolo o immagine)
+  console.log('Salvataggio modifiche: comunicazione con AiAssistantServer ancora da fare', e);
+}
 onImageSelected(file: File): void {
   const reader = new FileReader();
   reader.onload = () => {
@@ -53,7 +57,8 @@ onImageSelected(file: File): void {
   };
   reader.readAsDataURL(file);
 }
-onModifica(): void{
+enableEditing(): void{
+  this.isEditable = true;
   console.log('Modifica richiesta');
   this.readonly = false;
   // Qua si andrà alla pagina di modifica

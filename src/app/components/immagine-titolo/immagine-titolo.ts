@@ -17,6 +17,7 @@ export class ImmagineTitolo {
 @Input() imageUrl: string = '';
 @Input() caption: string = '';
 @Input() altText: string = '';
+@Input() editable: boolean = false;
 @Input() set imageTitle(value: string) {
   this._imageTitle = value;
 }

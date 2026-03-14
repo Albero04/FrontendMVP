@@ -15,23 +15,26 @@
       placeholder="Titolo della generazione"
       class="hero-input"
       fluid
+      [disabled]="!editable"
     />
   </div>
-<div class="hero-imagemodifier">
-  <p-fileUpload
-   [hidden]="hidden"
-   mode="basic"
-   styleClass="btn btn-primary" 
-   chooseIcon="pi pi-paperclip" 
-   name="file" 
-   url="./upload" 
-   accept="image/*" 
-   [auto]="true" 
-   [showUploadButton]="false" 
-   [showCancelButton]="false" 
-   chooseLabel="Modifica Immagine" 
-   [customUpload]="true"
-   (uploadHandler)="onImageChange($event)">
-  </p-fileUpload>
-</div>
+@if(editable){
+  <div class="hero-imagemodifier">
+    <p-fileUpload
+     [hidden]="hidden"
+     mode="basic"
+     styleClass="btn btn-primary" 
+     chooseIcon="pi pi-paperclip" 
+     name="file" 
+     url="./upload" 
+     accept="image/*" 
+     [auto]="true" 
+     [showUploadButton]="false" 
+     [showCancelButton]="false" 
+     chooseLabel="Modifica Immagine" 
+     [customUpload]="true"
+     (uploadHandler)="onImageChange($event)">
+    </p-fileUpload>
+  </div>
+}
 </div>

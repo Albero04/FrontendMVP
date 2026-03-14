@@ -1,6 +1,6 @@
 <div class="generator-container">
     <div class="d-flex">
-        <app-button label="Genera" class="ms-auto genera btn btn-primary" [fluid]="true" (generate)="NavigateToRisultatoGenerazione()"></app-button>
+        <app-button label="Genera" class="ms-auto genera btn btn-primary" [fluid]="true" (action)="NavigateToRisultatoGenerazione()"></app-button>
     </div>
     <div class="menu-row mb-4" >
         <menutendina [options]="tones" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono"></menutendina>

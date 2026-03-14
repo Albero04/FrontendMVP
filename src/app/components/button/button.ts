@@ -13,5 +13,5 @@ export class Button {
 @Input() disabled: boolean = false;
 @Input() fluid: boolean = false;
 @Input() class: string = '';
-@Output() generate = new EventEmitter<void>();
+@Output() action = new EventEmitter<void>();
 }

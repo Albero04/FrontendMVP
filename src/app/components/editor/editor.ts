@@ -9,6 +9,6 @@ import { EditorModule } from 'primeng/editor';
 })
 export class Editor {
 @Input() text: string = '';
-@Input() readonly: boolean = false;
+@Input() editable: boolean = false;
 @Output() textChange = new EventEmitter<string>();
 }
