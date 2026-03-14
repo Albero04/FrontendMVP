@@ -1,19 +1,14 @@
 <div class="layout">
 
-  <!-- TOP BAR -->
   <div class="topbar">
     <a routerLink="/" class="topbar-logo">
       <img src="assets/icons/nexum_logo_512h.png" alt="Nexum Logo" />
     </a>
   </div>
 
-  <!-- BODY -->
   <div class="layout-body">
-    <!-- SIDEBAR FISSA -->
-    <div class="sidebar">
-      <p-menu [model]="items" />
-    </div>
-    <!-- CONTENUTO -->
+    <bb-menu></bb-menu>
+
     <div class="content">
       <router-outlet></router-outlet>
     </div>

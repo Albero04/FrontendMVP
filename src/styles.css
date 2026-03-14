@@ -1,27 +1,6 @@
-/* Header sezione (AI ASSISTANT GENERATIVO, AI CO-PILOT PER CDL) */
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Open Sans";
-    font-size: var(--bs-body-font-size);
-    background-color: var(--bg-light) !important;
-}
-/* Rimuove eventuale bordo */
-.p-menu {
-  border: none !important;
-  box-shadow: none !important;
-}
-.p-menu .p-menu-submenu-label {
-  font-size: 0.625rem;
-  color: #000000;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0 12px;
-  margin-bottom: 4px;
-  font-weight: 600;
-}
+
 :root{
+  --bs-body-font-size: 0.875rem !important;
   --p-button-primary-active-background: #4a4a4a !important;
   --p-select-focus-border-color: #383838 !important;
   --p-select-option-selected-color: #4a4a4a !important;
@@ -47,7 +26,21 @@ body{
   --btn-border-radius: 0.75rem;
   --bg-light: #f8f9fa;
   --p-textarea-border-color: #b2b2b2 !important;
+}
+
+
+/* MENU*/
+:root{
+  --menu-label:#b2b2b2;
   
+  --p-menu-item-icon-color: #b2b2b2 !important;
+  --p-menu-item-icon-focus-color : black !important;
+  --p-menu-item-color : #626161 !important;
+  --p-menu-item-focus-color : black !important;
+  --p-menu-item-focus-background: #f3f3f3 !important;
+  --p-menu-item-border-radius : 0.75rem !important;
+  --p-menu-submenu-label-font-weight: 500 !important;
+  --p-menu-item-padding: 0.3rem 0.5rem !important;
 }
 /* MENUATENDINA */
 :root{
@@ -66,6 +59,15 @@ body{
 :root{
   --p-rating-icon-size: 1.5rem !important;
   --p-rating-icon-hover-color:black !important;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans";
+    font-size: var(--bs-body-font-size);
+    background-color: var(--bg-light) !important;
 }
 
 .label{

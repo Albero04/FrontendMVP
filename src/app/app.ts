@@ -1,62 +1,16 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { MenuModule } from 'primeng/menu';
-import { MenuItem, MessageService } from 'primeng/api';
-
+import {Menu} from './components/menu/menu';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MenuModule],
-  providers: [MessageService],
+  imports: [RouterOutlet, RouterLink, Menu],
+  providers: [],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit{
+export class App{
   protected readonly title = signal('ProvaPrimeNg');
-  private messageService = inject(MessageService);
-  items: MenuItem[] | undefined;
-  ngOnInit() {
-    this.items = [
-      {
-        label: 'AI ASSISTANT GENERATIVO',
-        items: [
-          {
-            label: 'Generatore',
-            icon: 'pi pi-sparkles',
-            routerLink: '/generatore'
-          },
-          {
-             label: 'Storico',
-            icon: 'pi pi-history',
-            routerLink: '/storico-ai-assistant'
-          }
-        ]
-      },
-      {
-        label: 'AI CO-PILOT PER CDL',
-        items: [
-          {
-            label: 'Estrattore',
-            icon: 'pi pi-sparkles',
-            routerLink: '/estrattore'
-          },
-          {
-             label: 'Storico',
-            icon: 'pi pi-history',
-            routerLink: '/storico'
-          }
-        ]
-      },
-      {
-        label: 'ANALYTICS',
-        items: [
-          {
-            label: 'Dashboard',
-            icon: 'pi pi-sparkles',
-            routerLink: '/analytics'
-          }
-        ]
-      }
-    ];
-  }
+  
+  
   
 }
