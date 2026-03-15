@@ -6,8 +6,6 @@
 <app-button [label]="ButtonLabel" (action)="NavigateToGeneratore()" ></app-button>
 </div>
 <app-tables
-[Generazioni]="Generazioni"
-[GenerazioniFiltrate]="GenerazioniFiltrate"
-[tonoOptions]="tonoOptions"
-[stileOptions]="stileOptions"
+[columns]="columns"
+[RisultatoFiltrato]="GenerazioniFiltrate"
 ></app-tables>

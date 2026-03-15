@@ -40,7 +40,7 @@ export class Menu {
           {
              label: 'Storico',
             icon: 'bb-custom-icon bb-icon-storico',
-            routerLink: '/storico'
+            routerLink: '/storico-ai-copilot'
           }
         ]
       },

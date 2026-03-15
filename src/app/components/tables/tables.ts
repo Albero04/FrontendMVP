@@ -7,23 +7,20 @@ import { MenuModule } from 'primeng/menu';
 import { MenuItem, MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
 import { Filters } from "../filters/filters";
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-tables',
-  imports: [FormsModule, TableModule, ButtonModule, ToastModule, MenuModule, DatePipe, Filters],
+  imports: [FormsModule, TableModule, ButtonModule, ToastModule, MenuModule, DatePipe, Filters, CommonModule],
   providers: [MessageService],
   templateUrl: './tables.html',
   styleUrl: './tables.css',
 })
 export class Tables {
-@Input() Generazioni: any[] = [];
-@Input() GenerazioniFiltrate: any[] = [];
-@Input() items: MenuItem[] | undefined;
-@Input() dates: Date[] | undefined;
-@Input() tonoOptions: string[]= [];
-@Input() selectedTono: string | undefined;
-@Input() stileOptions: string[]= [];
-@Input() selectedStile: string | undefined;
-@Input() searchvalue: string ='';
+
+@Input() RisultatoFiltrato: any[] = [];
+@Input() columns: any[] = [];
+
+items: MenuItem[] = [];
 
 ngOnInit() {
   this.items = [
