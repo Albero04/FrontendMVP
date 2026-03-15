@@ -26,6 +26,8 @@
   --btn-border-radius: 0.75rem;
   --bg-light: #f8f9fa;
   --p-textarea-border-color: #b2b2b2 !important;
+  --p-inputtext-border-radius: 0.75rem !important;
+  --p-button-border-radius: 0.75rem !important
 }
 
 
@@ -60,7 +62,7 @@
   --p-rating-icon-size: 1.5rem !important;
   --p-rating-icon-hover-color:black !important;
 }
-
+ 
 body{
     margin: 0;
     padding: 0;
@@ -76,4 +78,13 @@ body{
     font-size: 0.625rem;
     text-transform: uppercase;
     text-align: left;
+}
+/* Datepicker */
+:root{
+  --p-datepicker-date-selected-color: black !important;
+  --p-datepicker-date-selected-background: #939393 !important;
+  --p-datepicker-date-range-selected-color:black !important;
+  --p-datepicker-date-range-selected-background: #cecece !important;
+
+  --p-datepicker-today-background: white !important;
 }
