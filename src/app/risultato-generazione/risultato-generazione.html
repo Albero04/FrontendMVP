@@ -19,10 +19,10 @@
 </div>
 <div class="body">
     <div class="image-container">
-        <bb-image-title [(imageTitle)]="imageTitle" [imageUrl]="imagePath" [altText]="imageAltText" [editable]="isEditable"
+        <abb-image-title [(imageTitle)]="imageTitle" [imageUrl]="imagePath" [altText]="imageAltText" [editable]="isEditable"
             (imageChange)="onImageSelected($event)"
         >
-        </bb-image-title>
+        </abb-image-title>
     </div>
     <div class="output-container">
         <app-editor [(text)]="testoGenerato" [editable]="isEditable"></app-editor>
