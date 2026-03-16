@@ -36,16 +36,7 @@ export class Generatore {
     });
   }
   ngOnInit() {
-    
-    this.tones= [
-      { name: 'Simpatico', code: 'simpatico' },
-      { name: 'Formale', code: 'formale' },
-      { name: 'Creativo', code: 'creativo' },
-    ];
-    this.styles= [
-      { name: 'Conversazionale', code: 'conversazionale' },
-      { name: 'Essenziale', code: 'essenziale' },
-      { name: 'Articolato', code: 'articolato' },
-    ];
+    this.tones = this.aiService.getToni();
+    this.styles = this.aiService.getStili();
   }
 }

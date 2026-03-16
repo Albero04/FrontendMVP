@@ -19,13 +19,13 @@
 </div>
 <div class="body">
     <div class="image-container">
-        <abb-image-title [(imageTitle)]="imageTitle" [imageUrl]="imagePath" [altText]="imageAltText" [editable]="isEditable"
+        <abb-image-title [(imageTitle)]="result.title" [imageUrl]="result.imagePath" [altText]="result.imagePath" [editable]="isEditable"
             (imageChange)="onImageSelected($event)"
         >
         </abb-image-title>
     </div>
     <div class="output-container">
-        <app-editor [(text)]="testoGenerato" [editable]="isEditable"></app-editor>
+        <app-editor [(text)]="result.content" [editable]="isEditable"></app-editor>
     </div>
     <div class="valutazione-modifica-container">
         <div class="valutazione">
@@ -43,13 +43,13 @@
         <hr class="parametri-divider">
         <div class="parametri-fields">
             <!-- Prompt inserito dall'utente, in sola lettura -->
-            <app-prompt [prompt]="promptInserito" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
+            <app-prompt [prompt]="result.prompt" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
             <!-- Tono selezionato, in sola lettura -->
             <!-- p-select richiede che il valore selezionato sia presente in [options] per poterlo visualizzare -->
-            <menutendina [options]="tonoSelezionato ? [tonoSelezionato] : []" [selected]="tonoSelezionato"
+            <menutendina [options]="[result.tone]" [selected]="result.tone"
                 label="Tono" placeholder="Nessun tono selezionato" [disabled]="true"></menutendina>
             <!-- Stile selezionato, in sola lettura -->
-            <menutendina [options]="stileSelezionato ? [stileSelezionato] : []" [selected]="stileSelezionato"
+            <menutendina [options]="[result.style]" [selected]="result.style"
                 label="Stile" placeholder="Nessuno stile selezionato" [disabled]="true"></menutendina>
         </div>
     </div>

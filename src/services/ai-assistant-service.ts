@@ -13,13 +13,21 @@ export class AiAssistantService {
   private resultSubject : BehaviorSubject<ResultAiAssistant | null> = new BehaviorSubject<ResultAiAssistant | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
-  // todo implementare 
-  getToni() : string[] {
-    return [];
+  // todo implementare con la vera chiamata al backend
+  getToni() : { name: string; code: string }[] {
+    return [
+      { name: 'Simpatico', code: 'simpatico' },
+      { name: 'Formale', code: 'formale' },
+      { name: 'Creativo', code: 'creativo' },
+    ];
   }
-  // todo implementare
-  getStili() : string[] {
-    return [];
+  // todo implementare con la vera chiamata al backend
+  getStili() : { name: string; code: string }[] {
+     return [
+      { name: 'Conversazionale', code: 'conversazionale' },
+      { name: 'Essenziale', code: 'essenziale' },
+      { name: 'Articolato', code: 'articolato' },
+    ];
   }
   // todo implementare
   reuse(id: number) : void {}
