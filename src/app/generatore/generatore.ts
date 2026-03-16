@@ -6,6 +6,9 @@ import { Button } from '../components/button/button';
 import { Prompt } from '../components/prompt/prompt';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
+
+//servizi
+import { AiAssistantService } from '../../services/ai-assistant-service';
 @Component({
   selector: 'app-generatore',
   imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button],
@@ -14,19 +17,21 @@ import { inject } from '@angular/core';
 })
 export class Generatore {
   private router = inject(Router);
+  private aiService = inject(AiAssistantService);
   tones: any[] | undefined;
   selectedTone: any;
   styles: any[] | undefined;
   selectedStyle: any;
   prompt: string = '';
   NavigateToRisultatoGenerazione() {
-    // Passa prompt, tono e stile come stato di navigazione
-    // in RisultatoGenerazione vengono letti via history.state
-    this.router.navigate(['/risultato-generazione'], {
-      state: {
-        prompt: this.prompt,
-        tono: this.selectedTone,
-        stile: this.selectedStyle
+    this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle); // Invia la richiesta di generazione al servizio
+    this.aiService.currentResult$.subscribe(result => {
+      if (result) {
+        this.router.navigate(['/risultato-generazione'], {
+          state: {
+            result: result
+          }
+        });
       }
     });
   }

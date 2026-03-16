@@ -11,7 +11,7 @@ export interface ResultAiAssistant extends Result {
 	evaluation: number;
 }
 
-enum Style {
+export enum Style {
 	Concise = 'concise',
 	Descriptive = 'descriptive',
 	Technical = 'technical',
@@ -20,7 +20,7 @@ enum Style {
 	Academic = 'academic'
 }
 
-enum Tone {
+export enum Tone {
 	Formal = 'formal',
 	Informal = 'informal',
 	Friendly = 'friendly',

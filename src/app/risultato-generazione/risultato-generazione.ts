@@ -31,9 +31,9 @@ stileSelezionato: any = null;
 constructor() {
   // history.state contiene i dati passati da generatore via router.navigate({ state: {...} })
   const state = history.state;
-  this.promptInserito  = state?.prompt ?? '';
-  this.tonoSelezionato  = state?.tono   ?? null;
-  this.stileSelezionato = state?.stile  ?? null;
+  this.promptInserito  = state?.result.prompt ?? '';
+  this.tonoSelezionato  = state?.result.tone   ?? null;
+  this.stileSelezionato = state?.result.style  ?? null;
 }
 onRigenera(): void {
   console.log('Rigenerazione richiesta');

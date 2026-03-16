@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { Result } from '../app/shared/models/result.model';
 import { ResultAiAssistant } from '../app/shared/models/result-ai-assistant.model';
+import { Tone } from '../app/shared/models/result-ai-assistant.model';
+import { Style } from '../app/shared/models/result-ai-assistant.model';
 import { ResultAiAssistantSerializer } from '../app/shared/serializers/result-ai-assistant.serializer';
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
@@ -32,8 +33,24 @@ export class AiAssistantService {
   modifyContent(result: ResultAiAssistant, newContent: string) : void {}
   // todo implementare
   modifyTitle(result: ResultAiAssistant, newTitle: string) : void {}
-  // todo implementare
+
+  // todo implementare chiamata al backend
   requireGeneration(prompt: string, tono: string, stile: string) : number {
+    const pendingResult: ResultAiAssistant = {
+        id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend
+        title: '',
+        content: '',
+        imagePath: '',
+        tone: tono as Tone,
+        style: stile as Style,
+        data: new Date(),
+        prompt: prompt,
+        evaluation: -1
+    };
+
+    this.resultSubject.next(pendingResult);
+
+    //chiamata al backend
     return 0;
   }
   // todo implementare
