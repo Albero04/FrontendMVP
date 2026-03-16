@@ -18,6 +18,7 @@ export class AiAssistantService {
 
   private stylesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
   styles$ = this.stylesSubject.asObservable();
+
   // todo implementare con la vera chiamata al backend
   fetchTones() : void {
     const mockData = [
@@ -27,6 +28,7 @@ export class AiAssistantService {
     ];
     this.tonesSubject.next(mockData);
   }
+  
   // todo implementare con la vera chiamata al backend
   fetchStyles() : void {
     const mockData = [
@@ -36,6 +38,20 @@ export class AiAssistantService {
     ];
     this.stylesSubject.next(mockData);
   }
+
+  newTone(name: string, code: string) : void {
+    //post al backend
+    const mockTone = { name, code };
+    //aggiungi all'array tonesSubject il nuovo tono (in un caso reale, dopo aver ricevuto conferma dal backend)
+    this.tonesSubject.next([...this.tonesSubject.value, mockTone]);
+  }
+
+  newStyle(name: string, code: string) : void {
+    //post al backend
+    const mockStyle = { name, code };
+    //aggiungi all'array stylesSubject il nuovo stile (in un caso reale, dopo aver ricevuto conferma dal backend)
+    this.stylesSubject.next([...this.stylesSubject.value, mockStyle]);
+  }
   // todo implementare
   reuse(id: number) : void {}
   // todo implementare
@@ -43,11 +59,26 @@ export class AiAssistantService {
   // todo implementare
   removeGeneration(id: number) : void {}
   // todo implementare
-  modifyImage(result: ResultAiAssistant, newImagePath: string) : void {}
+  modifyImage(result: ResultAiAssistant, newImagePath: string) : void {
+    // chiamata al backend (post)
+    //se va a buon fine result si modifica result
+    result.imagePath = newImagePath;
+    this.resultSubject.next(result);
+  }
   // todo implementare
-  modifyContent(result: ResultAiAssistant, newContent: string) : void {}
+  modifyContent(result: ResultAiAssistant, newContent: string) : void {
+    // chiamata al backend (post)
+    //se va a buon fine result si modifica result
+    result.content = newContent;
+    this.resultSubject.next(result);
+  }
   // todo implementare
-  modifyTitle(result: ResultAiAssistant, newTitle: string) : void {}
+  modifyTitle(result: ResultAiAssistant, newTitle: string) : void {
+    // chiamata al backend (post)
+    //se va a buon fine result si modifica result
+    result.title = newTitle;
+    this.resultSubject.next(result);
+  }
 
   // todo implementare chiamata al backend
   requireGeneration(prompt: string, tono: string, stile: string) : number {

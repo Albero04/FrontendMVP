@@ -11,7 +11,7 @@ export interface ResultAiCopilot extends Result {
 }
 
 
-enum Company { //provvisorio, per esempio
+export enum Company { //provvisorio, per esempio
     Microsoft = 'Microsoft',
     Google = 'Google',
     Amazon = 'Amazon',

@@ -22,7 +22,7 @@ export class RisultatoGenerazione {
   private aiService = inject(AiAssistantService);
   isEditable: boolean = false;
   readonly: boolean = true;
-  private sub!: Subscription;
+  private sub!: Subscription; //non so a cosa serva in realtà
   localResult: ResultAiAssistant | null = null;
 
   ngOnInit() {

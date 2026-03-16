@@ -1,7 +1,6 @@
 
 :root{
   --bs-body-font-size: 0.875rem !important;
-  --p-button-primary-active-background: #4a4a4a !important;
   --p-select-focus-border-color: #383838 !important;
   --p-select-option-selected-color: #4a4a4a !important;
   --p-select-option-selected-focus-color: #4a4a4a !important;
@@ -13,12 +12,6 @@
   --p-paginator-nav-button-selected-color: #f8f9fa !important;
   --p-datatable-header-cell-selected-background: #f8f9fa !important;
   --p-datatable-header-cell-selected-color: #4a4a4a !important;
-  --p-button-primary-background: #383838 !important;
-  --p-button-primary-border-color: #383838 !important;
-  --p-button-primary-hover-background: #4a4a4a !important;
-  --p-button-secondary-background: #f3f3f3 !important;
-  --p-button-secondary-hover-background: #e0e0e0 !important;
-  --p-button-primary-hover-border-color: #4a4a4a !important;
   --p-rating-icon-hover-color: #383838 !important;
   --p-rating-icon-active-color: #383838 !important;
   --bs-body-font-size: 0.875rem;
@@ -27,14 +20,23 @@
   --bg-light: #f8f9fa;
   --p-textarea-border-color: #b2b2b2 !important;
   --p-inputtext-border-radius: 0.75rem !important;
-  --p-button-border-radius: 0.75rem !important
 }
 
 
+/* BUTTONS */
+:root{
+  --p-button-primary-active-background: #4a4a4a !important;
+  --p-button-border-radius: 0.75rem !important;
+  --p-button-primary-background: #383838 !important;
+  --p-button-primary-border-color: #383838 !important;
+  --p-button-primary-hover-background: #4a4a4a !important;
+  --p-button-secondary-background: #f3f3f3 !important;
+  --p-button-secondary-hover-background: #e0e0e0 !important;
+  --p-button-primary-hover-border-color: #4a4a4a !important;
+}
 /* MENU*/
 :root{
   --menu-label:#b2b2b2;
-  
   --p-menu-item-icon-color: #b2b2b2 !important;
   --p-menu-item-icon-focus-color : black !important;
   --p-menu-item-color : #626161 !important;
