@@ -88,5 +88,6 @@ body{
   --p-datepicker-date-range-selected-color:black !important;
   --p-datepicker-date-range-selected-background: #cecece !important;
 
-  --p-datepicker-today-background: white !important;
+  --p-datepicker-today-background: black !important;
+  --p-datepicker-today-color: white !important;
 }

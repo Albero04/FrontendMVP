@@ -20,10 +20,10 @@
     </div>
     <div class="body">
         <div class="image-container">
-            <abb-image-title [(imageTitle)]="localResult.title" [imageUrl]="localResult.imagePath" [altText]="localResult.imagePath" [editable]="isEditable"
+            <bb-image-title [(imageTitle)]="localResult.title" [imageUrl]="localResult.imagePath" [altText]="localResult.imagePath" [editable]="isEditable"
                 (imageChange)="onImageSelected($event)"
             >
-            </abb-image-title>
+            </bb-image-title>
         </div>
         <div class="output-container">
             <app-editor [(text)]="localResult.content" [editable]="isEditable"></app-editor>
