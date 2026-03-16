@@ -1,57 +1,59 @@
-<div class="menu">
-    @if(isEditable){
-        <div class="actions">
-            <app-button label="Annulla Modifiche" class="btn btn-secondary" [fluid]="true" (action)="isEditable=!isEditable"></app-button>
-            <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="isEditable=!isEditable;saveChanges($event)"></app-button>
-        </div>
-    }@else{
-        <div class="actions">
-            <app-button label="Rigenera" class="btn btn-secondary" [fluid]="true" (action)="onRigenera()"></app-button>
-            <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="onSalva()"></app-button>
-        </div>
-        <div class="p-2 mb-3">
-            <app-dialog Icon="assets/icons/cross.svg" message="Vuoi cancellare questa generazione?" header="Attenzione"
-                (confirmed)="deleteGeneration()">
-            </app-dialog>
-        </div>
-    }
-
-</div>
-<div class="body">
-    <div class="image-container">
-        <abb-image-title [(imageTitle)]="result.title" [imageUrl]="result.imagePath" [altText]="result.imagePath" [editable]="isEditable"
-            (imageChange)="onImageSelected($event)"
-        >
-        </abb-image-title>
+@if(localResult){
+    <div class="menu">
+        @if(isEditable){
+            <div class="actions">
+                <app-button label="Annulla Modifiche" class="btn btn-secondary" [fluid]="true" (action)="isEditable=!isEditable"></app-button>
+                <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="isEditable=!isEditable;saveChanges($event)"></app-button>
+            </div>
+        }@else{
+            <div class="actions">
+                <app-button label="Rigenera" class="btn btn-secondary" [fluid]="true" (action)="onRigenera()"></app-button>
+                <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="onSalva()"></app-button>
+            </div>
+            <div class="p-2 mb-3">
+                <app-dialog Icon="assets/icons/cross.svg" message="Vuoi cancellare questa generazione?" header="Attenzione"
+                    (confirmed)="deleteGeneration()">
+                </app-dialog>
+            </div>
+        }
+    
     </div>
-    <div class="output-container">
-        <app-editor [(text)]="result.content" [editable]="isEditable"></app-editor>
-    </div>
-    <div class="valutazione-modifica-container">
-        <div class="valutazione">
-            <app-valutazione></app-valutazione>
+    <div class="body">
+        <div class="image-container">
+            <abb-image-title [(imageTitle)]="localResult.title" [imageUrl]="localResult.imagePath" [altText]="localResult.imagePath" [editable]="isEditable"
+                (imageChange)="onImageSelected($event)"
+            >
+            </abb-image-title>
         </div>
-        <div class="modifica">
-            <app-button label="Modifica" class="btn btn-primary" [fluid]="true" (action)="enableEditing()"></app-button>
+        <div class="output-container">
+            <app-editor [(text)]="localResult.content" [editable]="isEditable"></app-editor>
         </div>
-    </div>
-
-    <!-- Sezione riepilogativa dei parametri scelti dall'utente nel Generatore -->
-    <!-- Tutti i campi hanno [disabled]="true": non sono cliccabili né focalizzabili -->
-    <div class="parametri-container">
-        <label class="parametri-label">PARAMETRI INSERITI</label>
-        <hr class="parametri-divider">
-        <div class="parametri-fields">
-            <!-- Prompt inserito dall'utente, in sola lettura -->
-            <app-prompt [prompt]="result.prompt" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
-            <!-- Tono selezionato, in sola lettura -->
-            <!-- p-select richiede che il valore selezionato sia presente in [options] per poterlo visualizzare -->
-            <menutendina [options]="[result.tone]" [selected]="result.tone"
-                label="Tono" placeholder="Nessun tono selezionato" [disabled]="true"></menutendina>
-            <!-- Stile selezionato, in sola lettura -->
-            <menutendina [options]="[result.style]" [selected]="result.style"
-                label="Stile" placeholder="Nessuno stile selezionato" [disabled]="true"></menutendina>
+        <div class="valutazione-modifica-container">
+            <div class="valutazione">
+                <app-valutazione></app-valutazione>
+            </div>
+            <div class="modifica">
+                <app-button label="Modifica" class="btn btn-primary" [fluid]="true" (action)="enableEditing()"></app-button>
+            </div>
         </div>
+    
+        <!-- Sezione riepilogativa dei parametri scelti dall'utente nel Generatore -->
+        <!-- Tutti i campi hanno [disabled]="true": non sono cliccabili né focalizzabili -->
+        <div class="parametri-container">
+            <label class="parametri-label">PARAMETRI INSERITI</label>
+            <hr class="parametri-divider">
+            <div class="parametri-fields">
+                <!-- Prompt inserito dall'utente, in sola lettura -->
+                <app-prompt [prompt]="localResult.prompt" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
+                <!-- Tono selezionato, in sola lettura -->
+                <!-- p-select richiede che il valore selezionato sia presente in [options] per poterlo visualizzare -->
+                <menutendina [options]="[localResult.tone]" [selected]="localResult.tone"
+                    label="Tono" placeholder="Nessun tono selezionato" [disabled]="true"></menutendina>
+                <!-- Stile selezionato, in sola lettura -->
+                <menutendina [options]="[localResult.style]" [selected]="localResult.style"
+                    label="Stile" placeholder="Nessuno stile selezionato" [disabled]="true"></menutendina>
+            </div>
+        </div>
+    
     </div>
-
-</div>
+}

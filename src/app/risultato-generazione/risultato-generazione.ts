@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageTitle } from '../components/image-title/image-title';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,8 @@ import { Menutendina } from '../components/menutendina/menutendina';
 import { Dialog } from '../components/dialog/dialog';
 
 import { ResultAiAssistant } from '../shared/models/result-ai-assistant.model';
+import { AiAssistantService } from '../../services/ai-assistant-service';
+import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-risultato-generazione',
   imports: [ImageTitle, FormsModule, Button, Prompt, Editor, Valutazione, Menutendina, CommonModule, Dialog],
@@ -17,16 +19,22 @@ import { ResultAiAssistant } from '../shared/models/result-ai-assistant.model';
   styleUrl: './risultato-generazione.css',
 })
 export class RisultatoGenerazione {
+  private aiService = inject(AiAssistantService);
   isEditable: boolean = false;
   readonly: boolean = true;
-  result: ResultAiAssistant;
+  private sub!: Subscription;
+  localResult: ResultAiAssistant | null = null;
 
+  ngOnInit() {
+    this.sub = this.aiService.currentResult$.subscribe(serverResult => {
+      if (serverResult) {
+        this.localResult = { ...serverResult };//i ... fanno copia incolla di ogni proprietà dell'oggetto nel nuovo oggetto, ossia una copia per valore e non riferimento!
+      }
+    });
+  }
   constructor() {
     const state = history.state;
-    this.result = state?.result;
-    if (!this.result.imagePath) { //questo è un placeholder perchè mi dispiaceva togliere il gufo bagnato
-      this.result.imagePath = 'PlaceHolder-GufoBagnato.jpg';
-    }
+    this.localResult = state?.result;
   }
   onRigenera(): void {
     console.log('Rigenerazione richiesta');
@@ -46,7 +54,7 @@ export class RisultatoGenerazione {
   onImageSelected(file: File): void {
     const reader = new FileReader();
     reader.onload = () => {
-      this.result.imagePath = reader.result as string;
+      this.localResult!.imagePath = reader.result as string;
     };
     reader.readAsDataURL(file);
   }
