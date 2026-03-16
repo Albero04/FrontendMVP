@@ -1,6 +1,9 @@
-import { ResultAiAssistant } from '../models';
+import { Injectable } from '@angular/core';
+import { ResultAiAssistant } from '../models/result-ai-assistant.model';
 import { ResultSerializer } from './result.serializer';
-
+@Injectable({
+  providedIn: 'root'
+})
 export class ResultAiAssistantSerializer extends ResultSerializer<ResultAiAssistant> {
   serialize(payload: unknown[]): ResultAiAssistant {
     const source = this.normalizePayload(payload); // Normalizza il payload per supportare sia array posizionali che oggetti chiave-valore
