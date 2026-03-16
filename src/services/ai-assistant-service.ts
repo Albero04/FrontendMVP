@@ -13,21 +13,28 @@ export class AiAssistantService {
   private resultSubject : BehaviorSubject<ResultAiAssistant | null> = new BehaviorSubject<ResultAiAssistant | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
+  private tonesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
+  tones$ = this.tonesSubject.asObservable();
+
+  private stylesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
+  styles$ = this.stylesSubject.asObservable();
   // todo implementare con la vera chiamata al backend
-  getToni() : { name: string; code: string }[] {
-    return [
+  fetchTones() : void {
+    const mockData = [
       { name: 'Simpatico', code: 'simpatico' },
       { name: 'Formale', code: 'formale' },
       { name: 'Creativo', code: 'creativo' },
     ];
+    this.tonesSubject.next(mockData);
   }
   // todo implementare con la vera chiamata al backend
-  getStili() : { name: string; code: string }[] {
-     return [
+  fetchStyles() : void {
+    const mockData = [
       { name: 'Conversazionale', code: 'conversazionale' },
       { name: 'Essenziale', code: 'essenziale' },
       { name: 'Articolato', code: 'articolato' },
     ];
+    this.stylesSubject.next(mockData);
   }
   // todo implementare
   reuse(id: number) : void {}

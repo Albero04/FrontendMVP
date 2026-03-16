@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { Menutendina } from '../components/menutendina/menutendina';
@@ -11,19 +12,23 @@ import { inject } from '@angular/core';
 import { AiAssistantService } from '../../services/ai-assistant-service';
 @Component({
   selector: 'app-generatore',
-  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button],
+  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe],
   templateUrl: './generatore.html',
   styleUrl: './generatore.css',
 })
 export class Generatore {
   private router = inject(Router);
   private aiService = inject(AiAssistantService);
-  tones: any[] | undefined;
+
+  // in questo modo sono sempre aggiornati, anche quando vengono aggiunti nuovi toni o stili da frontend -> la vista si aggiorna automaticamente grazie a Angular
+  tones$ = this.aiService.tones$;
+  styles$ = this.aiService.styles$;
+
   selectedTone: any;
   styles: any[] | undefined;
   selectedStyle: any;
   prompt: string = '';
-  NavigateToRisultatoGenerazione() {
+  generate() {
     this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle); // Invia la richiesta di generazione al servizio
     this.aiService.currentResult$.subscribe(result => {
       if (result) {
@@ -36,7 +41,7 @@ export class Generatore {
     });
   }
   ngOnInit() {
-    this.tones = this.aiService.getToni();
-    this.styles = this.aiService.getStili();
+    this.aiService.fetchTones();
+    this.aiService.fetchStyles();
   }
 }
