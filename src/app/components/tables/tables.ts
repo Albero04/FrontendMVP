@@ -8,9 +8,10 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
 import { Filters } from "../filters/filters";
 import { CommonModule } from '@angular/common';
+import { TagModule } from 'primeng/tag'
 @Component({
   selector: 'app-tables',
-  imports: [FormsModule, TableModule, ButtonModule, ToastModule, MenuModule, DatePipe, Filters, CommonModule],
+  imports: [FormsModule, TableModule, ButtonModule, ToastModule, MenuModule, DatePipe, Filters, CommonModule, TagModule],
   providers: [MessageService],
   templateUrl: './tables.html',
   styleUrl: './tables.css',
@@ -19,27 +20,20 @@ export class Tables {
 
 @Input() RisultatoFiltrato: any[] = [];
 @Input() columns: any[] = [];
+@Input() items: MenuItem[] = [];
 
-items: MenuItem[] = [];
-
-ngOnInit() {
-  this.items = [
-            {
-                items: [
-                    {
-                        label: 'Duplica',
-                        icon: 'pi pi-pencil'
-                    },
-                    {
-                        label: 'Riutilizza',
-                        icon: 'pi pi-clone'
-                    },
-                    {   
-                        label: 'Elimina',
-                        icon: 'pi pi-trash'
-                    }
-                ]
-            }
-        ];
+getSeverity(status: any): any {
+  switch (status.toLowerCase()) {
+    case 'pronto':
+      return 'info';
+    case 'inviato':
+      return 'success'
+    case 'da validare':
+      return 'warning';
+    case 'Errore':
+      return 'danger';
+    default:
+      return 'secondary';
+  }
 }
 }

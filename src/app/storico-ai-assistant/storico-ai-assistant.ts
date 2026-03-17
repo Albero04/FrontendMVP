@@ -19,7 +19,7 @@ private router = inject(Router);
 ButtonLabel: string ='Aggiungi';
 Generazioni: any[] = [];
 GenerazioniFiltrate: any[] = [];
-
+items: MenuItem[] = [];
 dates: Date[] | undefined;
 tonoOptions: string[] = ['Formale', 'Informale', 'Simpatico', 'Serio'];
 stileOptions: string[] = ['Accademico', 'Articolato', 'Conciso', 'Esplicativo'];
@@ -34,6 +34,24 @@ columns = [
 ];
 
  ngOnInit () {
+    this.items = [
+            {
+                items: [
+                    {
+                        label: 'Duplica',
+                        icon: 'pi pi-pencil',
+                    },
+                    {
+                        label: 'Riutilizza',
+                        icon: 'pi pi-clone'
+                    },
+                    {   
+                        label: 'Elimina',
+                        icon: 'pi pi-trash'
+                    }
+                ]
+            }
+        ];
   this.Generazioni = [
     { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[0], Stile: this.stileOptions[0], Data: new Date('2024, 9, 11'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
     { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[1], Data: new Date('2023, 11, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
