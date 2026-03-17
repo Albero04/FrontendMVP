@@ -18,6 +18,7 @@ type FilterType = 'dateRange' | 'text' | 'number' | 'searchbar';
 export class Filters {
 
 @Input() TypeOfFilter: FilterType = "text";
+
 @Input() DatepickerLabel: string = 'Label Datepicker Generico';
 @Input() dates: Date[] | undefined;
 @Output() datesChange = new EventEmitter<Date[]>();

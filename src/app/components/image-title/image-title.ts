@@ -5,7 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 
 @Component({
-  selector: 'abb-image-title',
+  selector: 'bb-image-title',
   imports: [ImageModule, FormsModule, InputTextModule, FileUploadModule],
   templateUrl: './image-title.html',
   styleUrls: [
