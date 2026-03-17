@@ -3,7 +3,7 @@
         @if(isEditable){
             <div class="actions">
                 <app-button label="Annulla Modifiche" class="btn btn-secondary" [fluid]="true" (action)="isEditable=!isEditable"></app-button>
-                <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="isEditable=!isEditable;saveChanges($event)"></app-button>
+                <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="isEditable=!isEditable;saveChanges()"></app-button>
             </div>
         }@else{
             <div class="actions">

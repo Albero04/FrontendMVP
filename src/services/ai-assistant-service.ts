@@ -59,12 +59,12 @@ export class AiAssistantService {
   // todo implementare
   removeGeneration(id: number) : void {}
   // todo implementare
-  modifyImage(result: ResultAiAssistant, nuovoPathBase64: string): void {
+  modifyImage(result: ResultAiAssistant, nuovoPathBase64: string): void {//obv manca la chiamata al backend, se va a buon fine aggiorna resultSubject
     const updated: ResultAiAssistant = {
       ...result,
       imagePath: nuovoPathBase64, // usa il nome proprietà corretto del tuo model
     };
-
+    console.log('Ehi sto modificando l\'immagine wohoo');
     this.resultSubject.next(updated);
   }
   // todo implementare
