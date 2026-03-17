@@ -44,4 +44,9 @@ export class Generatore {
     this.aiService.fetchTones();
     this.aiService.fetchStyles();
   }
+
+  showDialog() {
+    // Logica per mostrare il dialog
+    console.log('Show dialog');
+  }
 }
