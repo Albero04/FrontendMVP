@@ -21,6 +21,9 @@ export class SendDocumentDialog {
         { name: 'Template 1', content: 'Descrizione del template 1' },
         { name: 'Template 2', content: 'Descrizione del template 2' },
         { name: 'Template 3', content: 'Descrizione del template 3' },
+        { name: 'Template 4', content: 'Descrizione del template 4' },
+        { name: 'Template 5', content: 'Descrizione del template 5' },
+        { name: 'Template 6', content: 'Descrizione del template 6' },
     ];
 
     selectedTemplate: any = null;

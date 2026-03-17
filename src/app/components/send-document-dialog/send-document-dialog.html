@@ -1,11 +1,11 @@
-<div>
+<div class="h-auto">
     <div class="d-flex gap-3 mb-2 justify-content-end menu-row">
         <menutendina [options]="templates" [(selected)]="selectedTemplate" label="Template" placeholder="Seleziona un template"></menutendina>
     </div>
     <div class="mb-2">
         <app-prompt label="Messaggio" [value]="selectedTemplate?.content" placeholder="Scrivi un messaggio da allegare al documento" [autoResize]="true"></app-prompt>
     </div>
-    <div class="d-flex gap-3 justify-content-end mb-0">
+    <div class="flex-grow-1 d-flex gap-3 justify-content-end mb-0">
         <app-button label="Annulla invio" class="btn-secondary" (action)="closeDialog()" />
         <app-button label="Conferma invio" class="btn-primary" (action)="confirmDialog()" />
     </div>
