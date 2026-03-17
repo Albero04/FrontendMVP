@@ -81,6 +81,19 @@ body{
     text-transform: uppercase;
     text-align: left;
 }
+/* Larghezza select */
+.menu-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+.menu-row menutendina{
+    flex: 0 1 300px;
+    width: 100%;
+    max-width: 300px;
+    min-width: 0;
+}
+
 /* Datepicker */
 :root{
   --p-datepicker-date-selected-color: black !important;

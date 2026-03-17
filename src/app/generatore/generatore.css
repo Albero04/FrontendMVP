@@ -11,18 +11,6 @@ p-button.genera {
 }
 
 
-/* Larghezza select */
-.menu-row {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-}
-.menu-row menutendina{
-    flex: 0 1 300px;
-    width: 100%;
-    max-width: 300px;
-    min-width: 0;
-}
 
 /* Prompt full width */
 .body .p-float-label,
