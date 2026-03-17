@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 
 import { ResultAiAssistant } from '../shared/models/result-ai-assistant.model';
 import { AiAssistantService } from '../../services/ai-assistant-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-risultato-generazione',
@@ -22,6 +23,7 @@ import { AiAssistantService } from '../../services/ai-assistant-service';
 })
 export class RisultatoGenerazione {
   private aiService = inject(AiAssistantService);
+  private router = inject(Router);
   isEditable: boolean = false;
   readonly: boolean = true;
 
@@ -58,6 +60,8 @@ export class RisultatoGenerazione {
   }
   deleteGeneration(): void {
     console.log('Scarto richiesto');
+    //chiamata ai servizio per backend
+    this.router.navigate(['/generatore']);
   }
   saveChanges(): void {
     const current = this.localResult();
