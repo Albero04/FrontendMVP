@@ -30,16 +30,16 @@
                  <p-tag [value]="row[col.field]" class="p-tag-pronto"></p-tag>
               }
               @else if(row[col.field].toLowerCase() === 'inviato'){
-                 <p-tag [value]="row[col.field]" class="class"></p-tag>
+                 <p-tag [value]="row[col.field]" class="p-tag-inviato"></p-tag>
               }
               @else if(row[col.field].toLowerCase() === 'da validare'){
-                 <p-tag [value]="row[col.field]" class="class"></p-tag>
+                 <p-tag [value]="row[col.field]" class="p-tag-programmato"></p-tag>
               }
               @else if(row[col.field].toLowerCase() === 'programmato'){
-                 <p-tag [value]="row[col.field]" class="class"></p-tag>
+                 <p-tag [value]="row[col.field]" class="p-tag-validare"></p-tag>
               }
               @else{
-                 <p-tag [value]="row[col.field]" class="class"></p-tag>
+                 <p-tag [value]="row[col.field]" class="p-tag-default"></p-tag>
               }
             } @else {
               {{ row[col.field] }}
