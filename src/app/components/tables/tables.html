@@ -25,6 +25,8 @@
           <td>
             @if (col.type === 'date') {
               {{ row[col.field] | date: 'dd/MM/yyyy' }}
+            } @else if (col.field === 'State') {
+              <p-tag [value]="row[col.field]" [severity]="getSeverity(row[col.field])"></p-tag>
             } @else {
               {{ row[col.field] }}
             }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Tables } from '../components/tables/tables';
 import { Filters } from '../components/filters/filters';
+import { MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-storico-ai-copilot',
@@ -12,6 +13,7 @@ import { Filters } from '../components/filters/filters';
 export class StoricoAiCopilot {
   Documents: any[] = [];
   FilteredDocuments: any[] = [];
+  items : MenuItem[] = [];
   dates: Date[] | undefined;
   IDs: number[] = [1.1, 1.2, 1.3, 1.4];
   searchvalue = '';
@@ -28,6 +30,20 @@ export class StoricoAiCopilot {
     { field: 'Data', header: 'Data analisi', type: 'date' },
   ];
   ngOnInit() {
+        this.items = [
+            {
+                items: [
+                    {
+                        label: 'Modifica',
+                        icon: 'pi pi-pencil',
+                    },
+                    {   
+                        label: 'Elimina',
+                        icon: 'pi pi-trash'
+                    }
+                ]
+            }
+        ];
     this.Documents = [
       {
         Company: 'AlbertoSrl',
