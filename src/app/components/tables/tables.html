@@ -26,7 +26,21 @@
             @if (col.type === 'date') {
               {{ row[col.field] | date: 'dd/MM/yyyy' }}
             } @else if (col.field === 'State') {
-              <p-tag [value]="row[col.field]" [severity]="getSeverity(row[col.field])"></p-tag>
+              @if(row[col.field].toLowerCase() === 'pronto'){
+                 <p-tag [value]="row[col.field]" class="p-tag-pronto"></p-tag>
+              }
+              @else if(row[col.field].toLowerCase() === 'inviato'){
+                 <p-tag [value]="row[col.field]" class="p-tag-inviato"></p-tag>
+              }
+              @else if(row[col.field].toLowerCase() === 'da validare'){
+                 <p-tag [value]="row[col.field]" class="p-tag-programmato"></p-tag>
+              }
+              @else if(row[col.field].toLowerCase() === 'programmato'){
+                 <p-tag [value]="row[col.field]" class="p-tag-validare"></p-tag>
+              }
+              @else{
+                 <p-tag [value]="row[col.field]" class="p-tag-default"></p-tag>
+              }
             } @else {
               {{ row[col.field] }}
             }

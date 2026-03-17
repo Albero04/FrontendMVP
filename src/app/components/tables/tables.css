@@ -1,0 +1,20 @@
+.p-tag-pronto{
+    color:white ;
+    background: #009DFF;
+}
+.p-tag-inviato{
+    color:white ;
+    background: #00CC4B;
+}
+.p-tag-programmato{
+    color:white ;
+    background: #A2ACC0;
+}
+.p-tag-validare{
+    color:white ;
+    background: #FF7700;
+}
+.p-tag-default{
+    color:white ;
+    background: #ff00a2;
+}

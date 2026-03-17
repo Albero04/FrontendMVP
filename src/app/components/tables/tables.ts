@@ -21,19 +21,7 @@ export class Tables {
 @Input() RisultatoFiltrato: any[] = [];
 @Input() columns: any[] = [];
 @Input() items: MenuItem[] = [];
+@Input() class: string = '';
 
-getSeverity(status: any): any {
-  switch (status.toLowerCase()) {
-    case 'pronto':
-      return 'info';
-    case 'inviato':
-      return 'success'
-    case 'da validare':
-      return 'warning';
-    case 'Errore':
-      return 'danger';
-    default:
-      return 'secondary';
-  }
-}
+
 }
