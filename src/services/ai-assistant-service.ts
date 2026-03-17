@@ -59,25 +59,33 @@ export class AiAssistantService {
   // todo implementare
   removeGeneration(id: number) : void {}
   // todo implementare
-  modifyImage(result: ResultAiAssistant, newImagePath: string) : void {
-    // chiamata al backend (post)
-    //se va a buon fine result si modifica result
-    result.imagePath = newImagePath;
-    this.resultSubject.next(result);
+  modifyImage(result: ResultAiAssistant, nuovoPathBase64: string): void {
+    const updated: ResultAiAssistant = {
+      ...result,
+      imagePath: nuovoPathBase64, // usa il nome proprietà corretto del tuo model
+    };
+
+    this.resultSubject.next(updated);
   }
   // todo implementare
   modifyContent(result: ResultAiAssistant, newContent: string) : void {
     // chiamata al backend (post)
     //se va a buon fine result si modifica result
-    result.content = newContent;
-    this.resultSubject.next(result);
+    const newResult = { 
+        ...result, 
+        content: newContent 
+    };
+    this.resultSubject.next(newResult);
   }
   // todo implementare
   modifyTitle(result: ResultAiAssistant, newTitle: string) : void {
     // chiamata al backend (post)
     //se va a buon fine result si modifica result
-    result.title = newTitle;
-    this.resultSubject.next(result);
+    const newResult = { 
+        ...result, 
+        title: newTitle 
+    };
+    this.resultSubject.next(newResult);
   }
 
   // todo implementare chiamata al backend

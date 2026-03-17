@@ -1,4 +1,4 @@
-@if(localResult){
+@if (localResult(); as result) {
     <div class="menu">
         @if(isEditable){
             <div class="actions">
@@ -20,14 +20,16 @@
     </div>
     <div class="body">
         <div class="image-container">
-            <abb-image-title [(imageTitle)]="localResult.title" [imageUrl]="localResult.imagePath" [altText]="localResult.imagePath" [editable]="isEditable"
-                (imageChange)="onImageSelected($event)"
+            <abb-image-title [(imageTitle)]="result.title" [imageUrl]="result.imagePath" [altText]="result.imagePath" [editable]="isEditable"
+                (imageChange)="changeImage($event)"
             >
             </abb-image-title>
         </div>
+
         <div class="output-container">
-            <app-editor [(text)]="localResult.content" [editable]="isEditable"></app-editor>
+            <app-editor [(text)]="result.content" [editable]="isEditable"></app-editor>
         </div>
+
         <div class="valutazione-modifica-container">
             <div class="valutazione">
                 <app-valutazione></app-valutazione>
@@ -43,14 +45,12 @@
             <label class="parametri-label">PARAMETRI INSERITI</label>
             <hr class="parametri-divider">
             <div class="parametri-fields">
-                <!-- Prompt inserito dall'utente, in sola lettura -->
-                <app-prompt [prompt]="localResult.prompt" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
-                <!-- Tono selezionato, in sola lettura -->
-                <!-- p-select richiede che il valore selezionato sia presente in [options] per poterlo visualizzare -->
-                <menutendina [options]="[localResult.tone]" [selected]="localResult.tone"
+                <app-prompt [prompt]="result.prompt" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
+
+                <menutendina [options]="[result.tone]" [selected]="result.tone"
                     label="Tono" placeholder="Nessun tono selezionato" [disabled]="true"></menutendina>
-                <!-- Stile selezionato, in sola lettura -->
-                <menutendina [options]="[localResult.style]" [selected]="localResult.style"
+
+                <menutendina [options]="[result.style]" [selected]="result.style"
                     label="Stile" placeholder="Nessuno stile selezionato" [disabled]="true"></menutendina>
             </div>
         </div>
