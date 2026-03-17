@@ -1,7 +1,8 @@
+import { ResultSplit } from "./result-split.model";
 import { Result } from "./result.model";
 
 export interface ResultAiCopilot extends Result {
-    ResultSplit: string; //Per adesso è string poi sarà un ResultSplit[]
+    ResultSplit: ResultSplit[]; 
     name: string;
     company: Company;
     month_year: string; // o forse number
