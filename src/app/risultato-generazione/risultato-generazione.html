@@ -20,7 +20,7 @@
     </div>
     <div class="body">
         <div class="image-container">
-            <bb-image-title [(imageTitle)]="result.title" [imageUrl]="result.imagePath" [altText]="result.imagePath" [editable]="isEditable"
+            <bb-image-title [(imageTitle)]="result.title" [imageUrl]="result.imagePath || '/PlaceHolder-GufoBagnato.jpg'" [altText]="result.imagePath" [editable]="isEditable"
                 (imageChange)="changeImage($event)"
             >
             </bb-image-title>
