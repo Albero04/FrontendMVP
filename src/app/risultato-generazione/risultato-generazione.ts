@@ -1,3 +1,8 @@
+// cose che mancano ancora:
+// prefisporre il click sulla valutazione
+// cliccando su Annulla modifiche deve ritornare come prima il resultLocale (qui c'è da modificare un po!)
+// gestione degli errori, aiAssistantService potrebbe rimbalzare un errore del backend, che dobbiamo visualizzare
+
 import { Component, inject, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageTitle } from '../components/image-title/image-title';
@@ -32,16 +37,20 @@ export class RisultatoGenerazione {
   private pendingTitle: string | null = null;
   private pendingContent: string | null = null;
 
+  // Inizializza il risultato con i dati result passati dalla la pagina precedente
   private initialResult = (history.state?.result as ResultAiAssistant | null) ?? null;
 
+  //questo è il ponte di collegamento con il currentResult$ di AiAssistantService, toSignal meglio di subscribe
   private serviceResult = toSignal(
     this.aiService.currentResult$.pipe(map(r => (r ? { ...r } : null))),
     { initialValue: this.initialResult }
   );
 
+  //signal scrivibile, copia del service: serve per permettere set in changeImage, usando quindi l'observable ed evitando datectChanges
   localResult = signal<ResultAiAssistant | null>(this.initialResult);
 
-  constructor() { //cosa particolare che permette di sincronizzare il localResult con serviceResult
+  //cosa particolare che permette di sincronizzare il localResult con serviceResult
+  constructor() { 
     effect(() => {
       const r = this.serviceResult();
       if (r) {
@@ -63,6 +72,8 @@ export class RisultatoGenerazione {
     //chiamata ai servizio per backend
     this.router.navigate(['/generatore']);
   }
+
+  //fa le chiamate al servizio (e quindi al backend) solo se ci sono stata modifiche effettive
   saveChanges(): void {
     const current = this.localResult();
     if (!current) return;
@@ -81,6 +92,8 @@ export class RisultatoGenerazione {
       this.pendingContent =null;
     }
   }
+
+  // questo fa due cose: aggiorna l'anteprima locale (motivo per cui il signal serviva scrivibile) e setta pendingImagePath, predisponendo un salvataggio vero
   changeImage(file: File): void {
     const reader = new FileReader();
     reader.onload = () => {
