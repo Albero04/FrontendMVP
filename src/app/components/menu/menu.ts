@@ -50,7 +50,7 @@ export class Menu {
           {
             label: 'Dashboard',
             icon: 'bb-custom-icon bb-icon-analytics',
-            routerLink: '/analytics'
+            routerLink: '/analytics-dashboard'
           }
         ]
       }

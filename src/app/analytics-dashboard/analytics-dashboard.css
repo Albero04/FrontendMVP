@@ -1,0 +1,41 @@
+.kpi-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120px;
+  width: 10rem;
+  background-color: #F8F9FA;
+}
+.p-kpi-body{
+    background: #F8F9FA !important;
+}
+.label-container{
+    display: flex;
+    gap: 5rem;
+}
+
+.kpi-label {
+  font-size: 0.9rem;
+  color: #6b7280; /* grigio */
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.kpi-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #111827;
+}
+.Charts-Container{
+    width: 80%;
+    display: flex;
+    gap: 1rem;
+}
+.Charts-Container app-analytics-charts {
+  flex: 1 1 50%;   /* 🔥 ogni grafico prende il 50% */
+  max-width: 50%;
+  max-height: 100%;
+}
+:host ::ng-deep canvas {
+  height: 20rem; /* cambia qui */
+}
