@@ -3,11 +3,10 @@
         <app-button label="Genera" class="ms-auto genera btn btn-primary" [fluid]="true" (action)="generate()"></app-button>
     </div>
     <div class="menu-row mb-4" >
-        <menutendina [options]="(tones$ | async)" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono"></menutendina>
-        <menutendina [options]="(styles$ | async)" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile"></menutendina>
+        <menutendina [options]="(tones$ | async)" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono" [addButtonLabel]="'Nuovo tono'" (addNew)="openAddDialog('tone')"></menutendina>
+        <menutendina [options]="(styles$ | async)" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile" [addButtonLabel]="'Nuovo stile'" (addNew)="openAddDialog('style')"></menutendina>
     </div>
 
     <app-prompt [(prompt)]="prompt" label="Prompt" [autoResize]="true"></app-prompt>
-    <app-button label="Apri dialog prova" class="genera btn btn-primary" [fluid]="true" (action)="showDialog()"></app-button>
 </div>
-<p-toast></p-toast>
+<app-add-dialog [(visible)]="addDialogVisible" [type]="addDialogType"></app-add-dialog>

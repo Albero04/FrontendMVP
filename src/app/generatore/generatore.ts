@@ -5,22 +5,16 @@ import { ButtonModule } from 'primeng/button';
 import { Menutendina } from '../components/menutendina/menutendina';
 import { Button } from '../components/button/button';
 import { Prompt } from '../components/prompt/prompt';
+import { AddDialog, AddDialogType } from '../components/add-dialog/add-dialog';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 
 //servizi
 import { AiAssistantService } from '../../services/ai-assistant-service';
-
-// da togliere
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { MessageService } from 'primeng/api';
-import { SendDocumentDialog } from '../components/send-document-dialog/send-document-dialog';
-import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-generatore',
-  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe, ToastModule],
+  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe, AddDialog],
   templateUrl: './generatore.html',
-  providers: [DialogService,MessageService],
   styleUrl: './generatore.css',
 })
 export class Generatore {
@@ -35,6 +29,9 @@ export class Generatore {
   styles: any[] | undefined;
   selectedStyle: any;
   prompt: string = '';
+  addDialogVisible: boolean = false;
+  addDialogType: AddDialogType = 'tone';
+
   generate() {
     this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle); // Invia la richiesta di generazione al servizio
     this.aiService.currentResult$.subscribe(result => {
@@ -52,30 +49,8 @@ export class Generatore {
     this.aiService.fetchStyles();
   }
 
-
-  //tutto ciò che metto qui sotto andrà tolto e spostato nel componente giusto
-  dialogService = inject(DialogService);
-  messageService = inject(MessageService);
-  ref: DynamicDialogRef | null = null;
-  showDialog() {
-     this.ref = this.dialogService.open(SendDocumentDialog, {
-            header: 'Aggiungi un messaggio',
-            width: '50%',
-            height: '45%',
-            contentStyle: {"max-height": "500px", "overflow": "auto"},
-            closable: true,
-            autoZIndex: true,
-        });
-
-    if (this.ref) {
-      this.ref.onClose.subscribe((nomeTemplate: any) =>{
-          if (nomeTemplate) {
-              console.log("template selezionato: ", nomeTemplate);
-              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: nomeTemplate});
-          }
-      });
-    }
+  openAddDialog(type: AddDialogType): void {
+    this.addDialogType = type;
+    this.addDialogVisible = true;
   }
-
-  
 }

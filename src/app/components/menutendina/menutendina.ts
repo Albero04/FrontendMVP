@@ -16,8 +16,11 @@ export class Menutendina {
   @Input() label: string='';
   @Input() selected: any;
   @Input() placeholder: string = '';
+  @Input() addButtonLabel: string = 'Nuovo';
   @Input() disabled: boolean = false;   /** Rende la select parametrica per usarla in più pagine */
   @Output() selectedChange = new EventEmitter<any>();
+  @Output() addNew = new EventEmitter<void>();
+
   removeOption(option: any, event: Event) {
     event.stopPropagation(); // evita selezione dell'item
 
@@ -30,5 +33,9 @@ export class Menutendina {
       this.selected = null;
       this.selectedChange.emit(null);
     }
+  }
+
+  emitAddNew(): void {
+    this.addNew.emit();
   }
 }

@@ -1,0 +1,42 @@
+<p-dialog
+  [visible]="visible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [closable]="true"
+  [style]="{ width: '40rem', maxWidth: '95vw' }"
+  (onHide)="close()"
+>
+  <div class="add-dialog-content">
+    <h3 class="dialog-title">{{ dialogTitle }}</h3>
+
+    <div class="field-block">
+      <label class="label" for="add-name">NOME*</label>
+      <input
+        id="add-name"
+        type="text"
+        class="field-input"
+        [(ngModel)]="name"
+        [ngClass]="{ 'field-input-error': submitted && !name.trim() }"
+        placeholder="Inserisci un nome"
+      />
+      <small class="error" *ngIf="submitted && !name.trim()">Il nome e obbligatorio.</small>
+    </div>
+
+    <div class="field-block">
+      <label class="label" for="add-description">DESCRIZIONE ESPANSIVA</label>
+      <textarea
+        id="add-description"
+        class="field-textarea"
+        [(ngModel)]="description"
+        rows="4"
+        placeholder="Inserisci una descrizione (opzionale)"
+      ></textarea>
+    </div>
+
+    <div class="actions-row">
+      <app-button label="Annulla" class="btn-secondary" (action)="close()"></app-button>
+      <app-button [label]="saveLabel" class="btn-primary" (action)="save()"></app-button>
+    </div>
+  </div>
+</p-dialog>
