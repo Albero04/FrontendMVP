@@ -18,18 +18,19 @@ export class Estrattore implements OnInit {
   private router = inject(Router);
   private aiService = inject(AiCoPilotService);
 
+ // cambiabile quando c'è backend
   categories = [
     { id: 'vendite', name: 'Vendite' },
     { id: 'acquisti', name: 'Acquisti' },
     { id: 'logistica', name: 'Logistica' },
   ];
-
+ // cambiabile quando c'è backend
   companies = [
     { id: 'acme', name: 'ACME S.p.A.' },
     { id: 'globex', name: 'Globex S.r.l.' },
     { id: 'initech', name: 'Initech' },
   ];
-
+// cambiabile quando c'è backend
   departmentsByCompany: Record<string, Array<{ id: string; name: string }>> = {
     acme: [
       { id: 'amm', name: 'Amministrazione' },
@@ -44,7 +45,7 @@ export class Estrattore implements OnInit {
       { id: 'sales', name: 'Sales' },
     ],
   };
-
+// cambiabile quando c'è backend
   competenceMonthsYears = [
     { id: '2026-01', name: '01/2026' },
     { id: '2026-02', name: '02/2026' },
@@ -60,6 +61,7 @@ export class Estrattore implements OnInit {
   selectedCompetenceMonthYear: any = null;
   selectedFiles: File[] = [];
 
+  //controlla se tutti i campi necessari sono stati selezionati e se ci sono file da caricare
   get canUpload(): boolean {
     return !!(
       this.selectedCategory &&
@@ -75,6 +77,7 @@ export class Estrattore implements OnInit {
     this.aiService.fetchCompanies();
   }
 
+  // quando cambia la categoria, resetta le selezioni di azienda, dipartimento e mese/anno competenza
   onCompanyChange(company: any): void {
     this.selectedCompany = company;
     this.selectedDepartment = null;
@@ -84,17 +87,18 @@ export class Estrattore implements OnInit {
       this.aiService.fetchDepartments(company.id);
     }
   }
-
+  
+  // riceve i file selezionati dal componente di upload e li memorizza nello stato del componente
   onFilesSelected(files: File[]): void {
     this.selectedFiles = files ?? [];
   }
-
+  // quando l'utente clicca su "Carica", verifica se è possibile caricare e poi naviga alla pagina dello storico (placeholder per ora)
   upload(): void {
     if (!this.canUpload) {
       return;
     }
 
-    // Placeholder: quando il metodo reale sara disponibile nel service, usare i dati selezionati qui.
+    
     this.router.navigate(['/storico-ai-copilot']);
   }
 
