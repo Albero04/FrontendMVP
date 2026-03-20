@@ -6,12 +6,11 @@ import { ToastModule } from 'primeng/toast';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem, MessageService } from 'primeng/api';
 import { DatePipe } from '@angular/common';
-import { Filters } from "../filters/filters";
 import { CommonModule } from '@angular/common';
 import { TagModule } from 'primeng/tag'
 @Component({
   selector: 'app-tables',
-  imports: [FormsModule, TableModule, ButtonModule, ToastModule, MenuModule, DatePipe, Filters, CommonModule, TagModule],
+  imports: [FormsModule, TableModule, ButtonModule, ToastModule, MenuModule, DatePipe, CommonModule, TagModule],
   providers: [MessageService],
   templateUrl: './tables.html',
   styleUrl: './tables.css',
