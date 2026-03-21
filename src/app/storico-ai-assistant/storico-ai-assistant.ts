@@ -104,12 +104,37 @@ export class StoricoAiAssistant {
       const matchTono = !this.selectedTono || g.tone === this.selectedTono;
       const matchStile = !this.selectedStile || g.style === this.selectedStile;
 
-      const matchDate =
-        !this.dates ||
-        this.dates.length !== 2 ||
-        (new Date(g.data) >= this.dates[0] && new Date(g.data) <= this.dates[1]);
+      const matchDate = this.isInSelectedDateRange(g.data);
 
       return matchTono && matchStile && matchDate && matchSearch;
     });
+  }
+
+  private isInSelectedDateRange(value: Date | string | undefined): boolean {
+    if (!this.dates || this.dates.length === 0) return true;
+
+    const itemDate = this.toDate(value);
+    if (!itemDate) return false;
+
+    const start = this.startOfDay(this.dates[0]);
+    const end = this.dates.length > 1 && this.dates[1]
+      ? this.endOfDay(this.dates[1])
+      : this.endOfDay(this.dates[0]);
+
+    return itemDate >= start && itemDate <= end;
+  }
+
+  private toDate(value: Date | string | undefined): Date | null {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  private startOfDay(d: Date): Date {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+  }
+
+  private endOfDay(d: Date): Date {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999);
   }
 }

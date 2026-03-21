@@ -118,6 +118,7 @@ export class AiAssistantService {
       {
         id: 1,
         title: 'Generazione 1',
+        // provo a vedere se il truncate va, metto un content luuuuuuuuuuuuuuuuuuuuuuungo
         content: 'Contenuto della generazione 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
         imagePath: 'path/to/image1.jpg',
         tone: 'Simpatico',
