@@ -14,7 +14,7 @@ import { AttachFile } from "../attach-file/attach-file";
 // Interface per i dati da inviare
 export interface SendDocumentData {
     messaggio: string;
-    orarioInvio: string;
+    orarioInvio: {  name: string; value: string};
     fileAttachments: File[];
     template?: string;
 }
@@ -53,7 +53,7 @@ export class SendDocumentDialog {
         { name: 'Dopodomani alle 9:00', value: 'day_after_9am' },
         { name: 'Lunedì alle 9:00', value: 'monday_9am' },
     ];
-    selectedTime: string = 'now';
+    selectedTime: { name: string; value: string } = this.timeOptions[0];
     ngOnInit() {
         if (this.config.data && this.config.data.templates$) {
             this.templates$ = this.config.data.templates$;
@@ -71,11 +71,10 @@ export class SendDocumentDialog {
     confirmDialog(){        
         const sendData: SendDocumentData = {
             messaggio: this.messaggio,
-            orarioInvio: this.selectedTime,
+            orarioInvio: this.selectedTime ? this.selectedTime : this.timeOptions[0],
             fileAttachments: this.attachFileComponent.files,
             template: this.selectedTemplate?.name
         };
-                
         this.ref.close(sendData);
     }
 }

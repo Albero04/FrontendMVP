@@ -3,7 +3,7 @@
         <menutendina [options]="(templates$ | async) || []" [(selected)]="selectedTemplate" label="Template" placeholder="Seleziona un template" [addButtonLabel]="'Nuovo template'" (addNew)="openAddDialog('template')"></menutendina>
     </div>
     <div class="mb-2">
-        <app-prompt label="Messaggio" [value]="messaggio" [placeholder]="'Usa un template o scrivi un messaggio personalizzato'" [autoResize]="true"></app-prompt>
+        <app-prompt label="Messaggio" [prompt]="messaggio" (promptChange)="messaggio = $event" [placeholder]="'Usa un template o scrivi un messaggio personalizzato'" [autoResize]="true"></app-prompt>
     </div>
     <div class="mt-2 mb-3 flex gap-4">
         <app-attach-file #attachFile></app-attach-file>
@@ -15,7 +15,6 @@
         <menutendina 
             [options]="timeOptions" 
             [(selected)]="selectedTime" 
-            optionLabel="label" 
             class="w-100"
             placeholder="Programma invio">
         </menutendina>

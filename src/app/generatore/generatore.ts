@@ -90,11 +90,12 @@ export class Generatore {
           if (result) {
          
               console.log(result.messaggio);
-              console.log(result.orarioInvio);
+              console.log(result.orarioInvio.name);
               console.log(result.fileAttachments); // Array di File
-
-              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: result.messaggio});
+              
+              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: result.orarioInvio.name });
           }
+
       });
     }
   }
