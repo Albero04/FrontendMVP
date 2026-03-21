@@ -18,3 +18,11 @@
     color:white ;
     background: #ff00a2;
 }
+
+.truncate-content {
+  display: block;
+  max-width: 320px;      /* regola in base alla colonna */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -13,8 +13,8 @@ export class ResultAiAssistantSerializer extends ResultSerializer<ResultAiAssist
       title: this.asString(source['title']),
       content: this.asString(source['content']),
       imagePath: this.asString(source['imagePath']),
-      tone: this.asString(source['tone']) as ResultAiAssistant['tone'],
-      style: this.asString(source['style']) as ResultAiAssistant['style'],
+      tone: this.asString(source['tone']),
+      style: this.asString(source['style']),
       data: this.asDate(source['data']),
       prompt: this.asString(source['prompt']),
       evaluation: this.asNumber(source['evaluation'], 0)

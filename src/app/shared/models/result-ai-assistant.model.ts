@@ -4,27 +4,19 @@ export interface ResultAiAssistant extends Result {
 	title: string;
 	content: string;
 	imagePath: string;
-	tone: Tone;
-	style: Style;
+	tone: Tone["name"];
+	style: Style["name"];
 	data: Date;
 	prompt: string;
 	evaluation: number;
 }
 
-export enum Style {
-	Concise = 'concise',
-	Descriptive = 'descriptive',
-	Technical = 'technical',
-	Narrative = 'narrative',
-	Creative = 'creative',
-	Academic = 'academic'
+export interface Style {
+	name: string;
+	code: string;
 }
 
-export enum Tone {
-	Formal = 'formal',
-	Informal = 'informal',
-	Friendly = 'friendly',
-	Professional = 'professional',
-	Persuasive = 'persuasive',
-	Neutral = 'neutral'
+export interface Tone {
+	name: string;
+	code: string;
 }
