@@ -92,8 +92,10 @@ export class Generatore {
               console.log(result.messaggio);
               console.log(result.orarioInvio.name);
               console.log(result.fileAttachments); // Array di File
-              
-              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: result.orarioInvio.name });
+              if (result.orarioInvio.value === 'now') {
+                this.messageService.add({severity:'info', summary: 'Invio in corso'});
+              } else 
+                this.messageService.add({severity:'info', summary: 'Invio programmato', detail: result.orarioInvio.name });
           }
 
       });
