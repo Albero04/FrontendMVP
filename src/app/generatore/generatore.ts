@@ -16,7 +16,7 @@ import { AiAssistantService } from '../../services/ai-assistant-service';
 // da togliere
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
-import { SendDocumentDialog } from '../components/send-document-dialog/send-document-dialog';
+import { SendDocumentDialog,SendDocumentData } from '../components/send-document-dialog/send-document-dialog';
 import { ToastModule } from 'primeng/toast';
 import { AiCoPilotService } from '../../services/ai-co-pilot-service';
 
@@ -86,10 +86,14 @@ export class Generatore {
         });
 
     if (this.ref) {
-      this.ref.onClose.subscribe((nomeTemplate: any) =>{
-          if (nomeTemplate) {
-              console.log("template selezionato: ", nomeTemplate);
-              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: nomeTemplate});
+      this.ref.onClose.subscribe((result: SendDocumentData) =>{
+          if (result) {
+         
+              console.log(result.messaggio);
+              console.log(result.orarioInvio);
+              console.log(result.fileAttachments); // Array di File
+
+              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: result.messaggio});
           }
       });
     }

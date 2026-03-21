@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, inject, Input, ViewChild} from '@angular/core';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {DynamicDialogConfig} from 'primeng/dynamicdialog';
 import { TableModule } from 'primeng/table';
@@ -10,6 +10,14 @@ import { Prompt } from '../prompt/prompt';
 import { Observable } from 'rxjs';
 import { AddDialog,AddDialogType } from '../add-dialog/add-dialog';
 import { AttachFile } from "../attach-file/attach-file";
+
+// Interface per i dati da inviare
+export interface SendDocumentData {
+    messaggio: string;
+    orarioInvio: string;
+    fileAttachments: File[];
+    template?: string;
+}
 @Component({
     selector: 'app-send-document-dialog',
     templateUrl: './send-document-dialog.html',
@@ -21,12 +29,24 @@ export class SendDocumentDialog {
     public ref: DynamicDialogRef= inject(DynamicDialogRef);
     public config: DynamicDialogConfig= inject(DynamicDialogConfig);
 
+    @ViewChild('attachFile') attachFileComponent!: AttachFile;
+
     addDialogVisible: boolean = false;
     addDialogType: AddDialogType = 'tone';
     
     @Input() options: any[] = [];
     templates$: Observable<any[]> | undefined;
     selectedTemplate: any = null;
+    private _messaggio: string = '';
+    
+    get messaggio(): string {
+        return this._messaggio || this.selectedTemplate?.content || '';
+    }
+    
+    set messaggio(value: string) {
+        this._messaggio = value;
+    }
+    
     timeOptions: any[] = [
         { name: 'Adesso', value: 'now' },
         { name: 'Domani alle 9:00', value: 'tomorrow_9am' },
@@ -45,12 +65,17 @@ export class SendDocumentDialog {
         this.addDialogVisible = true;
     }
     closeDialog() {
-        console.log("mi chiudo");
         this.ref.close();
     }
       
-    confirmDialog(){
-        console.log("confermo");
-        this.ref.close(this.selectedTemplate.name);
+    confirmDialog(){        
+        const sendData: SendDocumentData = {
+            messaggio: this.messaggio,
+            orarioInvio: this.selectedTime,
+            fileAttachments: this.attachFileComponent.files,
+            template: this.selectedTemplate?.name
+        };
+                
+        this.ref.close(sendData);
     }
 }

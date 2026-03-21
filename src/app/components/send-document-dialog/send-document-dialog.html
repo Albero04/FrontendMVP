@@ -3,12 +3,12 @@
         <menutendina [options]="(templates$ | async) || []" [(selected)]="selectedTemplate" label="Template" placeholder="Seleziona un template" [addButtonLabel]="'Nuovo template'" (addNew)="openAddDialog('template')"></menutendina>
     </div>
     <div class="mb-2">
-        <app-prompt label="Messaggio" [value]="selectedTemplate?.content" [placeholder]="'Usa un template o scrivi un messaggio personalizzato'" [autoResize]="true"></app-prompt>
+        <app-prompt label="Messaggio" [value]="messaggio" [placeholder]="'Usa un template o scrivi un messaggio personalizzato'" [autoResize]="true"></app-prompt>
     </div>
     <div class="mt-2 mb-3 flex gap-4">
-        <app-attach-file></app-attach-file>
+        <app-attach-file #attachFile></app-attach-file>
     </div>
-    <div>
+    <div class="mb-4">
         <div class="d-flex align-items-center gap-2">
         <i class="pi pi-clock fs-4"></i>
         
