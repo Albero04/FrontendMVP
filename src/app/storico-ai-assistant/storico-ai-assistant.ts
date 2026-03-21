@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Tables } from '../components/tables/tables';
 import { Filters } from "../components/filters/filters";
 import { MenuItem, MessageService } from 'primeng/api';
 import { Button } from '../components/button/button';
 import { Router } from '@angular/router';
-import { inject } from '@angular/core';
+import { AiAssistantService } from '../../services/ai-assistant-service/ai-assistant-service';
+import { ResultAiAssistant } from '../shared/models/result-ai-assistant.model';
 
 @Component({
   selector: 'app-storico-ai-assistant',
@@ -16,59 +18,59 @@ import { inject } from '@angular/core';
 })
 export class StoricoAiAssistant {
   private router = inject(Router);
+  private aiService = inject(AiAssistantService);
+  private destroyRef = inject(DestroyRef);
+
   ButtonLabel: string ='Aggiungi';
-  Generazioni: any[] = [];
-  GenerazioniFiltrate: any[] = [];
+  Generazioni: ResultAiAssistant[] = [];
+  GenerazioniFiltrate: ResultAiAssistant[] = [];
   items: MenuItem[] = [];
   dates: Date[] | undefined;
-  tonoOptions: string[] = ['Formale', 'Informale', 'Simpatico', 'Serio'];
-  stileOptions: string[] = ['Accademico', 'Articolato', 'Conciso', 'Esplicativo'];
+  tonoOptions: { name: string; code: string }[] = [];
+  stileOptions: { name: string; code: string }[] = [];
   selectedTono: string | undefined; 
   selectedStile: string | undefined;
   searchvalue: string ='';
   columns = [
-    { field: 'Prompt', header: 'Prompt' },
-    { field: 'Tono', header: 'Tono' },
-    { field: 'Stile', header: 'Stile' },
-    { field: 'Data', header: 'Data', type: 'date' }
+    { field: 'prompt', header: 'Prompt' },
+    { field: 'tone', header: 'Tono' },
+    { field: 'style', header: 'Stile' },
+    { field: 'data', header: 'Data', type: 'date' },
+    { field: 'content', header: 'Risultato parziale' }
   ];
 
   ngOnInit () {
-      this.items = [
-              {
-                  items: [
-                      {
-                          label: 'Duplica',
-                          icon: 'pi pi-pencil',
-                      },
-                      {
-                          label: 'Riutilizza',
-                          icon: 'pi pi-clone'
-                      },
-                      {   
-                          label: 'Elimina',
-                          icon: 'pi pi-trash'
-                      }
-                  ]
-              }
-          ];
-    this.Generazioni = [
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[0], Stile: this.stileOptions[0], Data: new Date('2024, 9, 11'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[1], Data: new Date('2023, 11, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[1], Data: new Date('2023, 11, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[2], Data: new Date('2023, 11, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[1], Data: new Date('2023, 11, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[1], Stile: this.stileOptions[1], Data: new Date('2023, 11, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[1], Data: new Date('2024, 2, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[3], Stile: this.stileOptions[3], Data: new Date('2026, 5, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[2], Stile: this.stileOptions[1], Data: new Date('2023, 12, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' },
-      { Prompt: 'Lorem ipsum dolor sit amet', Tono: this.tonoOptions[3], Stile: this.stileOptions[1], Data: new Date('2023, 4, 12'), RisultatoParziale: 'Lorem ipsum dolor sit amet' }
+    this.aiService.fetchTones();
+    this.aiService.fetchStyles();
+
+    this.aiService.tones$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((tones) => {
+        this.tonoOptions = (tones ?? []).map(t => ({ name: t.name, code: t.code }));
+      });
+
+    this.aiService.styles$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((styles) => {
+        this.stileOptions = (styles ?? []).map(s => ({ name: s.name, code: s.code }));
+      });
+
+    this.items = [
+      {
+        items: [
+          { label: 'Duplica', icon: 'pi pi-pencil' },
+          { label: 'Riutilizza', icon: 'pi pi-clone' },
+          { label: 'Elimina', icon: 'pi pi-trash' }
+        ]
+      }
     ];
-    this.GenerazioniFiltrate = this.Generazioni;
+
+    this.Generazioni = this.aiService.getResultsHistory();
+    this.GenerazioniFiltrate = [...this.Generazioni];
   }
 
   NavigateToGeneratore(){
-  this.router.navigate(['/generatore']);
+    this.router.navigate(['/generatore']);
   }
 
   onSearchChange(value:string){
@@ -80,36 +82,34 @@ export class StoricoAiAssistant {
     this.dates = dates;
     this.applyFilters();
   }
+
   onTonoChange(tono: string | undefined) {
     this.selectedTono = tono;
     this.applyFilters();
   }
+
   onStileChange(stile: string | undefined) {
     this.selectedStile = stile;
     this.applyFilters();
   }
+
   applyFilters() {
+    this.GenerazioniFiltrate = this.Generazioni.filter(g => {
+      const matchSearch =
+        !this.searchvalue ||
+        g.prompt.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
+        g.tone.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
+        g.style.toLowerCase().includes(this.searchvalue.toLowerCase());
 
-  this.GenerazioniFiltrate = this.Generazioni.filter(g => {
+      const matchTono = !this.selectedTono || g.tone === this.selectedTono;
+      const matchStile = !this.selectedStile || g.style === this.selectedStile;
 
-  const matchSearch =
-    !this.searchvalue ||
-    g.Prompt.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
-    g.Tono.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
-    g.Stile.toLowerCase().includes(this.searchvalue.toLowerCase());
+      const matchDate =
+        !this.dates ||
+        this.dates.length !== 2 ||
+        (new Date(g.data) >= this.dates[0] && new Date(g.data) <= this.dates[1]);
 
-  const matchTono = !this.selectedTono || g.Tono === this.selectedTono;
-
-  const matchStile = !this.selectedStile || g.Stile === this.selectedStile;
-
-  const matchDate =
-    !this.dates ||
-    this.dates.length !== 2 ||
-    (new Date(g.Data) >= this.dates[0] && new Date(g.Data) <= this.dates[1]);
-
-    return matchTono && matchStile && matchDate && matchSearch;
-
+      return matchTono && matchStile && matchDate && matchSearch;
     });
-
   }
 }

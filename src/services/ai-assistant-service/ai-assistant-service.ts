@@ -95,8 +95,8 @@ export class AiAssistantService {
         title: '',
         content: '',
         imagePath: '',
-        tone: tono as Tone,
-        style: stile as Style,
+        tone: tono,
+        style: stile,
         data: new Date(),
         prompt: prompt,
         evaluation: -1
@@ -111,8 +111,35 @@ export class AiAssistantService {
   getGeneration(jobid: number) : void {}
 
 
+  getResultsHistory(): ResultAiAssistant[] {
+    // chiamata al backend per ottenere la lista delle generazioni passate
+    // per ora mocko i dati
+    const mockData: ResultAiAssistant[] = [
+      {
+        id: 1,
+        title: 'Generazione 1',
+        content: 'Contenuto della generazione 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        imagePath: 'path/to/image1.jpg',
+        tone: 'Simpatico',
+        style: 'Creativo',
+        data: new Date('2024-09-11'),
+        prompt: 'Prompt della generazione 1',
+        evaluation: 4
+      },
+      {
+        id: 2,
+        title: 'Generazione 2',
+        content: 'Contenuto della generazione 2',
+        imagePath: 'path/to/image2.jpg',
+        tone: 'Formale',
+        style: 'Essenziale',
+        data: new Date('2024-09-12'),
+        prompt: 'Prompt della generazione 2',
+        evaluation: 5
+      }
+    ];
 
-
-
+    return mockData;
+  }
 
 }
