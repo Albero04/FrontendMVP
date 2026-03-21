@@ -18,6 +18,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { SendDocumentDialog } from '../components/send-document-dialog/send-document-dialog';
 import { ToastModule } from 'primeng/toast';
+import { AiCoPilotService } from '../../services/ai-co-pilot-service';
 
 @Component({
   selector: 'app-generatore',
@@ -35,12 +36,14 @@ export class Generatore {
   styles$ = this.aiService.styles$;
 
   selectedTone: any;
-  styles: any[] | undefined;
   selectedStyle: any;
   prompt: string = '';
   addDialogVisible: boolean = false;
   addDialogType: AddDialogType = 'tone';
 
+  //tutto ciò che c'è qui lo toglierò
+  private aiServiceCoPilotDaTogliere = inject(AiCoPilotService);
+  templates$ = this.aiServiceCoPilotDaTogliere.templates$;
   generate() {
     this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle); // Invia la richiesta di generazione al servizio
     this.aiService.currentResult$.subscribe(result => {
@@ -56,6 +59,8 @@ export class Generatore {
   ngOnInit() {
     this.aiService.fetchTones();
     this.aiService.fetchStyles();
+
+    this.aiServiceCoPilotDaTogliere.fetchTemplates();
   }
 
   openAddDialog(type: AddDialogType): void {
@@ -75,6 +80,9 @@ export class Generatore {
             contentStyle: {"max-height": "500px", "overflow": "auto"},
             closable: true,
             autoZIndex: true,
+            data: {
+              templates$: this.templates$ 
+            }
         });
 
     if (this.ref) {

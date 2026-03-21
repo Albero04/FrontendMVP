@@ -14,6 +14,7 @@ export class Prompt {
 @Input()  autoResize: boolean = false;
 @Input()  label: string = '';
 @Input() value: string = '';
+@Input() placeholder: string = '';
 /** Se true, il campo è in sola lettura: non cliccabile e non focalizzabile */
 @Input()  disabled: boolean = false;
 @Output() promptChange = new EventEmitter<string>();
