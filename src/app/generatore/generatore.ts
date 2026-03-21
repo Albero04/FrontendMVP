@@ -11,10 +11,19 @@ import { inject } from '@angular/core';
 
 //servizi
 import { AiAssistantService } from '../../services/ai-assistant-service';
+
+
+// da togliere
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import { SendDocumentDialog } from '../components/send-document-dialog/send-document-dialog';
+import { ToastModule } from 'primeng/toast';
+
 @Component({
   selector: 'app-generatore',
-  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe, AddDialog],
+  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe, AddDialog, ToastModule],
   templateUrl: './generatore.html',
+  providers: [DialogService,MessageService],
   styleUrl: './generatore.css',
 })
 export class Generatore {
@@ -53,4 +62,30 @@ export class Generatore {
     this.addDialogType = type;
     this.addDialogVisible = true;
   }
+
+  //tutto ciò che metto qui sotto andrà tolto e spostato nel componente giusto
+  dialogService = inject(DialogService);
+  messageService = inject(MessageService);
+  ref: DynamicDialogRef | null = null;
+  showDialog() {
+     this.ref = this.dialogService.open(SendDocumentDialog, {
+            header: 'Aggiungi un messaggio',
+            width: '50%',
+            height: '45%',
+            contentStyle: {"max-height": "500px", "overflow": "auto"},
+            closable: true,
+            autoZIndex: true,
+        });
+
+    if (this.ref) {
+      this.ref.onClose.subscribe((nomeTemplate: any) =>{
+          if (nomeTemplate) {
+              console.log("template selezionato: ", nomeTemplate);
+              this.messageService.add({severity:'info', summary: 'Invio programmato', detail: nomeTemplate});
+          }
+      });
+    }
+  }
+
+  
 }
