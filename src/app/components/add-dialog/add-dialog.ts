@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { Button } from '../button/button';
-import { AiAssistantService } from '../../../services/ai-assistant-service';
-import { AiCoPilotService } from '../../../services/ai-co-pilot-service';
+import { AiAssistantService } from '../../../services/ai-assistant-service/ai-assistant-service';
+import { AiCoPilotService } from '../../../services/ai-co-pilot-service/ai-co-pilot-service';
 
 export type AddDialogType = 'tone' | 'style' | 'template';
 

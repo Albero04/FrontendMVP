@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AnalyticsAbstractService } from './analytics-abstract-service'
+import { AnalyticsAbstractService } from '../analytics-abstract-service'
 
 @Injectable({
   providedIn: 'root',

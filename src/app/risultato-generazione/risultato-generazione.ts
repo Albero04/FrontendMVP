@@ -17,7 +17,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
 import { ResultAiAssistant } from '../shared/models/result-ai-assistant.model';
-import { AiAssistantService } from '../../services/ai-assistant-service';
+import { AiAssistantService } from '../../services/ai-assistant-service/ai-assistant-service';
 import { Router } from '@angular/router';
 
 @Component({

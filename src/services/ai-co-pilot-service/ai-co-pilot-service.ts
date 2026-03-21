@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 
-import { ResultAiCopilotSerializer } from '../app/shared/serializers/result-ai-copilot.serializer';
-import { ResultAiCopilot } from '../app/shared/models/result-ai-copilot.model';
+import { ResultAiCopilotSerializer } from '../../app/shared/serializers/result-ai-copilot.serializer';
+import { ResultAiCopilot } from '../../app/shared/models/result-ai-copilot.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 
 //servizi
-import { AiAssistantService } from '../../services/ai-assistant-service';
+import { AiAssistantService } from '../../services/ai-assistant-service/ai-assistant-service';
 
 
 // da togliere
@@ -18,7 +18,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { SendDocumentDialog,SendDocumentData } from '../components/send-document-dialog/send-document-dialog';
 import { ToastModule } from 'primeng/toast';
-import { AiCoPilotService } from '../../services/ai-co-pilot-service';
+import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot-service';
 
 @Component({
   selector: 'app-generatore',

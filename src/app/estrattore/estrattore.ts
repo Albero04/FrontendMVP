@@ -6,7 +6,7 @@ import { Button } from '../components/button/button';
 import { Router } from '@angular/router';
 
 //servizi
-import { AiCoPilotService } from '../../services/ai-co-pilot-service';
+import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot-service';
 
 @Component({
   selector: 'app-estrattore',

@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { ResultAiAssistant } from '../app/shared/models/result-ai-assistant.model';
-import { Tone } from '../app/shared/models/result-ai-assistant.model';
-import { Style } from '../app/shared/models/result-ai-assistant.model';
-import { ResultAiAssistantSerializer } from '../app/shared/serializers/result-ai-assistant.serializer';
+import { ResultAiAssistant } from '../../app/shared/models/result-ai-assistant.model';
+import { Tone } from '../../app/shared/models/result-ai-assistant.model';
+import { Style } from '../../app/shared/models/result-ai-assistant.model';
+import { ResultAiAssistantSerializer } from '../../app/shared/serializers/result-ai-assistant.serializer';
 import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
