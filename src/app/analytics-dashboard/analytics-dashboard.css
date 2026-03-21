@@ -1,19 +1,19 @@
 .data-container {
+  flex: 1 1 10rem; /* cresce e si riduce dinamicamente */
+  min-width: 8rem; /* dimensione minima */
+  background-color: #f8f9fa;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  height: 120px;
-  width: 10rem;
-  background-color: #F8F9FA;
+  align-items: center;
 }
-.p-data-body{
-    background: #F8F9FA !important;
-      padding: 0rem 0rem 0rem 1rem;
-
+.p-data-body {
+  background: #f8f9fa !important;
+  padding: 0.5rem 1rem; /* padding flessibile */
 }
-.label-container{
-    display: flex;
-    gap: 5rem;
+.label-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .data-value {
@@ -21,20 +21,22 @@
   font-weight: bold;
   color: #111827;
 }
-.Charts-Container{
-    width: 80%;
-    display: flex;
-    gap: 1rem;
+.Charts-Container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 .Charts-Container app-analytics-charts {
-  flex: 1 1 50%;   /*ogni grafico prende il 50% */
-  max-width: 50%;
-  max-height: 100%;
+  flex: 1 1 50%; /*ogni grafico prende il 50% */
+  min-width: 300px;
 }
 :host ::ng-deep canvas {
-  height: 20rem; /* cambia qui */
+  min-height: 20rem;
+
+  
 }
-.labels-datepicker{
+.labels-datepicker {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5rem;

@@ -1,18 +1,16 @@
-import { Component, OnInit, inject, PLATFORM_ID, ChangeDetectorRef, EventEmitter } from '@angular/core';
-import { isPlatformBrowser, NgStyle, NgClass } from '@angular/common';
+import { Component} from '@angular/core';
 import { AnalyticsCharts } from '../components/analytics-charts/analytics-charts';
 import { AccordionModule } from 'primeng/accordion'
 import { CardModule } from 'primeng/card'
 
 import { FormsModule } from '@angular/forms';
 
-
 import { DateRangePicker } from '../components/date-range-picker/date-range-picker';
 
 @Component({
   selector: 'app-analytics-dashboard',
   standalone: true,
-  imports: [AnalyticsCharts, AccordionModule, CardModule, NgStyle, NgClass,FormsModule, DateRangePicker],
+  imports: [AnalyticsCharts, AccordionModule, CardModule,FormsModule, DateRangePicker],
   templateUrl: './analytics-dashboard.html',
   styleUrls: ['./analytics-dashboard.css'],
 })
