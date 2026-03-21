@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { Menutendina } from '../components/menutendina/menutendina';
 import { Button } from '../components/button/button';
 import { Prompt } from '../components/prompt/prompt';
-import { AddDialog, AddDialogType } from '../components/add-dialog/add-dialog';
+import { AddDialog, AddDialogSaveData, AddDialogType } from '../components/add-dialog/add-dialog';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 
@@ -66,6 +66,17 @@ export class Generatore {
   openAddDialog(type: AddDialogType): void {
     this.addDialogType = type;
     this.addDialogVisible = true;
+  }
+
+  handleAddDialogSave(data: AddDialogSaveData): void {
+    if (data.type === 'tone') {
+      this.aiService.newTone(data.name, data.description);
+      return;
+    }
+
+    if (data.type === 'style') {
+      this.aiService.newStyle(data.name, data.description);
+    }
   }
 
   //tutto ciò che metto qui sotto andrà tolto e spostato nel componente giusto

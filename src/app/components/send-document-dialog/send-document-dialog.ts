@@ -64,6 +64,7 @@ export class SendDocumentDialog {
         this.addDialogType = type;
         this.addDialogVisible = true;
     }
+
     closeDialog() {
         this.ref.close();
     }
