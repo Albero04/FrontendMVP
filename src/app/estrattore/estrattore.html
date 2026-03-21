@@ -1,61 +1,54 @@
 <section class="estrattore-page">
-	<div class="toolbar">
-		<div class="filters-grid">
-			<menutendina
-				[label]="'Categoria'"
-				[placeholder]="'Seleziona categoria'"
-				[options]="categories"
-				[showAddNew]="false"
-				[selected]="selectedCategory"
-				(selectedChange)="selectedCategory = $event">
-			</menutendina>
+  <div class="toolbar">
+    <div class="filters-grid">
+      <app-input
+        [label]="'Categoria'"
+        [placeholder]="'Inserisci categoria'"
+        [value]="selectedCategory"
+        (valueChange)="selectedCategory = $event">
+      </app-input>
 
-			<menutendina
-				[label]="'Azienda'"
-				[placeholder]="'Seleziona azienda'"
-				[options]="companies"
-				[showAddNew]="false"
-				[selected]="selectedCompany"
-				(selectedChange)="onCompanyChange($event)">
-			</menutendina>
+      <menutendina
+        [label]="'Azienda'"
+        [placeholder]="'Seleziona azienda'"
+        [options]="companies"
+        [showAddNew]="false"
+        [selected]="selectedCompany"
+        (selectedChange)="onCompanyChange($event)">
+      </menutendina>
 
-			<menutendina
-				[label]="'Reparto'"
-				[placeholder]="'Seleziona reparto'"
-				[options]="departments"
-				[showAddNew]="false"
-				[selected]="selectedDepartment"
-				[disabled]="!selectedCompany"
-				(selectedChange)="selectedDepartment = $event">
-			</menutendina>
+      <app-input
+        [label]="'Reparto'"
+        [placeholder]="'Inserisci reparto'"
+        [value]="selectedDepartment"
+        (valueChange)="selectedDepartment = $event">
+      </app-input>
 
-			<menutendina
-				[label]="'Mese/Anno di Competenza'"
-				[placeholder]="'Seleziona mese/anno'"
-				[options]="competenceMonthsYears"
-				[showAddNew]="false"
-				[selected]="selectedCompetenceMonthYear"
-				(selectedChange)="selectedCompetenceMonthYear = $event">
-			</menutendina>
-		</div>
+      <app-input
+        [label]="'Mese/Anno di Competenza'"
+        [placeholder]="'Inserisci mese/anno (es. 03/2026)'"
+        [value]="selectedCompetenceMonthYear"
+        (valueChange)="selectedCompetenceMonthYear = $event">
+      </app-input>
+    </div>
 
-		<div class="action-area">
-			<app-button
-				[label]="'Carica'"
-				[icon]="'pi pi-upload'"
-				[disabled]="!canUpload"
-				(action)="upload()">
-			</app-button>
-		</div>
-	</div>
+    <div class="action-area">
+      <app-button
+        [label]="'Carica'"
+        [icon]="'pi pi-upload'"
+        [disabled]="!canUpload"
+        (action)="upload()">
+      </app-button>
+    </div>
+  </div>
 
-	<div class="upload-area">
-		<app-upload
-			[accept]="'.pdf,.csv,.jpg'"
-			[multiple]="true"
-			[titleText]="'Carica uno o piu documenti'"
-			[subtitleText]="'(pdf, csv, jpg)'"
-			(filesSelected)="onFilesSelected($event)">
-		</app-upload>
-	</div>
+  <div class="upload-area">
+    <app-upload
+      [accept]="'.pdf,.csv,.jpg'"
+      [multiple]="true"
+      [titleText]="'Carica uno o piu documenti'"
+      [subtitleText]="'(pdf, csv, jpg)'"
+      (filesSelected)="onFilesSelected($event)">
+    </app-upload>
+  </div>
 </section>
