@@ -24,7 +24,7 @@
             </button>
         </div>
     </ng-template>
-    <ng-template #footer>
+    <ng-template #footer *ngIf="showAddNew">
         <div class="p-3">
             <app-button [label]="addButtonLabel" class="btn-secondary" size="small" [fluid]="true" icon="pi pi-plus" (action)="emitAddNew()" />
         </div>
