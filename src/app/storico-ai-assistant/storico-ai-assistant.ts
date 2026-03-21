@@ -99,7 +99,8 @@ export class StoricoAiAssistant {
         !this.searchvalue ||
         g.prompt.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
         g.tone.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
-        g.style.toLowerCase().includes(this.searchvalue.toLowerCase());
+        g.style.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
+        g.content.toLowerCase().includes(this.searchvalue.toLowerCase());
 
       const matchTono = !this.selectedTono || g.tone === this.selectedTono;
       const matchStile = !this.selectedStile || g.style === this.selectedStile;
