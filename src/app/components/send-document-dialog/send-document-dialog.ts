@@ -9,12 +9,13 @@ import { Menutendina } from '../menutendina/menutendina';
 import { Prompt } from '../prompt/prompt';
 import { Observable } from 'rxjs';
 import { AddDialog,AddDialogType } from '../add-dialog/add-dialog';
+import { AttachFile } from "../attach-file/attach-file";
 @Component({
     selector: 'app-send-document-dialog',
     templateUrl: './send-document-dialog.html',
     styleUrl: './send-document-dialog.css',
     providers: [],
-    imports: [TableModule, Button, Menutendina, Prompt, AsyncPipe, AddDialog]
+    imports: [TableModule, Button, Menutendina, Prompt, AsyncPipe, AddDialog, AttachFile]
 })
 export class SendDocumentDialog {
     public ref: DynamicDialogRef= inject(DynamicDialogRef);

@@ -5,7 +5,10 @@
     <div class="mb-2">
         <app-prompt label="Messaggio" [value]="selectedTemplate?.content" [placeholder]="'Usa un template o scrivi un messaggio personalizzato'" [autoResize]="true"></app-prompt>
     </div>
-    <div class="mt-auto d-flex gap-3 justify-content-end mb-0">
+    <div class="mt-2 mb-3 flex gap-4">
+        <app-attach-file></app-attach-file>
+    </div>
+    <div class="mt-auto mb-2 d-flex gap-3 justify-content-end">
         <app-button label="Annulla invio" class="btn-secondary" (action)="closeDialog()" />
         <app-button label="Conferma invio" class="btn-primary" (action)="confirmDialog()" />
     </div>

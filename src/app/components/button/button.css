@@ -9,7 +9,7 @@
   border-color: var(--p-button-primary-border-color) !important;
 }
 
-:host ::ng-deep .btn-secondary {
+:host ::ng-deep .btn-secondary{
   background-color: var(--p-button-secondary-background) !important;
   color: var(--txt-color) !important;
   border-color: var(--p-button-secondary-border-color) !important;
