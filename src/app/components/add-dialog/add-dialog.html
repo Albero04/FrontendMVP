@@ -7,34 +7,38 @@
   [style]="{ width: '40rem', maxWidth: '95vw' }"
   (onHide)="close()"
 >
-  <div class="add-dialog-content">
-    <h3 class="dialog-title">{{ dialogTitle }}</h3>
+  <ng-template pTemplate="header">
+    <h1 class="p-dialog-title">{{ dialogTitle }}</h1>
+  </ng-template>
 
-    <div class="field-block">
-      <label class="label" for="add-name">NOME*</label>
+  <div class="d-flex flex-column gap-3">
+    <div class="d-flex flex-column gap-2">
+      <label class="label" for="add-name">Nome*</label>
       <input
         id="add-name"
         type="text"
-        class="field-input"
+        class="form-control w-100 border rounded-2 px-3 py-2"
         [(ngModel)]="name"
-        [ngClass]="{ 'field-input-error': submitted && !name.trim() }"
+        [ngClass]="{ 'is-invalid': submitted && !name.trim() }"
         placeholder="Inserisci un nome"
       />
-      <small class="error" *ngIf="submitted && !name.trim()">Il nome e obbligatorio.</small>
+      @if (submitted && !name.trim()) {
+        <small class="error">Il nome e obbligatorio.</small>
+      }
     </div>
 
     <div class="field-block">
-      <label class="label" for="add-description">DESCRIZIONE ESPANSIVA</label>
+      <label class="label" for="add-description">Descrizione espansiva</label>
       <textarea
         id="add-description"
-        class="field-textarea"
+        class="form-control w-100 border rounded-2 px-3 py-2"
         [(ngModel)]="description"
         rows="4"
         placeholder="Inserisci una descrizione (opzionale)"
       ></textarea>
     </div>
 
-    <div class="actions-row">
+    <div class="d-flex justify-content-end gap-3 mt-4">
       <app-button label="Annulla" class="btn-secondary" (action)="close()"></app-button>
       <app-button [label]="saveLabel" class="btn-primary" (action)="save()"></app-button>
     </div>
