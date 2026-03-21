@@ -27,6 +27,13 @@ export class SendDocumentDialog {
     @Input() options: any[] = [];
     templates$: Observable<any[]> | undefined;
     selectedTemplate: any = null;
+    timeOptions: any[] = [
+        { name: 'Adesso', value: 'now' },
+        { name: 'Domani alle 9:00', value: 'tomorrow_9am' },
+        { name: 'Dopodomani alle 9:00', value: 'day_after_9am' },
+        { name: 'Lunedì alle 9:00', value: 'monday_9am' },
+    ];
+    selectedTime: string = 'now';
     ngOnInit() {
         if (this.config.data && this.config.data.templates$) {
             this.templates$ = this.config.data.templates$;

@@ -76,8 +76,8 @@ export class Generatore {
      this.ref = this.dialogService.open(SendDocumentDialog, {
             header: 'Aggiungi un messaggio',
             width: '50%',
-            height: '45%',
-            contentStyle: {"max-height": "500px", "overflow": "auto"},
+            height: '50%',
+            contentStyle: { "overflow": "auto" },
             closable: true,
             autoZIndex: true,
             data: {
