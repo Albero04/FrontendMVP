@@ -1,0 +1,21 @@
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-btn {
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+}
+
+.dropdown {
+  flex: 1;
+}
+
+.hidden-datepicker {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

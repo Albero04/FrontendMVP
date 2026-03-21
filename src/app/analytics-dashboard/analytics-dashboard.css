@@ -1,4 +1,4 @@
-.kpi-container {
+.data-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,22 +6,17 @@
   width: 10rem;
   background-color: #F8F9FA;
 }
-.p-kpi-body{
+.p-data-body{
     background: #F8F9FA !important;
+      padding: 0rem 0rem 0rem 1rem;
+
 }
 .label-container{
     display: flex;
     gap: 5rem;
 }
 
-.kpi-label {
-  font-size: 0.9rem;
-  color: #6b7280; /* grigio */
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.kpi-value {
+.data-value {
   font-size: 3rem;
   font-weight: bold;
   color: #111827;
@@ -32,10 +27,15 @@
     gap: 1rem;
 }
 .Charts-Container app-analytics-charts {
-  flex: 1 1 50%;   /* 🔥 ogni grafico prende il 50% */
+  flex: 1 1 50%;   /*ogni grafico prende il 50% */
   max-width: 50%;
   max-height: 100%;
 }
 :host ::ng-deep canvas {
   height: 20rem; /* cambia qui */
+}
+.labels-datepicker{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
 }
