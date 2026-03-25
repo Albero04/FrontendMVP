@@ -4,6 +4,7 @@ import { Tone } from '../../app/shared/models/result-ai-assistant.model';
 import { Style } from '../../app/shared/models/result-ai-assistant.model';
 import { ResultAiAssistantSerializer } from '../../app/shared/serializers/result-ai-assistant.serializer';
 import { BehaviorSubject } from 'rxjs';
+import { AnalyticsAbstractService } from '../analytics-abstract-service';
 @Injectable({
   providedIn: 'root',
 })
