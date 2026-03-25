@@ -1,0 +1,19 @@
+<label class="label">Stato</label>
+
+@if(state === 'Pronto') {
+    <div class="status-pill text-primary border border-primary rounded-pill text-center py-2">
+        Pronto
+    </div>
+} @else if (state === 'Inviato') {
+    <div class="status-pill text-warning rounded-pill text-center py-2">
+        Inviato
+    </div>
+} @else if (state === 'Programmato') {
+    <div class="status-pill text-info border border-warning  rounded-pill text-center py-2">
+        Programmato
+    </div>
+} @else if(state === 'Da validare') {
+    <div class="status-pill text-danger border border-danger rounded-pill text-center py-2">
+        Da validare
+    </div>
+}
