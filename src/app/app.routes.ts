@@ -5,11 +5,13 @@ import { StoricoAiAssistant } from './storico-ai-assistant/storico-ai-assistant'
 import { StoricoAiCopilot } from './storico-ai-copilot/storico-ai-copilot';
 import { AnalyticsDashboard } from './analytics-dashboard/analytics-dashboard';
 import { Estrattore } from './estrattore/estrattore';
+import { AnteprimaDocumento } from './anteprima-documento/anteprima-documento';
 export const routes: Routes = [
   { path: 'generatore', component: Generatore },
   { path: 'estrattore', component: Estrattore },
   { path: 'risultato-generazione', component: RisultatoGenerazione },
   { path: 'storico-ai-assistant', component: StoricoAiAssistant },
   { path: 'storico-ai-copilot', component: StoricoAiCopilot},
-  { path: 'analytics-dashboard', component: AnalyticsDashboard}
+  { path: 'analytics-dashboard', component: AnalyticsDashboard},
+  { path: 'anteprima-documento', component: AnteprimaDocumento }
 ];
