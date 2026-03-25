@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Menutendina } from '../components/menutendina/menutendina';
 import { InputComponent } from '../components/input/input';
+import { MonthYearComponent } from '../components/month-year/month-year';
 import { Upload } from '../components/upload/upload';
 import { Button } from '../components/button/button';
 import { Router } from '@angular/router';
@@ -11,7 +12,7 @@ import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot
 
 @Component({
   selector: 'app-estrattore',
-  imports: [FormsModule, Upload, Menutendina, InputComponent, Button],
+  imports: [FormsModule, Upload, Menutendina, InputComponent, MonthYearComponent, Button],
   templateUrl: './estrattore.html',
   styleUrl: './estrattore.css',
 })

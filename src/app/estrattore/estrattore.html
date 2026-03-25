@@ -7,16 +7,19 @@
         [value]="selectedCategory"
         (valueChange)="selectedCategory = $event">
       </app-input>
-
-      <menutendina
-        [label]="'Azienda'"
-        [placeholder]="'Seleziona azienda'"
-        [options]="companies"
-        [showAddNew]="false"
-        [selected]="selectedCompany"
-        (selectedChange)="onCompanyChange($event)">
-      </menutendina>
-
+      <div class="azienda-field">
+        <label class="label">Azienda</label>
+        <div class="azienda-input">
+          <menutendina
+            [label]="''"
+            [placeholder]="'Seleziona azienda'"
+            [options]="companies"
+            [showAddNew]="false"
+            [selected]="selectedCompany"
+            (selectedChange)="onCompanyChange($event)">
+          </menutendina>
+        </div>
+      </div>
       <app-input
         [label]="'Reparto'"
         [placeholder]="'Inserisci reparto'"
@@ -24,12 +27,16 @@
         (valueChange)="selectedDepartment = $event">
       </app-input>
 
-      <app-input
-        [label]="'Mese/Anno di Competenza'"
-        [placeholder]="'Inserisci mese/anno (es. 03/2026)'"
-        [value]="selectedCompetenceMonthYear"
-        (valueChange)="selectedCompetenceMonthYear = $event">
-      </app-input>
+      <div class="competenza-field">
+        <label class="label">MESE/ANNO DI COMPETENZA</label>
+        <div class="competenza-input">
+          <app-month-year
+            [label]="''"
+            [placeholder]="'Seleziona mese/anno'"
+            (monthYearChange)="selectedCompetenceMonthYear = $event">
+          </app-month-year>
+        </div>
+      </div>
     </div>
 
     <div class="action-area">
