@@ -51,14 +51,14 @@ export class AiAssistantService {
     ];
     this.companiesSubject.next(mockCompanies);
   }
-  newTone(name: string, code: string) : void {
+  newTone(name: string, code: string, companyId: number) : void {
     //post al backend, se va a buon fine mi restituisce un id che metto nel mockTone
     const mockTone = { id: 1, name };//hardcodato id , da cambiare (todo)
     this.tonesSubject.next([...this.tonesSubject.value, mockTone]);
   }
 
-  newStyle(name: string, code: string) : void {
-    //post al backend
+  newStyle(name: string, code: string, companyId: number) : void {
+    //post al backend, aggiunge stile per company
     const mockStyle = { id: 1, name };//hardcodato id , da cambiare (todo)
     this.stylesSubject.next([...this.stylesSubject.value, mockStyle]);
   }

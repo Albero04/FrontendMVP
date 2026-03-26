@@ -64,12 +64,12 @@ export class Generatore {
 
   handleAddDialogSave(data: AddDialogSaveData): void {
     if (data.type === 'tone') {
-      this.aiService.newTone(data.name, data.description);
+      this.aiService.newTone(data.name, data.description, this.selectedCompany);
       return;
     }
 
     if (data.type === 'style') {
-      this.aiService.newStyle(data.name, data.description);
+      this.aiService.newStyle(data.name, data.description, this.selectedCompany);
     }
 
    
