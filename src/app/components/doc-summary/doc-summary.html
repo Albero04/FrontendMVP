@@ -66,6 +66,6 @@
     </div>
 </div>
 <div class="bg-white my-4 flex-1 d-flex align-items-center justify-content-between p-4">
-    <app-button label="Apri documento originale" class="mx-2 btn-secondary" (action)="openOriginalPdf()"></app-button>
-    <app-button label="Apri documento" class="mx-2 btn-primary" (action)="openSplitPdf()"></app-button>
+    <app-button label="Apri documento originale" class="mx-2 btn-secondary" (action)="openOriginalPdf.emit()"></app-button>
+    <app-button label="Apri documento" class="mx-2 btn-primary" (action)="openSplitPdf.emit()"></app-button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { InputComponent } from '../input/input';
 import { Button } from '../button/button';
 import { StatusPill } from '../status-pill/status-pill';
@@ -12,13 +12,9 @@ import { PageRangeInput } from '../page-range-input/page-range-input';
 })
 export class DocSummary {
   @Input() result: ResultSplit | null = null;
+  @Output() openOriginalPdf = new EventEmitter<void>();
+  @Output() openSplitPdf = new EventEmitter<void>();
   state: string = 'Pronto';
 
-  openOriginalPdf() {
-    console.log('Prova apertura pdf originale');
-  }
 
-  openSplitPdf() {
-    console.log('Prova apertura pdf diviso');
-  }
 }
