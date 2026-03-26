@@ -41,6 +41,10 @@
               @else{
                  <p-tag [value]="row[col.field]" class="p-tag-default"></p-tag>
               }
+            } @else if (col.field === 'tone' || col.field === 'style') {
+                <span class="truncate-content" [title]="row[col.field]?.name">
+                  {{ row[col.field]?.name }}
+                </span>
             } @else {
                 <span class="truncate-content" [title]="row[col.field]">
                   {{ row[col.field] }}

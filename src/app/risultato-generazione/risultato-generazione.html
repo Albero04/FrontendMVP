@@ -32,7 +32,7 @@
 
         <div class="valutazione-modifica-container">
             <div class="valutazione">
-                <app-valutazione></app-valutazione>
+                <app-valutazione (ratingChange)="onRatingChange($event)"></app-valutazione>
             </div>
             <div class="modifica">
                 <app-button label="Modifica" class="btn btn-primary" [fluid]="true" (action)="enableEditing()"></app-button>

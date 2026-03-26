@@ -4,8 +4,8 @@ export interface ResultAiAssistant extends Result {
 	title: string;
 	content: string;
 	imagePath: string;
-	tone: Tone["name"];
-	style: Style["name"];
+	tone: Tone;
+	style: Style;
 	data: Date;
 	prompt: string;
 	evaluation: number;

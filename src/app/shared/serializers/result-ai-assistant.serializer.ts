@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ResultAiAssistant } from '../models/result-ai-assistant.model';
 import { ResultSerializer } from './result.serializer';
+import { Tone, Style } from '../models/result-ai-assistant.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +14,8 @@ export class ResultAiAssistantSerializer extends ResultSerializer<ResultAiAssist
       title: this.asString(source['title']),
       content: this.asString(source['content']),
       imagePath: this.asString(source['imagePath']),
-      tone: this.asString(source['tone']),
-      style: this.asString(source['style']),
+      tone: { id: this.asNumber(source['toneID']), name: this.asString(source['toneName']) } as Tone,
+      style: { id: this.asNumber(source['styleID']), name: this.asString(source['styleName']) } as Style,
       data: this.asDate(source['data']),
       prompt: this.asString(source['prompt']),
       evaluation: this.asNumber(source['evaluation'], 0)

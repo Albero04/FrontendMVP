@@ -79,6 +79,10 @@ export class AiAssistantService {
   duplicate(id: number) : void {}
   // todo implementare
   removeGeneration(id: number) : void {}
+
+  setEvaluation(id: number, evaluation: number) : void { //numero di GeneratedDatum
+    console.log(`Valutazione per generazione ${id} impostata a ${evaluation}`);
+  }
   // todo implementare
   modifyImage(result: ResultAiAssistant, nuovoPathBase64: string): void {//obv manca la chiamata al backend, se va a buon fine aggiorna resultSubject
     const updated: ResultAiAssistant = {
@@ -110,7 +114,8 @@ export class AiAssistantService {
   }
 
   // todo implementare chiamata al backend
-  requireGeneration(prompt: string, tono: string, stile: string) : number {
+  requireGeneration(prompt: string, tono: { id: number; name: string }, stile: { id: number; name: string }) : number {
+    //la chiamata al backend OVVIAMENTE viene fatta passando solo il number id, non anche name
     const pendingResult: ResultAiAssistant = {
         id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend
         title: '',
@@ -142,8 +147,8 @@ export class AiAssistantService {
         // provo a vedere se il truncate va, metto un content luuuuuuuuuuuuuuuuuuuuuuungo
         content: 'Contenuto della generazione 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
         imagePath: 'path/to/image1.jpg',
-        tone: 'Simpatico',
-        style: 'Creativo',
+        tone: { id: 1, name: 'Simpatico' },
+        style: { id: 1, name: 'Creativo' },
         data: new Date('2024-09-11'),
         prompt: 'Prompt della generazione 1',
         evaluation: 4
@@ -153,8 +158,8 @@ export class AiAssistantService {
         title: 'Generazione 2',
         content: 'Contenuto della generazione 2',
         imagePath: 'path/to/image2.jpg',
-        tone: 'Formale',
-        style: 'Essenziale',
+        tone: { id: 2, name: 'Formale' },
+        style: { id: 2, name: 'Essenziale' },
         data: new Date('2024-09-12'),
         prompt: 'Prompt della generazione 2',
         evaluation: 5

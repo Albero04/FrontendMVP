@@ -114,4 +114,8 @@ export class RisultatoGenerazione {
     this.isEditable = true;
     this.readonly = false;
   }
+
+  onRatingChange(rating: number): void {
+    this.aiService.setEvaluation(this.localResult()?.id ?? 0, rating);
+  }
 }

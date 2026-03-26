@@ -98,12 +98,12 @@ export class StoricoAiAssistant {
       const matchSearch =
         !this.searchvalue ||
         g.prompt.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
-        g.tone.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
-        g.style.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
+        g.tone.name.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
+        g.style.name.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
         g.content.toLowerCase().includes(this.searchvalue.toLowerCase());
 
-      const matchTono = !this.selectedTono || this.tonoOptions.find(t => t.id === this.selectedTono)?.name === g.tone;
-      const matchStile = !this.selectedStile || this.stileOptions.find(s => s.id === this.selectedStile)?.name === g.style;
+      const matchTono = !this.selectedTono || this.tonoOptions.find(t => t.id === this.selectedTono)?.name === g.tone.name;
+      const matchStile = !this.selectedStile || this.stileOptions.find(s => s.id === this.selectedStile)?.name === g.style.name;
 
       const matchDate = this.isInSelectedDateRange(g.data);
 
