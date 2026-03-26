@@ -155,9 +155,11 @@ export class AiCoPilotService {
   public addDepartment(idCompany: string) : void {
     //todo implementare con chiamata al backend
   }
-
+  getOriginalPdfById(id: number) : void {
+    window.open('/Candidatura RTB.pdf', '_blank');
+  }
   getPdfById(id: number) : void {
-    //todo implementare con chiamata al backend
+    window.open('/Candidatura RTB.pdf', '_blank');
   }
 
   modifyDocumentRange(id: number, page_start: number, page_end: number) : void {

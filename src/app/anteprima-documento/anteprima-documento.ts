@@ -18,26 +18,26 @@ import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot
   styleUrl: './anteprima-documento.css',
 })
 export class AnteprimaDocumento {
+  aiService = inject(AiCoPilotService);
   // todo ho idea che diventaerà un observable prima o poi...(quando cambi le pagine estratte fa ripartire l'analisi...)
   result = (history.state?.result as ResultSplit | null) ?? null;
   
   ngOnInit() {
-    this.aiServiceCoPilotDaTogliere.fetchTemplates();
+    this.aiService.fetchTemplates();
   }
   handleOpenOriginalPdf(): void {
-    console.log('Apertura PDF originale');
+    this.aiService.getOriginalPdfById(1);//todo sostituire con id del documento 
   }
 
   handleOpenSplitPdf(): void {
-    console.log('Apertura PDF diviso');
+    this.aiService.getPdfById(1);//todo sostituire con id del documento 
   }
 
   dialogService = inject(DialogService);
   messageService = inject(MessageService);
   ref: DynamicDialogRef | null = null;
 
-  private aiServiceCoPilotDaTogliere = inject(AiCoPilotService);
-  templates$ = this.aiServiceCoPilotDaTogliere.templates$;
+  templates$ = this.aiService.templates$;
   showDialog() {
      this.ref = this.dialogService.open(SendDocumentDialog, {
             header: 'Aggiungi un messaggio',
