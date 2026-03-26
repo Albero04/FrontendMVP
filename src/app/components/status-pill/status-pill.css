@@ -1,6 +1,26 @@
 /* pill stato */
 .status-pill {
   font-weight: 500;
-  background-color: #f8f9fa;
-  
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.status-pill-pronto {
+  color: #4a56ff;
+  border: 1px solid #4a56ff;
+}
+
+.status-pill-da-validare {
+  color: #4aff4a;
+  border: 1px solid #4aff4a;
+}
+
+.status-pill-programmato {
+  color: #a4a5a8;
+  border: 1px solid #a4a5a8;
+}
+
+.status-pill-inviato {
+  color: #000000;
+  border: 1px solid #000000;
 }

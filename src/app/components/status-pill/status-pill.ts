@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'bb-status-pill',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './status-pill.html',
   styleUrl: './status-pill.css',
 })
