@@ -14,7 +14,6 @@ export class DocSummary {
   @Input() result: ResultSplit | null = null;
   @Output() openOriginalPdf = new EventEmitter<void>();
   @Output() openSplitPdf = new EventEmitter<void>();
-  state: string = 'Pronto';
 
 
 }

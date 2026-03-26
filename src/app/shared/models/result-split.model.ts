@@ -3,7 +3,7 @@ import {Result} from "./result.model";
 // nota2: ho aggiunto tutti i campit del recepient che restituisce il backend, questo perchè evitiamo così di fare chiamate per riceverli, se tanto alla fine dobbiamo mostrarli. Ho valutato attentamente ed è la soluzione più efficiente.
 export interface ResultSplit extends Result {
     name: string;
-    state: string;
+    state: State;
     confidence: number;
     recipientId: number;
     recipientName: string;
@@ -17,4 +17,11 @@ export interface ResultSplit extends Result {
     month_year: string; // o forse number
     category: string;  // sicuramente altro tipo
     data: Date;
+}
+
+export enum State {
+    Pronto = 'Pronto',
+    DaValidare = 'Da validare',
+    Inviato = 'Inviato',
+    Programmato = 'Programmato'
 }

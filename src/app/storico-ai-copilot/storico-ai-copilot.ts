@@ -6,6 +6,7 @@ import { Filters } from '../components/filters/filters';
 import { MenuItem} from 'primeng/api';
 import { Button } from '../components/button/button';
 import { ResultSplit } from '../shared/models/result-split.model';
+import {State} from '../shared/models/result-split.model'; 
 
 @Component({
   selector: 'app-storico-ai-copilot',
@@ -56,7 +57,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[0],
         Confidence: '15%',
         ListaDestinazione: 'Luca Slongo, Alberto Autiero',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2024, 9, 11'),
       },
       {
@@ -66,7 +67,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[1],
         Confidence: '25%',
         ListaDestinazione: 'Luca Slongo, Alberto Pignat',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2024, 8, 11'),
       },
       {
@@ -76,7 +77,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[2],
         Confidence: '45%',
         ListaDestinazione: 'Luca Slongo, Leonardo Salviato',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2024, 7, 11'),
       },
       {
@@ -86,7 +87,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[3],
         Confidence: '55%',
         ListaDestinazione: 'Luca Slongo, Gordol',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2026, 4, 11'),
       },
       {
@@ -96,7 +97,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[2],
         Confidence: '75%',
         ListaDestinazione: 'Luca Slongo',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2023, 9, 11'),
       },
       {
@@ -106,7 +107,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[3],
         Confidence: '85%',
         ListaDestinazione: 'Luca Slongo',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2022, 1, 11'),
       },
       {
@@ -116,7 +117,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[1],
         Confidence: '95%',
         ListaDestinazione: 'Luca Slongo',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2021, 7, 11'),
       },
       {
@@ -126,7 +127,7 @@ export class StoricoAiCopilot {
         Id: this.IDs[0],
         Confidence: '99%',
         ListaDestinazione: 'Luca Slongo',
-        State: 'Pronto',
+        State: State.Pronto,
         Data: new Date('2020, 5, 11'),
       },
     ];
@@ -174,7 +175,7 @@ export class StoricoAiCopilot {
     const result : ResultSplit ={
       id: 1.1,
       name: 'Nome documento splittato',
-      state: 'Pronto',
+      state: State.Pronto,
       confidence: 95,
       recipientId: 122,
       recipientName: 'Luca Slongo',
