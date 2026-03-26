@@ -13,7 +13,7 @@ import { Button } from '../button/button';
   styleUrl: './menutendina.css',
 })
 export class Menutendina {
-  @Input() options: any[] | null | undefined;
+  @Input() options: { id: number; name: string }[] | null | undefined;
   @Input() label: string='';
   @Input() selected: any;
   @Input() placeholder: string = '';
@@ -22,9 +22,10 @@ export class Menutendina {
   @Input() disabled: boolean = false;   /** Rende la select parametrica per usarla in più pagine */
   @Output() selectedChange = new EventEmitter<any>();
   @Output() addNew = new EventEmitter<void>();
+  @Output() remove = new EventEmitter<number>();
 
-  removeOption(option: any, event: Event) {
-    event.stopPropagation(); // evita selezione dell'item
+  removeOption(option: { id: number; name: string }, event: Event) {
+     // evita selezione dell'item
 
     if (!this.options) return;
 

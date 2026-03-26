@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { Button } from '../button/button';
 
-export type AddDialogType = 'tone' | 'style' | 'template';
+export type AddDialogType = 'tone' | 'style' | 'template' | 'company';
 
 export interface AddDialogSaveData {
   type: AddDialogType;

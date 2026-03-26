@@ -74,5 +74,15 @@ export class Generatore {
 
    
   }
-  
+
+  removeOption(id: number, type: AddDialogType): void {
+    if (type === 'tone') {
+      this.aiService.removeTone(id);
+      return;
+    }else if (type === 'style') {
+      this.aiService.removeStyle(id);
+    }else{
+      //todo remove company
+    }
+  }
 }

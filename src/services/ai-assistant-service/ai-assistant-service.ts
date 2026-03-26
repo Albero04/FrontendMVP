@@ -63,7 +63,16 @@ export class AiAssistantService {
     this.stylesSubject.next([...this.stylesSubject.value, mockStyle]);
   }
 
-
+  removeTone(id: number) : void {
+    //todo implementare con chiamata al backend, se va a buon fine rimuovo il tono da tonesSubject
+    //tolgo dall'array tonesSubject il tono con id passato come parametro solo se la chiamata al backend va a buon fine
+    this.tonesSubject.next(this.tonesSubject.value.filter(t => t.id !== id));
+  }
+  removeStyle(id: number) : void {
+    //todo implementare con chiamata al backend, se va a buon fine rimuovo lo stile da stylesSubject
+    //tolgo dall'array stylesSubject il tono con id passato come parametro solo se la chiamata al backend va a buon fine
+    this.stylesSubject.next(this.stylesSubject.value.filter(s => s.id !== id));
+  }
   // todo implementare
   reuse(id: number) : void {}
   // todo implementare
