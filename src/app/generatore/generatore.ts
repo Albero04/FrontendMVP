@@ -27,9 +27,11 @@ export class Generatore {
   // in questo modo sono sempre aggiornati, anche quando vengono aggiunti nuovi toni o stili da frontend -> la vista si aggiorna automaticamente grazie a Angular
   tones$ = this.aiService.tones$;
   styles$ = this.aiService.styles$;
+  companies$ = this.aiService.companies$;
 
   selectedTone: any;
   selectedStyle: any;
+  selectedCompany: any;
   prompt: string = '';
   addDialogVisible: boolean = false;
   addDialogType: AddDialogType = 'tone';
@@ -48,8 +50,10 @@ export class Generatore {
     });
   }
   ngOnInit() {
-    this.aiService.fetchTonesByCompany('default-company'); //todo
-    this.aiService.fetchStylesByCompany('default-company'); //todo
+    this.aiService.fetchTonesByCompany(1); //todo
+    this.aiService.fetchStylesByCompany(1); //todo
+    this.aiService.fetchCompanies(); //todo
+
 
   }
 
@@ -67,6 +71,8 @@ export class Generatore {
     if (data.type === 'style') {
       this.aiService.newStyle(data.name, data.description);
     }
+
+   
   }
   
 }

@@ -5,8 +5,8 @@
     <div class="menu-row mb-4" >
         <menutendina [options]="(tones$ | async)" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono" [addButtonLabel]="'Nuovo tono'" (addNew)="openAddDialog('tone')"></menutendina>
         <menutendina [options]="(styles$ | async)" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile" [addButtonLabel]="'Nuovo stile'" (addNew)="openAddDialog('style')"></menutendina>
+        <menutendina [options]="(companies$ | async)" [(selected)]="selectedCompany" label="Aziende" placeholder="Seleziona un'azienda" [addButtonLabel]="'Nuova azienda'"></menutendina>
     </div>
-
     <app-prompt [(prompt)]="prompt" label="Prompt" [autoResize]="true"></app-prompt>
 </div>
 <app-add-dialog [(visible)]="addDialogVisible" [type]="addDialogType" (saveRequested)="handleAddDialogSave($event)"></app-add-dialog>

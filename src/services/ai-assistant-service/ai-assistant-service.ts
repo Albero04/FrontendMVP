@@ -20,8 +20,11 @@ export class AiAssistantService {
   private stylesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
   styles$ = this.stylesSubject.asObservable();
 
+  private companiesSubject = new BehaviorSubject<string[]>([]);
+  companies$ = this.companiesSubject.asObservable();
+
   // todo implementare con la vera chiamata al backend: string o id?
-  fetchTonesByCompany(company: string) : void {
+  fetchTonesByCompany(company: number) : void {
     const mockData = [
       { name: 'Simpatico', code: 'simpatico' },
       { name: 'Formale', code: 'formale' },
@@ -31,7 +34,7 @@ export class AiAssistantService {
   }
   
   // todo implementare con la vera chiamata al backendL: string o id?
-  fetchStylesByCompany(company: string) : void {
+  fetchStylesByCompany(company: number) : void {
     const mockData = [
       { name: 'Conversazionale', code: 'conversazionale' },
       { name: 'Essenziale', code: 'essenziale' },
@@ -41,7 +44,8 @@ export class AiAssistantService {
   }
 
   fetchCompanies(): void {
-    const mockCompanies = ['default-company', 'company-1', 'company-2'];
+    const mockCompanies = ['default-company', 'AlbertoSrl', 'PiruzSrl'];
+    this.companiesSubject.next(mockCompanies);
   }
   newTone(name: string, code: string) : void {
     //post al backend
