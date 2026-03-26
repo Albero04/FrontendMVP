@@ -78,7 +78,9 @@ export class AiAssistantService {
   // todo implementare
   duplicate(id: number) : void {}
   // todo implementare
-  removeGeneration(id: number) : void {}
+  removeGeneration(id: number) : void {
+    console.log(`Scarto generazione con id ${id} richiesto`);
+  }
 
   setEvaluation(id: number, evaluation: number) : void { //numero di GeneratedDatum
     console.log(`Valutazione per generazione ${id} impostata a ${evaluation}`);

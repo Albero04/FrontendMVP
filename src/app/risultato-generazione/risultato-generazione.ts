@@ -68,7 +68,8 @@ export class RisultatoGenerazione {
     console.log('Salvataggio richiesto');
   }
   deleteGeneration(): void {
-    console.log('Scarto richiesto');
+    this.aiService.removeGeneration(this.localResult()?.id ?? 0);
+    // console.log('Scarto richiesto');
     //chiamata ai servizio per backend
     this.router.navigate(['/generatore']);
   }
