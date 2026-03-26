@@ -97,7 +97,7 @@ export class AiAssistantService {
     console.log(`Valutazione per generazione ${id} impostata a ${evaluation}`);
   }
   // todo implementare
-  modifyImage(result: ResultAiAssistant, nuovoPathBase64: string): void {//obv manca la chiamata al backend, se va a buon fine aggiorna resultSubject
+  modifyImageLocal(result: ResultAiAssistant, nuovoPathBase64: string): void {//obv manca la chiamata al backend, se va a buon fine aggiorna resultSubject
     const updated: ResultAiAssistant = {
       ...result,
       imagePath: nuovoPathBase64, // usa il nome proprietà corretto del tuo model
@@ -106,7 +106,7 @@ export class AiAssistantService {
     this.resultSubject.next(updated);
   }
   // todo implementare
-  modifyContent(result: ResultAiAssistant, newContent: string) : void {
+  modifyContentLocal(result: ResultAiAssistant, newContent: string) : void {
     // chiamata al backend (post)
     //se va a buon fine result si modifica result
     const newResult = { 
@@ -116,7 +116,7 @@ export class AiAssistantService {
     this.resultSubject.next(newResult);
   }
   // todo implementare
-  modifyTitle(result: ResultAiAssistant, newTitle: string) : void {
+  modifyTitleLocal(result: ResultAiAssistant, newTitle: string) : void {
     // chiamata al backend (post)
     //se va a buon fine result si modifica result
     const newResult = { 
@@ -124,6 +124,11 @@ export class AiAssistantService {
         title: newTitle 
     };
     this.resultSubject.next(newResult);
+  }
+  //todo passare solo le cose modificate (basta mettere parametri opzionali)
+  createPost(result: ResultAiAssistant): void {
+    //chiamata al backend per creare un nuovo post con i dati di result
+    console.log('Creazione post richiesta con i seguenti dati:', result);
   }
 
   // todo implementare chiamata al backend

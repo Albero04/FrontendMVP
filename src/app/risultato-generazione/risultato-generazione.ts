@@ -65,6 +65,7 @@ export class RisultatoGenerazione {
     this.aiService.requireGeneration(this.localResult()?.prompt ?? '', this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' }, id);
   }
   onSalva(): void {
+    //crea il post, mettendo tutte le nuove modifiche
     console.log('Salvataggio richiesto');
   }
   deleteGeneration(): void {
@@ -78,16 +79,16 @@ export class RisultatoGenerazione {
     if (!current) return;
 
     if (this.pendingImagePath !== null) {
-      this.aiService.modifyImage(current, this.pendingImagePath);
+      this.aiService.modifyImageLocal(current, this.pendingImagePath);
       this.pendingImagePath =null;
     }
 
     if (this.pendingTitle !== null) {
-      this.aiService.modifyTitle(current, this.pendingTitle);
+      this.aiService.modifyTitleLocal(current, this.pendingTitle);
       this.pendingTitle =null;
     }
     if (this.pendingContent !== null) {
-      this.aiService.modifyContent(current, this.pendingContent);
+      this.aiService.modifyContentLocal(current, this.pendingContent);
       this.pendingContent =null;
     }
   }
