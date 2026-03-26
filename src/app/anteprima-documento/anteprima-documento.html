@@ -7,6 +7,11 @@
     <div class="info-container">
         <div>
             <bb-extracted-employee-info></bb-extracted-employee-info>
+            <div class="d-flex justify-content-end">
+
+                <app-button label="Invia il documento" class="genera btn btn-primary" (action)="showDialog()"></app-button>
+            </div>
+
         </div>
 
         <div>
@@ -14,3 +19,4 @@
         </div>
     </div>
 </div>
+<p-toast></p-toast>

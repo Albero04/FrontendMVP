@@ -13,18 +13,11 @@ import { inject } from '@angular/core';
 import { AiAssistantService } from '../../services/ai-assistant-service/ai-assistant-service';
 
 
-// da togliere
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { MessageService } from 'primeng/api';
-import { SendDocumentDialog,SendDocumentData } from '../components/send-document-dialog/send-document-dialog';
-import { ToastModule } from 'primeng/toast';
-import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot-service';
 
 @Component({
   selector: 'app-generatore',
-  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe, AddDialog, ToastModule],
+  imports: [FormsModule, Prompt, Menutendina, ButtonModule, Button, AsyncPipe, AddDialog],
   templateUrl: './generatore.html',
-  providers: [DialogService,MessageService],
   styleUrl: './generatore.css',
 })
 export class Generatore {
@@ -41,9 +34,7 @@ export class Generatore {
   addDialogVisible: boolean = false;
   addDialogType: AddDialogType = 'tone';
 
-  //tutto ciò che c'è qui lo toglierò
-  private aiServiceCoPilotDaTogliere = inject(AiCoPilotService);
-  templates$ = this.aiServiceCoPilotDaTogliere.templates$;
+ 
   generate() {
     this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle); // Invia la richiesta di generazione al servizio
     this.aiService.currentResult$.subscribe(result => {
@@ -60,7 +51,6 @@ export class Generatore {
     this.aiService.fetchTones();
     this.aiService.fetchStyles();
 
-    this.aiServiceCoPilotDaTogliere.fetchTemplates();
   }
 
   openAddDialog(type: AddDialogType): void {
@@ -78,40 +68,5 @@ export class Generatore {
       this.aiService.newStyle(data.name, data.description);
     }
   }
-
-  //tutto ciò che metto qui sotto andrà tolto e spostato nel componente giusto
-  dialogService = inject(DialogService);
-  messageService = inject(MessageService);
-  ref: DynamicDialogRef | null = null;
-  showDialog() {
-     this.ref = this.dialogService.open(SendDocumentDialog, {
-            header: 'Aggiungi un messaggio',
-            width: '50%',
-            height: '50%',
-            contentStyle: { "overflow": "auto" },
-            closable: true,
-            autoZIndex: true,
-            data: {
-              templates$: this.templates$ 
-            }
-        });
-
-    if (this.ref) {
-      this.ref.onClose.subscribe((result: SendDocumentData) =>{
-          if (result) {
-         
-              console.log(result.messaggio);
-              console.log(result.orarioInvio.name);
-              console.log(result.fileAttachments); // Array di File
-              if (result.orarioInvio.value === 'now') {
-                this.messageService.add({severity:'info', summary: 'Invio in corso'});
-              } else 
-                this.messageService.add({severity:'info', summary: 'Invio programmato', detail: result.orarioInvio.name });
-          }
-
-      });
-    }
-  }
-
   
 }

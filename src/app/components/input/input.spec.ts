@@ -23,7 +23,9 @@ describe("InputComponent", () => {
 	it("should emit valueChange when value changes", () => {
 		let emittedValue = "";
 		component.valueChange.subscribe((value) => {
-			emittedValue = value;
+			if (typeof value === "string") {
+				emittedValue = value;
+			}
 		});
 
 		component.onValueChange("nuovo valore");

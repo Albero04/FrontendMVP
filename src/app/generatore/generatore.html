@@ -8,7 +8,6 @@
     </div>
 
     <app-prompt [(prompt)]="prompt" label="Prompt" [autoResize]="true"></app-prompt>
-    <app-button label="Apri dialog prova" class="genera btn btn-primary" [fluid]="true" (action)="showDialog()"></app-button>
 </div>
 <app-add-dialog [(visible)]="addDialogVisible" [type]="addDialogType" (saveRequested)="handleAddDialogSave($event)"></app-add-dialog>
-<p-toast></p-toast>
+
