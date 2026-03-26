@@ -14,21 +14,21 @@ export class AiAssistantService {
   private resultSubject : BehaviorSubject<ResultAiAssistant | null> = new BehaviorSubject<ResultAiAssistant | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
-  private tonesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
+  private tonesSubject = new BehaviorSubject<{ id: number; name: string }[]>([]);
   tones$ = this.tonesSubject.asObservable();
 
-  private stylesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
+  private stylesSubject = new BehaviorSubject<{ id: number; name: string }[]>([]);
   styles$ = this.stylesSubject.asObservable();
 
-  private companiesSubject = new BehaviorSubject<string[]>([]);
+  private companiesSubject = new BehaviorSubject<{ id: number; name: string }[]>([]);
   companies$ = this.companiesSubject.asObservable();
 
   // todo implementare con la vera chiamata al backend: string o id?
   fetchTonesByCompany(company: number) : void {
     const mockData = [
-      { name: 'Simpatico', code: 'simpatico' },
-      { name: 'Formale', code: 'formale' },
-      { name: 'Creativo', code: 'creativo' },
+      { id: 1, name: 'Simpatico' },
+      { id: 2, name: 'Formale' },
+      { id: 3, name: 'Creativo' },
     ];
     this.tonesSubject.next(mockData);
   }
@@ -36,28 +36,30 @@ export class AiAssistantService {
   // todo implementare con la vera chiamata al backendL: string o id?
   fetchStylesByCompany(company: number) : void {
     const mockData = [
-      { name: 'Conversazionale', code: 'conversazionale' },
-      { name: 'Essenziale', code: 'essenziale' },
-      { name: 'Articolato', code: 'articolato' },
+      { id: 1, name: 'Conversazionale' },
+      { id: 2, name: 'Essenziale' },
+      { id: 3, name: 'Articolato' },
     ];
     this.stylesSubject.next(mockData);
   }
 
   fetchCompanies(): void {
-    const mockCompanies = ['default-company', 'AlbertoSrl', 'PiruzSrl'];
+    const mockCompanies = [
+      { id: 1, name: 'default-company' },
+      { id: 2, name: 'AlbertoSrl' },
+      { id: 3, name: 'PiruzSrl' }
+    ];
     this.companiesSubject.next(mockCompanies);
   }
   newTone(name: string, code: string) : void {
-    //post al backend
-    const mockTone = { name, code };
-    //aggiungi all'array tonesSubject il nuovo tono (in un caso reale, dopo aver ricevuto conferma dal backend)
+    //post al backend, se va a buon fine mi restituisce un id che metto nel mockTone
+    const mockTone = { id: 1, name };//hardcodato id , da cambiare (todo)
     this.tonesSubject.next([...this.tonesSubject.value, mockTone]);
   }
 
   newStyle(name: string, code: string) : void {
     //post al backend
-    const mockStyle = { name, code };
-    //aggiungi all'array stylesSubject il nuovo stile (in un caso reale, dopo aver ricevuto conferma dal backend)
+    const mockStyle = { id: 1, name };//hardcodato id , da cambiare (todo)
     this.stylesSubject.next([...this.stylesSubject.value, mockStyle]);
   }
 

@@ -26,10 +26,10 @@ export class StoricoAiAssistant {
   GenerazioniFiltrate: ResultAiAssistant[] = [];
   items: MenuItem[] = [];
   dates: Date[] | undefined;
-  tonoOptions: { name: string; code: string }[] = [];
-  stileOptions: { name: string; code: string }[] = [];
-  selectedTono: string | undefined; 
-  selectedStile: string | undefined;
+  tonoOptions: { id: number; name: string }[] = [];
+  stileOptions: { id: number; name: string }[] = [];
+  selectedTono: number | undefined; 
+  selectedStile: number | undefined;
   searchvalue: string ='';
   columns = [
     { field: 'prompt', header: 'Prompt' },
@@ -40,19 +40,19 @@ export class StoricoAiAssistant {
   ];
 
   ngOnInit () {
-    this.aiService.fetchTones();
-    this.aiService.fetchStyles();
+    this.aiService.fetchTonesByCompany(1);
+    this.aiService.fetchStylesByCompany(1);
 
     this.aiService.tones$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((tones) => {
-        this.tonoOptions = (tones ?? []).map(t => ({ name: t.name, code: t.code }));
+        this.tonoOptions = (tones ?? []).map(t => ({ id: t.id, name: t.name }));
       });
 
     this.aiService.styles$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((styles) => {
-        this.stileOptions = (styles ?? []).map(s => ({ name: s.name, code: s.code }));
+        this.stileOptions = (styles ?? []).map(s => ({ id: s.id, name: s.name }));
       });
 
     this.items = [
@@ -83,12 +83,12 @@ export class StoricoAiAssistant {
     this.applyFilters();
   }
 
-  onTonoChange(tono: string | undefined) {
+  onTonoChange(tono: number | undefined) {
     this.selectedTono = tono;
     this.applyFilters();
   }
 
-  onStileChange(stile: string | undefined) {
+  onStileChange(stile: number | undefined) {
     this.selectedStile = stile;
     this.applyFilters();
   }
@@ -102,8 +102,8 @@ export class StoricoAiAssistant {
         g.style.toLowerCase().includes(this.searchvalue.toLowerCase()) ||
         g.content.toLowerCase().includes(this.searchvalue.toLowerCase());
 
-      const matchTono = !this.selectedTono || g.tone === this.selectedTono;
-      const matchStile = !this.selectedStile || g.style === this.selectedStile;
+      const matchTono = !this.selectedTono || this.tonoOptions.find(t => t.id === this.selectedTono)?.name === g.tone;
+      const matchStile = !this.selectedStile || this.stileOptions.find(s => s.id === this.selectedStile)?.name === g.style;
 
       const matchDate = this.isInSelectedDateRange(g.data);
 

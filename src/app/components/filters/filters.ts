@@ -24,9 +24,9 @@ export class Filters {
 @Output() datesChange = new EventEmitter<Date[]>();
 
 @Input() TextFilterLabel: string = 'Label Text Generico';
-@Input() textOptions: string[] = [];
-@Input() selectedTextOption: string | undefined;
-@Output() selectedTextOptionChange = new EventEmitter<string>();
+@Input() textOptions: string [] = [];
+@Input() selectedTextOption: number | undefined;
+@Output() selectedTextOptionChange = new EventEmitter<number>();
 
 @Input() searchvalue : string = '';
 @Output() searchvalueChange = new EventEmitter<string>();

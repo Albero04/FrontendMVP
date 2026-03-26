@@ -12,11 +12,11 @@ export interface ResultAiAssistant extends Result {
 }
 
 export interface Style {
+	id: number;
 	name: string;
-	code: string;
 }
 
 export interface Tone {
+	id: number;
 	name: string;
-	code: string;
 }
