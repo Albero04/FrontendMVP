@@ -20,8 +20,8 @@ export class AiAssistantService {
   private stylesSubject = new BehaviorSubject<{ name: string; code: string }[]>([]);
   styles$ = this.stylesSubject.asObservable();
 
-  // todo implementare con la vera chiamata al backend
-  fetchTones() : void {
+  // todo implementare con la vera chiamata al backend: string o id?
+  fetchTonesByCompany(company: string) : void {
     const mockData = [
       { name: 'Simpatico', code: 'simpatico' },
       { name: 'Formale', code: 'formale' },
@@ -30,8 +30,8 @@ export class AiAssistantService {
     this.tonesSubject.next(mockData);
   }
   
-  // todo implementare con la vera chiamata al backend
-  fetchStyles() : void {
+  // todo implementare con la vera chiamata al backendL: string o id?
+  fetchStylesByCompany(company: string) : void {
     const mockData = [
       { name: 'Conversazionale', code: 'conversazionale' },
       { name: 'Essenziale', code: 'essenziale' },
@@ -40,6 +40,9 @@ export class AiAssistantService {
     this.stylesSubject.next(mockData);
   }
 
+  fetchCompanies(): void {
+    const mockCompanies = ['default-company', 'company-1', 'company-2'];
+  }
   newTone(name: string, code: string) : void {
     //post al backend
     const mockTone = { name, code };
@@ -53,6 +56,8 @@ export class AiAssistantService {
     //aggiungi all'array stylesSubject il nuovo stile (in un caso reale, dopo aver ricevuto conferma dal backend)
     this.stylesSubject.next([...this.stylesSubject.value, mockStyle]);
   }
+
+
   // todo implementare
   reuse(id: number) : void {}
   // todo implementare

@@ -48,8 +48,8 @@ export class Generatore {
     });
   }
   ngOnInit() {
-    this.aiService.fetchTones();
-    this.aiService.fetchStyles();
+    this.aiService.fetchTonesByCompany('default-company'); //todo
+    this.aiService.fetchStylesByCompany('default-company'); //todo
 
   }
 
