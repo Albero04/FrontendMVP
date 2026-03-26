@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResultAiAssistant } from '../../app/shared/models/result-ai-assistant.model';
 import { Tone } from '../../app/shared/models/result-ai-assistant.model';
 import { Style } from '../../app/shared/models/result-ai-assistant.model';
@@ -10,7 +11,7 @@ import { AnalyticsAbstractService } from '../analytics-abstract-service';
 })
 export class AiAssistantService {
   private serializer = inject(ResultAiAssistantSerializer);
-
+  private router = inject(Router);
   private resultSubject : BehaviorSubject<ResultAiAssistant | null> = new BehaviorSubject<ResultAiAssistant | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
@@ -76,7 +77,17 @@ export class AiAssistantService {
   // todo implementare
   reuse(id: number) : void {}
   // todo implementare
-  duplicate(id: number) : void {}
+  duplicate(tone: Tone, style: Style, company: { id: number; name: string }, prompt: string) : void {
+    //porta alla pagina di genreazione
+    this.router.navigate(['/generatore'], {
+      state: {
+      tone,
+      style,
+      company,
+      prompt
+      }
+    });
+  }
   // todo implementare
   removeGeneration(id: number) : void {
     console.log(`Scarto generazione con id ${id} richiesto`);

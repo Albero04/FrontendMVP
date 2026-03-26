@@ -117,4 +117,5 @@ export class RisultatoGenerazione {
   onRatingChange(rating: number): void {
     this.aiService.setEvaluation(this.localResult()?.id ?? 0, rating);
   }
+
 }

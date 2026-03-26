@@ -23,16 +23,19 @@ import { AiAssistantService } from '../../services/ai-assistant-service/ai-assis
 export class Generatore {
   private router = inject(Router);
   private aiService = inject(AiAssistantService);
-
+  // private tone = (history.state?.tone ?? null);
+  // private style = (history.state?.style ?? null);
+  // private company = (history.state?.company ?? null) as { id: number; name: string } | null;
+  prompt: string = history.state?.prompt ?? '';
+  
   // in questo modo sono sempre aggiornati, anche quando vengono aggiunti nuovi toni o stili da frontend -> la vista si aggiorna automaticamente grazie a Angular
   tones$ = this.aiService.tones$;
   styles$ = this.aiService.styles$;
   companies$ = this.aiService.companies$;
 
-  selectedTone: any;
-  selectedStyle: any;
-  selectedCompany: any;
-  prompt: string = '';
+  selectedTone: any = history.state?.tone ?? null;
+  selectedStyle: any = history.state?.style ?? null;
+  selectedCompany: any = history.state?.company ?? null;
   addDialogVisible: boolean = false;
   addDialogType: AddDialogType = 'tone';
 
