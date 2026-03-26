@@ -104,3 +104,12 @@ body{
   --p-datepicker-today-background: black !important;
   --p-datepicker-today-color: white !important;
 }
+
+
+:root{
+  --p-tag-pronto-background: #009DFF !important;
+  --p-tag-inviato-background: #00CC4B !important;
+  --p-tag-programmato-background: #A2ACC0 !important;
+  --p-tag-validare-background: #FF7700 !important;
+  --p-tag-default-background: #ff00a2 !important;
+}

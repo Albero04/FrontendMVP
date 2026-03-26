@@ -1,22 +1,23 @@
+
 .p-tag-pronto{
     color:white ;
-    background: #009DFF;
+    background: var(--p-tag-pronto-background);
 }
 .p-tag-inviato{
     color:white ;
-    background: #00CC4B;
+    background: var(--p-tag-inviato-background);
 }
 .p-tag-programmato{
     color:white ;
-    background: #A2ACC0;
+    background: var(--p-tag-programmato-background);
 }
 .p-tag-validare{
     color:white ;
-    background: #FF7700;
+    background: var(--p-tag-validare-background);
 }
 .p-tag-default{
     color:white ;
-    background: #ff00a2;
+    background: var(--p-tag-default-background);
 }
 
 .truncate-content {

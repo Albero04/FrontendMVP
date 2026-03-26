@@ -6,21 +6,21 @@
 }
 
 .status-pill-pronto {
-  color: #4a56ff;
-  border: 1px solid #4a56ff;
+  color: var(--p-tag-pronto-background);
+  border: 1px solid var(--p-tag-pronto-background);
 }
 
 .status-pill-da-validare {
-  color: #4aff4a;
-  border: 1px solid #4aff4a;
+  color: var(--p-tag-validare-background);
+  border: 1px solid var(--p-tag-validare-background);
 }
 
 .status-pill-programmato {
-  color: #a4a5a8;
-  border: 1px solid #a4a5a8;
+  color: var(--p-tag-programmato-background);
+  border: 1px solid var(--p-tag-programmato-background);
 }
 
 .status-pill-inviato {
-  color: #000000;
-  border: 1px solid #000000;
+  color: var(--p-tag-inviato-background);
+  border: 1px solid var(--p-tag-inviato-background);
 }
