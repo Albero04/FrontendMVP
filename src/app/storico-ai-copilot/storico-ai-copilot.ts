@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
+import { Router  } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Tables } from '../components/tables/tables';
 import { Filters } from '../components/filters/filters';
 import { MenuItem} from 'primeng/api';
+import { Button } from '../components/button/button';
+import { ResultSplit } from '../shared/models/result-split.model';
 
 @Component({
   selector: 'app-storico-ai-copilot',
-  imports: [FormsModule, Tables, Filters],
+  imports: [FormsModule, Tables, Filters, Button],
   templateUrl: './storico-ai-copilot.html',
   styleUrl: './storico-ai-copilot.css',
 })
 export class StoricoAiCopilot {
+  router = inject(Router);
   Documents: any[] = [];
   FilteredDocuments: any[] = [];
   items : MenuItem[] = [];
@@ -162,4 +166,37 @@ export class StoricoAiCopilot {
       return matchCompany && matchDate && matchDocument && matchSearch;
     });
   }
+
+  // al momento questa funzione mi serve solo per predisporre il passaggio del risultato alla pagina anteprima-documento
+  navigateToResult(){
+    // creo un resultAiCopilot che contiene delle info
+    
+    const result : ResultSplit ={
+      id: 1.1,
+      name: 'Nome documento splittato',
+      state: 'Pronto',
+      confidence: 95,
+      recipientId: 122,
+      recipientName: 'Luca Slongo',
+      recipientEmail: 'luca.slongo@gmail.com',
+      recipientCode: 'LS122',
+      time_Analysis: 12,
+      page_end: 10,
+      page_start: 1,
+      company: 'AlbertoSrl',
+      department: 'HR',
+      month_year: 'Settembre 2024',
+      category: 'Cedolino',
+      data: new Date('2024, 9, 11'),
+    }
+      if (result) {
+        this.router.navigate(['/anteprima-documento'], {
+          state: {
+            result: result
+          }
+        });
+      }
+  }
+
+
 }
