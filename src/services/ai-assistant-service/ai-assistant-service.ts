@@ -116,7 +116,8 @@ export class AiAssistantService {
   }
 
   // todo implementare chiamata al backend
-  requireGeneration(prompt: string, tono: { id: number; name: string }, stile: { id: number; name: string }) : number {
+  requireGeneration(prompt: string, tono: { id: number; name: string }, stile: { id: number; name: string }, id?: number): number {
+    console.log('Rigenerazione richiesta');
     //la chiamata al backend OVVIAMENTE viene fatta passando solo il number id, non anche name
     const pendingResult: ResultAiAssistant = {
         id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend

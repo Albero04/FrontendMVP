@@ -24,7 +24,7 @@ export class Filters {
 @Output() datesChange = new EventEmitter<Date[]>();
 
 @Input() TextFilterLabel: string = 'Label Text Generico';
-@Input() textOptions: string [] = [];
+@Input() textOptions: string[] = [];
 @Input() selectedTextOption: number | undefined;
 @Output() selectedTextOptionChange = new EventEmitter<number>();
 

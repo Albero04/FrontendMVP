@@ -5,7 +5,7 @@
         [label]="'Categoria'"
         [placeholder]="'Inserisci categoria'"
         [value]="selectedCategory"
-        (valueChange)="selectedCategory = $event">
+        (valueChange)="selectedCategory = $event?.toString()">
       </app-input>
       <div class="azienda-field">
         <label class="label">Azienda</label>
@@ -24,7 +24,7 @@
         [label]="'Reparto'"
         [placeholder]="'Inserisci reparto'"
         [value]="selectedDepartment"
-        (valueChange)="selectedDepartment = $event">
+        (valueChange)="selectedDepartment = $event?.toString() ?? ''">
       </app-input>
 
       <div class="competenza-field">

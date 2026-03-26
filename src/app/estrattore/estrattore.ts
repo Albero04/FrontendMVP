@@ -22,12 +22,12 @@ export class Estrattore implements OnInit {
 
   // cambiabile quando c'e backend
   companies = [
-    { id: 'acme', name: 'ACME S.p.A.' },
-    { id: 'globex', name: 'Globex S.r.l.' },
-    { id: 'initech', name: 'Initech' },
+    { id: 1, name: 'ACME S.p.A.' },
+    { id: 2, name: 'Globex S.r.l.' },
+    { id: 3, name: 'Initech' },
   ];
 
-  selectedCategory: string = '';
+  selectedCategory: string | undefined= '';
   selectedCompany: any = null;
   selectedDepartment: string = '';
   selectedCompetenceMonthYear: string = '';
@@ -36,7 +36,7 @@ export class Estrattore implements OnInit {
   // Controlla se tutti i campi necessari sono compilati e se ci sono file da caricare.
   get canUpload(): boolean {
     return !!(
-      this.selectedCategory.trim() &&
+      this.selectedCategory?.trim() &&
       this.selectedCompany &&
       this.selectedDepartment.trim() &&
       this.selectedCompetenceMonthYear.trim() &&

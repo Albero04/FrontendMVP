@@ -61,16 +61,14 @@ export class RisultatoGenerazione {
     });
   }
 
-  onRigenera(): void {
-    console.log('Rigenerazione richiesta');
+  onRigenera(id: number): void {
+    this.aiService.requireGeneration(this.localResult()?.prompt ?? '', this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' }, id);
   }
   onSalva(): void {
     console.log('Salvataggio richiesto');
   }
   deleteGeneration(): void {
     this.aiService.removeGeneration(this.localResult()?.id ?? 0);
-    // console.log('Scarto richiesto');
-    //chiamata ai servizio per backend
     this.router.navigate(['/generatore']);
   }
 

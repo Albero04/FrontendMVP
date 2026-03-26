@@ -23,9 +23,9 @@ export class StoricoAiCopilot {
   IDs: number[] = [1.1, 1.2, 1.3, 1.4];
   searchvalue = '';
   Companies: string[] = ['AlbertoSrl', 'ProvaSrl'];
-  selectedCompany: string | undefined;
+  selectedCompany: number | undefined;
   DocumentType: string[] = ['Cedolino', 'TFR', 'Boh'];
-  selectedDocument: string | undefined;
+  selectedDocument: number | undefined;
   columns = [
     { field: 'DocumentName', header: 'Nome Documento Originale' },
     { field: 'Id', header: 'Id' },
@@ -141,11 +141,11 @@ export class StoricoAiCopilot {
     this.dates = dates;
     this.applyFilters();
   }
-  onDocumentChange(document: string | undefined) {
+  onDocumentChange(document: number | undefined) {
     this.selectedDocument = document;
     this.applyFilters();
   }
-  onCompanyChange(company: string | undefined) {
+  onCompanyChange(company: number | undefined) {
     this.selectedCompany = company;
     this.applyFilters();
   }
