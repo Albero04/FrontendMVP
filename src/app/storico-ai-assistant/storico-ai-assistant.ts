@@ -32,11 +32,13 @@ export class StoricoAiAssistant {
   selectedStile: number | undefined;
   searchvalue: string ='';
   columns = [
+    { field: 'title', header: 'Titolo' },
     { field: 'prompt', header: 'Prompt' },
     { field: 'tone', header: 'Tono' },
     { field: 'style', header: 'Stile' },
     { field: 'data', header: 'Data', type: 'date' },
-    { field: 'content', header: 'Risultato parziale' }
+    { field: 'content', header: 'Risultato parziale' },
+    { field: 'evaluation', header: 'Valutazione', type: 'rating' }
   ];
 
   ngOnInit () {
