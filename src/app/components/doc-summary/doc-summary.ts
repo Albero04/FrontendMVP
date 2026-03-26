@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { InputComponent } from '../input/input';
 import { Button } from '../button/button';
 import { StatusPill } from '../status-pill/status-pill';
-import { Result } from '../../shared/models/result.model';
 import { ResultSplit } from '../../shared/models/result-split.model';
+import { PageRangeInput } from '../page-range-input/page-range-input';
 @Component({
   selector: 'bb-doc-summary',
-  imports: [InputComponent, Button, StatusPill],
+  imports: [InputComponent, Button, StatusPill, PageRangeInput],
   templateUrl: './doc-summary.html',
   styleUrl: './doc-summary.css',
 })

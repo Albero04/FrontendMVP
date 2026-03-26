@@ -13,8 +13,8 @@ export class InputComponent {
   @Input() value: string | number | undefined= "";
   @Input() placeholder: string = "";
   @Input() type: string = "text";
-  @Input() min: string | number | null = null;
-  @Input() max: string | number | null = null;
+  @Input() min: number = 1;
+  @Input() max: number = 1;
   @Input() id: string = "inputField";
   @Input() disabled: boolean = false;
   @Input() class: string = "";

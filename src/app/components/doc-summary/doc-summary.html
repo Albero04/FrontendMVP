@@ -58,10 +58,8 @@
 
             <div class="col-md-5">
                 <label class="label">Pagine estratte</label>
-                <div class="d-flex gap-2">
-                    <app-input class="flex-fill" [type]="'number'" [value]="result?.page_start"></app-input>
-                    <app-input class="flex-fill" [type]="'number'" [value]="result?.page_end"></app-input>
-                </div>
+                <!-- todo aggiungere pagine del documento originale a ResultSplit -->
+                <bb-page-range-input class="d-flex gap-2" [page_min]="1" [page_max]="10" [page_start]="result?.page_start" [page_end]="result?.page_end"></bb-page-range-input>
             </div>
         </div>
 
