@@ -1,11 +1,11 @@
 @if (localResult(); as result) {
     <div class="menu">
-        @if(isEditable){
+        @if(result.isPost && isEditable){
             <div class="actions">
                 <app-button label="Annulla Modifiche" class="btn btn-secondary" [fluid]="true" (action)="isEditable=!isEditable"></app-button>
                 <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="isEditable=!isEditable;saveChanges()"></app-button>
             </div>
-        }@else{
+        }@else if(!result.isPost){
             <div class="actions">
                 <app-button label="Rigenera" class="btn btn-secondary" [fluid]="true" (action)="onRigenera(result.id)"></app-button>
                 <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="onSalva()"></app-button>
@@ -33,6 +33,11 @@
         <div class="valutazione-modifica-container">
             <div class="valutazione">
                 <app-valutazione (ratingChange)="onRatingChange($event)"></app-valutazione>
+                @if(result.isPost){
+                    <div class="bg-white p-2 mb-3 mt-3 rounded">
+                        <strong>Data di generazione:</strong> {{ result.data | date:'dd/MM/yyyy' }}
+                    </div>
+                }
             </div>
             <div class="modifica">
                 <app-button label="Modifica" class="btn btn-primary" [fluid]="true" (action)="enableEditing()"></app-button>
@@ -44,6 +49,12 @@
         <div class="parametri-container">
             <label class="parametri-label">PARAMETRI INSERITI</label>
             <hr class="parametri-divider">
+            @if(result.isPost){
+                <div class="actions">
+                    <app-button label="Riusa" class="btn btn-primary" [fluid]="true" (action)="reuseGeneration()"></app-button>
+                    <app-button label="Duplica" class="btn btn-primary" [fluid]="true" (action)="duplicateGeneration()"></app-button>
+                </div>
+            }
             <div class="parametri-fields">
                 <app-prompt [prompt]="result.prompt" label="Prompt" [autoResize]="true" [disabled]="true"></app-prompt>
 

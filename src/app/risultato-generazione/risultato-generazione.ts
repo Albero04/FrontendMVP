@@ -119,4 +119,20 @@ export class RisultatoGenerazione {
     this.aiService.setEvaluation(this.localResult()?.id ?? 0, rating);
   }
 
+  reuseGeneration(): void {
+    this.aiService.reuse(this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' }, this.localResult()?.company ?? { id: 0, name: '' }, this.localResult()?.prompt ?? '');
+  }
+
+  duplicateGeneration(): void {
+    this.router.navigate(['/generatore'], {
+      state: {
+      tone: this.localResult()?.tone ?? { id: 0, name: '' },
+      style: this.localResult()?.style ?? { id: 0, name: '' },
+      company: this.localResult()?.company ?? { id: 0, name: '' },
+      prompt: this.localResult()?.prompt ?? ''
+      }
+    });
+    // this.aiService.duplicate(this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' }, this.localResult()?.company ?? { id: 0, name: '' }, this.localResult()?.prompt ?? '');
+  }
+
 }
