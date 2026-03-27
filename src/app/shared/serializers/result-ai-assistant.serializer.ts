@@ -19,7 +19,8 @@ export class ResultAiAssistantSerializer extends ResultSerializer<ResultAiAssist
       company: { id: this.asNumber(source['companyID']), name: this.asString(source['companyName']) },
       data: this.asDate(source['data']),
       prompt: this.asString(source['prompt']),
-      evaluation: this.asNumber(source['evaluation'], 0)
+      evaluation: this.asNumber(source['evaluation'], 0),
+      isPost: typeof source['isPost'] === 'boolean' ? source['isPost'] : true // default a true se non specificato, da modificare in base alla logica di business
     };
   }
 

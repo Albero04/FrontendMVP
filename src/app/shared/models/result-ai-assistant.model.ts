@@ -10,6 +10,7 @@ export interface ResultAiAssistant extends Result {
 	data: Date;
 	prompt: string;
 	evaluation: number;
+	isPost: boolean;
 }
 
 export interface Style {

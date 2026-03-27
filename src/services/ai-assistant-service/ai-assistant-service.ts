@@ -75,7 +75,7 @@ export class AiAssistantService {
   }
   // todo implementare
   reuse(tone: Tone, style: Style, company: Company, prompt: string) : void {
-
+    console.log('Riutilizzo richiesta con i seguenti parametri:', { tone, style, company, prompt });
     const pendingResult: ResultAiAssistant = {
         id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend
         title: '',
@@ -86,7 +86,8 @@ export class AiAssistantService {
         company: company,
         data: new Date(),
         prompt: prompt,
-        evaluation: -1
+        evaluation: -1,
+        isPost: false
     };
 
     this.resultSubject.next(pendingResult);
@@ -95,17 +96,11 @@ export class AiAssistantService {
   }
   // forse è da TOGLIERE COMPLETAMENTE
   duplicate(tone: Tone, style: Style, company: Company, prompt: string) : void {
+    console.log('Duplicazione richiesta con i seguenti parametri:', { tone, style, company, prompt });
     //porta alla pagina di generazione
 
     // il reindirizzamento va gestito nella view, un esempio di come dovrebbe venire è:
-    /* this.router.navigate(['/generatore'], {
-      state: {
-      tone,
-      style,
-      company,
-      prompt
-      }
-    }); */
+    
   }
   // todo implementare
   removeGeneration(id: number) : void {
@@ -164,7 +159,8 @@ export class AiAssistantService {
         company: company,
         data: new Date(),
         prompt: prompt,
-        evaluation: -1
+        evaluation: -1,
+        isPost: false
     };
 
     this.resultSubject.next(pendingResult);
@@ -191,7 +187,8 @@ export class AiAssistantService {
         company: { id: 2, name: 'AlbertoSrl' },
         data: new Date('2024-09-11'),
         prompt: 'Prompt della generazione 1',
-        evaluation: 4
+        evaluation: 4,
+        isPost: true
       },
       {
         id: 2,
@@ -203,7 +200,8 @@ export class AiAssistantService {
         company: { id: 3, name: 'PiruzSrl' },
         data: new Date('2024-09-12'),
         prompt: 'Prompt della generazione 2',
-        evaluation: 5
+        evaluation: 5,
+        isPost: true
       }
     ];
 
