@@ -18,3 +18,15 @@
 	color: #6b7280;
 	padding: 1rem 0;
 }
+
+:host ::ng-deep .extracted-edit-btn {
+	background-color: #111111 !important;
+	border: 1px solid #111111 !important;
+	color: #ffffff !important;
+	border-radius: 999px !important;
+}
+
+:host ::ng-deep .extracted-edit-btn:hover {
+	background-color: #000000 !important;
+	border-color: #000000 !important;
+}
