@@ -5,7 +5,7 @@
     <div class="menu-row mb-4" >
         <menutendina [options]="(tones$ | async)" [(selected)]="selectedTone" label="Toni" placeholder="Seleziona un tono" [addButtonLabel]="'Nuovo tono'" (remove)="removeOption($event, 'tone')" (addNew)="openAddDialog('tone')"></menutendina>
         <menutendina [options]="(styles$ | async)" [(selected)]="selectedStyle" label="Stili" placeholder="Seleziona uno stile" [addButtonLabel]="'Nuovo stile'" (remove)="removeOption($event, 'style')" (addNew)="openAddDialog('style')"></menutendina>
-        <menutendina [options]="(companies$ | async)" [(selected)]="selectedCompany" label="Aziende" placeholder="Seleziona un'azienda" [addButtonLabel]="'Nuova azienda'" (remove)="removeOption($event, 'company')" (addNew)="openAddDialog('company')"></menutendina>
+        <menutendina [options]="(companies$ | async)" [(selected)]="selectedCompany" label="Aziende" placeholder="Seleziona un'azienda" [showAddNew]="false" [showRemove]="false"></menutendina>
     </div>
     <app-prompt [(prompt)]="prompt" label="Prompt" [autoResize]="true"></app-prompt>
 </div>

@@ -19,6 +19,7 @@ export class Menutendina {
   @Input() placeholder: string = '';
   @Input() addButtonLabel: string = 'Nuovo';
   @Input() showAddNew: boolean = true;
+  @Input() showRemove: boolean = true;
   @Input() disabled: boolean = false;   /** Rende la select parametrica per usarla in più pagine */
   @Output() selectedChange = new EventEmitter<any>();
   @Output() addNew = new EventEmitter<void>();

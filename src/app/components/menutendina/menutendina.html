@@ -16,6 +16,7 @@
         <div class="item-row">
         <span class="truncate-content">{{ option.name }}</span>
             <button
+                *ngIf="showRemove"
                 type="button"
                 pButton
                 icon="pi pi-trash"
