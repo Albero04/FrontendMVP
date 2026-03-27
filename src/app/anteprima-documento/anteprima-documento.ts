@@ -1,6 +1,6 @@
 import { Component, inject} from '@angular/core';
 import { DocSummary } from '../components/doc-summary/doc-summary';
-import { ExtractedEmployeeInfo } from '../components/extracted-employee-info/extracted-employee-info';
+import { ExtractedEmployeeInfo, ExtractedEmployeeInfoRow } from '../components/extracted-employee-info/extracted-employee-info';
 import { ResultSplit } from '../shared/models/result-split.model';
 import { Button } from '../components/button/button';
 // da togliere
@@ -21,9 +21,11 @@ export class AnteprimaDocumento {
   aiService = inject(AiCoPilotService);
   // todo ho idea che diventaerà un observable prima o poi...(quando cambi le pagine estratte fa ripartire l'analisi...)
   result = (history.state?.result as ResultSplit | null) ?? null;
+  extractedEmployeeRows: ExtractedEmployeeInfoRow[] = [];
   
   ngOnInit() {
     this.aiService.fetchTemplates();
+    this.extractedEmployeeRows = this.buildExtractedEmployeeRows(this.result);
   }
   handleOpenOriginalPdf(): void {
     this.aiService.getOriginalPdfById(1);//todo sostituire con id del documento 
@@ -32,12 +34,36 @@ export class AnteprimaDocumento {
   handleOpenSplitPdf(): void {
     this.aiService.getPdfById(1);//todo sostituire con id del documento 
   }
+// todo: questi due metodi sono da implementare, per ora loggano solo l'azione richiesta, ma in futuro dovranno interagire con i servizi per modificare lo stato dell'applicazione e mostrare le modifiche all'utente
+  handleEditExtractedEmployeeInfo(): void {
+    console.log('Modifica destinatario estratto');
+  }
+
+  handleRemoveExtractedEmployeeRow(rowIndex: number): void {
+    this.extractedEmployeeRows = this.extractedEmployeeRows.filter((_, index) => index !== rowIndex);
+  }
 
   dialogService = inject(DialogService);
   messageService = inject(MessageService);
   ref: DynamicDialogRef | null = null;
 
   templates$ = this.aiService.templates$;
+
+  private buildExtractedEmployeeRows(result: ResultSplit | null): ExtractedEmployeeInfoRow[] {
+    if (!result) {
+      return [];
+    }
+
+    const row: ExtractedEmployeeInfoRow = {
+      name: result.recipientName ?? '',
+      employeeCode: result.recipientCode ?? '',
+      email: result.recipientEmail ?? '',
+    };
+
+    const isEmptyRow = Object.values(row).every((value) => !value?.trim());
+    return isEmptyRow ? [] : [row];
+  }
+
   showDialog() {
      this.ref = this.dialogService.open(SendDocumentDialog, {
             header: 'Aggiungi un messaggio',
