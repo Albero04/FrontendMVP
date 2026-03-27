@@ -15,7 +15,7 @@ import {State} from '../shared/models/result-split.model';
   styleUrl: './storico-ai-copilot.css',
 })
 export class StoricoAiCopilot {
-  pages: number = 0;
+  pages: number = 22; //todo questa info si prende dal docuumento originale, viene restituita dal backend in quache modo
   router = inject(Router);
   Documents: any[] = [];
   FilteredDocuments: any[] = [];

@@ -13,6 +13,7 @@ import { PdfPreview } from '../pdf-preview/pdf-preview';
 })
 export class DocSummary {
   @Input() result: ResultSplit | null = null;
+  @Input() pages: number = 0;
   @Output() openOriginalPdf = new EventEmitter<void>();
   @Output() openSplitPdf = new EventEmitter<void>();
 

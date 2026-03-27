@@ -21,6 +21,7 @@ export class AnteprimaDocumento {
   aiService = inject(AiCoPilotService);
   // todo ho idea che diventaerà un observable prima o poi...(quando cambi le pagine estratte fa ripartire l'analisi...)
   result = (history.state?.result as ResultSplit | null) ?? null;
+  pages: number = history.state?.pages;
   extractedEmployeeRows: ExtractedEmployeeInfoRow[] = [];
   
   ngOnInit() {
