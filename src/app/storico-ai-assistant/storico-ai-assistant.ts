@@ -8,7 +8,7 @@ import { Button } from '../components/button/button';
 import { Router } from '@angular/router';
 import { AiAssistantService } from '../../services/ai-assistant-service/ai-assistant-service';
 import { ResultAiAssistant } from '../shared/models/result-ai-assistant.model';
-
+import { Tone, Style } from '../shared/models/result-ai-assistant.model';
 @Component({
   selector: 'app-storico-ai-assistant',
   imports: [FormsModule, Tables, Filters, Button],
@@ -26,8 +26,8 @@ export class StoricoAiAssistant {
   GenerazioniFiltrate: ResultAiAssistant[] = [];
   items: MenuItem[] = [];
   dates: Date[] | undefined;
-  tonoOptions: { id: number; name: string }[] = [];
-  stileOptions: { id: number; name: string }[] = [];
+  tonoOptions: Tone[] = [];
+  stileOptions: Style[] = [];
   selectedTono: number | undefined; 
   selectedStile: number | undefined;
   searchvalue: string ='';
