@@ -152,8 +152,13 @@ export class AiAssistantService {
     //chiamata al backend per creare un nuovo post con i dati di result
 
     //se va a buon fine aggiunge il risultato alla lista dei currentResultsHistory (simulando l'aggiunta del nuovo post alla cronologia delle generazioni) e reindirizza alla pagina dello storico
-    this.ResultsHistorySubject.next([...(this.ResultsHistorySubject.value || []), result]);
-    console.log('Creazione post richiesta con i seguenti dati:', result);
+    const postResult: ResultAiAssistant = {
+      ...result,
+      isPost: true
+    };
+
+    this.ResultsHistorySubject.next([...(this.ResultsHistorySubject.value || []), postResult]);
+    console.log('Creazione post richiesta con i seguenti dati:', postResult);
   }
 
   // todo implementare chiamata al backend
