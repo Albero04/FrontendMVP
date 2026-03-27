@@ -48,6 +48,21 @@ export class Estrattore implements OnInit {
     this.aiService.fetchCompanies();
   }
 
+  // Gestisce il cambio di categoria con conversione di tipo sicura
+  onCategoryChange(value: string | number | undefined): void {
+    this.selectedCategory = String(value ?? '');
+  }
+
+  // Gestisce il cambio di reparto con conversione di tipo sicura
+  onDepartmentChange(value: string | number | undefined): void {
+    this.selectedDepartment = String(value ?? '');
+  }
+
+  // Gestisce il cambio di mese/anno con conversione di tipo sicura
+  onCompetenceMonthYearChange(value: string | number | undefined): void {
+    this.selectedCompetenceMonthYear = String(value ?? '');
+  }
+
   // Quando cambia l'azienda, resetta il reparto.
   onCompanyChange(company: any): void {
     this.selectedCompany = company;
