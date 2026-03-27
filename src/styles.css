@@ -113,3 +113,13 @@ body{
   --p-tag-validare-background: #FF7700 !important;
   --p-tag-default-background: #ff00a2 !important;
 }
+
+
+.truncate-content {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
