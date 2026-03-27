@@ -47,23 +47,52 @@ export class AiAssistantService {
   private companiesSubject = new BehaviorSubject<Company[]>([]);
   companies$ = this.companiesSubject.asObservable();
 
-  // todo implementare con la vera chiamata al backend: string o id?
-  fetchTonesByCompany(company: number) : void {
-    const mockData = [
+  //roba che verrà assolutamente tolta appena facciamo le chiamata al backend
+  private tonesByCompany: Record<number, Tone[]> = {
+    1: [
       { id: 1, name: 'Simpatico' },
       { id: 2, name: 'Formale' },
-      { id: 3, name: 'Creativo' },
-    ];
+      { id: 3, name: 'Creativo' }
+    ],
+    2: [
+      { id: 4, name: 'Istituzionale' },
+      { id: 5, name: 'Coinvolgente' },
+      { id: 6, name: 'Tecnico' }
+    ],
+    3: [
+      { id: 7, name: 'Amichevole' },
+      { id: 8, name: 'Diretto' },
+      { id: 9, name: 'Ispirazionale' }
+    ]
+  };
+
+  private stylesByCompany: Record<number, Style[]> = {
+    1: [
+      { id: 1, name: 'Conversazionale' },
+      { id: 2, name: 'Essenziale' },
+      { id: 3, name: 'Articolato' }
+    ],
+    2: [
+      { id: 4, name: 'Commerciale' },
+      { id: 5, name: 'Narrativo' },
+      { id: 6, name: 'Professionale' }
+    ],
+    3: [
+      { id: 7, name: 'Social' },
+      { id: 8, name: 'Minimal' },
+      { id: 9, name: 'Editoriale' }
+    ]
+  };
+
+  // todo implementare con la vera chiamata al backend: string o id?
+  fetchTonesByCompany(company: number) : void {
+    const mockData = this.tonesByCompany[company] ?? [];
     this.tonesSubject.next(mockData);
   }
   
   // todo implementare con la vera chiamata al backendL: string o id?
   fetchStylesByCompany(company: number) : void {
-    const mockData = [
-      { id: 1, name: 'Conversazionale' },
-      { id: 2, name: 'Essenziale' },
-      { id: 3, name: 'Articolato' },
-    ];
+    const mockData = this.stylesByCompany[company] ?? [];
     this.stylesSubject.next(mockData);
   }
 

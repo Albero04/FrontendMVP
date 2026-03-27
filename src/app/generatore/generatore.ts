@@ -41,7 +41,7 @@ export class Generatore {
 
  
   generate() {
-    this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedCompany, this.selectedStyle); // Invia la richiesta di generazione al servizio
+    this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle, this.selectedCompany); // Invia la richiesta di generazione al servizio
     this.aiService.currentResult$.subscribe(result => {
       if (result) {
         this.router.navigate(['/risultato-generazione'], {
@@ -53,11 +53,7 @@ export class Generatore {
     });
   }
   ngOnInit() {
-    this.aiService.fetchTonesByCompany(1); //todo
-    this.aiService.fetchStylesByCompany(1); //todo
     this.aiService.fetchCompanies(); //todo
-
-
   }
 
   openAddDialog(type: AddDialogType): void {
@@ -66,13 +62,14 @@ export class Generatore {
   }
 
   handleAddDialogSave(data: AddDialogSaveData): void {
+
     if (data.type === 'tone') {
-      this.aiService.newTone(data.name, data.description, this.selectedCompany);
+      this.aiService.newTone(data.name, data.description, this.selectedCompany?.id);
       return;
     }
 
     if (data.type === 'style') {
-      this.aiService.newStyle(data.name, data.description, this.selectedCompany);
+      this.aiService.newStyle(data.name, data.description, this.selectedCompany?.id);
     }
 
    
@@ -87,5 +84,14 @@ export class Generatore {
     }else{
       //todo remove company
     }
+  }
+
+  onCompanyChange($event: { id: number; name: string } | null): void {
+    this.selectedCompany = $event;
+    this.aiService.fetchTonesByCompany(this.selectedCompany?.id);
+    this.aiService.fetchStylesByCompany(this.selectedCompany?.id);
+
+    this.selectedTone = null;
+    this.selectedStyle = null;
   }
 }
