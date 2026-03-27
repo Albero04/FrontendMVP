@@ -169,6 +169,7 @@ export class AiAssistantService {
       evaluation: evaluation
     };
     this.resultSubject.next(updated);
+
     console.log(`Valutazione per generazione ${id} impostata a ${evaluation}`);
   }
   // todo implementare
@@ -209,7 +210,8 @@ export class AiAssistantService {
     //se va a buon fine aggiunge il risultato alla lista dei currentResultsHistory (simulando l'aggiunta del nuovo post alla cronologia delle generazioni) e reindirizza alla pagina dello storico
     const postResult: ResultAiAssistant = {
       ...result,
-      isPost: true
+      isPost: true,
+      id: 234
     };
 
     this.resultSubject.next(postResult);
