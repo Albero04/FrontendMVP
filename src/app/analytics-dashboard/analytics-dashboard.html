@@ -5,7 +5,7 @@
       <div class="Generico">
         <div class="labels-datepicker">
           <div class="label-container">
-            @for (data of AiAssistantData; track data.label) {
+            @for (data of (aiAssistantMetrics$ | async) || AiAssistantData; track data.label) {
               <div class="card item">
                 <label class="label">{{ data.label }}</label>
                 <p-card class="p-data-body">
@@ -54,7 +54,7 @@
       <div class="Generico">
         <div class="labels-datepicker">
           <div class="label-container">
-            @for (data of AiCoPilotData; track data.label) {
+            @for (data of (aiCoPilotMetrics$ | async) || AiCoPilotData; track data.label) {
               <div class="card item">
                 <label class="label">{{ data.label }}</label>
                 <p-card class="p-data-body">
