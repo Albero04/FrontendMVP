@@ -183,6 +183,7 @@ export class AiAssistantService {
       isPost: true
     };
 
+    this.resultSubject.next(postResult);
     this.ResultsHistorySubject.next([...(this.ResultsHistorySubject.value || []), postResult]);
     console.log('Creazione post richiesta con i seguenti dati:', postResult);
   }

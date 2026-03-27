@@ -71,7 +71,7 @@ export class RisultatoGenerazione {
     if (!current) return;
 
     this.aiService.createPost(current);
-    this.router.navigate(['/storico-ai-assistant']);
+    // this.router.navigate(['/storico-ai-assistant']);
   }
   deleteGeneration(): void {
     this.aiService.removeGeneration(this.localResult()?.id ?? 0);
@@ -101,8 +101,6 @@ export class RisultatoGenerazione {
     }
 
     this.localResult.set(current);
-    this.aiService.createPost(current);
-    this.router.navigate(['/storico-ai-assistant']);
   }
 
   // questo fa due cose: aggiorna l'anteprima locale (motivo per cui il signal serviva scrivibile) e setta pendingImagePath, predisponendo un salvataggio vero
