@@ -80,7 +80,7 @@ export class AiAssistantService {
         id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend
         title: '',
         content: '',
-        imagePath: '',
+        imagePath: null,
         tone: tone,
         style: style,
         company: company,
@@ -153,7 +153,7 @@ export class AiAssistantService {
         id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend
         title: '',
         content: '',
-        imagePath: '',
+        imagePath: null,
         tone: tone,
         style: style,
         company: company,
@@ -181,7 +181,7 @@ export class AiAssistantService {
         title: 'Generazione 1',
         // provo a vedere se il truncate va, metto un content luuuuuuuuuuuuuuuuuuuuuuungo
         content: 'Contenuto della generazione 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-        imagePath: 'path/to/image1.jpg',
+        imagePath: null,
         tone: { id: 1, name: 'Simpatico' },
         style: { id: 1, name: 'Creativo' },
         company: { id: 2, name: 'AlbertoSrl' },
@@ -194,7 +194,7 @@ export class AiAssistantService {
         id: 2,
         title: 'Generazione 2',
         content: 'Contenuto della generazione 2',
-        imagePath: 'path/to/image2.jpg',
+        imagePath: null,
         tone: { id: 2, name: 'Formale' },
         style: { id: 2, name: 'Essenziale' },
         company: { id: 3, name: 'PiruzSrl' },

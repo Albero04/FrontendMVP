@@ -75,6 +75,12 @@ export class StoricoAiAssistant {
     this.router.navigate(['/generatore']);
   }
 
+  openGenerationResult(result: ResultAiAssistant): void {
+    this.router.navigate(['/risultato-generazione'], {
+      state: { result }
+    });
+  }
+
   onSearchChange(value:string){
     this.searchvalue = value;
     this.applyFilters();

@@ -21,6 +21,10 @@ export class Tables {
 @Input() columns: any[] = [];
 @Input() items: MenuItem[] = [];
 @Input() class: string = '';
+@Output() titleClick = new EventEmitter<any>();
 
+onTitleClick(row: any): void {
+  this.titleClick.emit(row);
+}
 
 }

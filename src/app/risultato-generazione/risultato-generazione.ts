@@ -55,8 +55,6 @@ export class RisultatoGenerazione {
       const r = this.serviceResult();
       if (r) {
         this.localResult.set({ ...r });
-      } else {
-        this.localResult.set(null);
       }
     });
   }
