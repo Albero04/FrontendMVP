@@ -32,7 +32,7 @@
 
         <div class="valutazione-modifica-container">
             <div class="valutazione">
-                <app-valutazione (ratingChange)="onRatingChange($event)"></app-valutazione>
+                <app-valutazione [rating]="result.evaluation" (ratingChange)="onRatingChange($event)"></app-valutazione>
                 @if(result.isPost){
                     <div class="bg-white p-2 mb-3 mt-3 rounded">
                         <strong>Data di generazione:</strong> {{ result.data | date:'dd/MM/yyyy' }}

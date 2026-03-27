@@ -128,7 +128,14 @@ export class RisultatoGenerazione {
   }
 
   onRatingChange(rating: number): void {
-    this.aiService.setEvaluation(this.localResult()?.id ?? 0, rating);
+    const current = this.localResult();
+    if (!current) return;
+
+    this.localResult.set({
+      ...current,
+      evaluation: rating
+    });
+    this.aiService.setEvaluation(current.id, rating);
   }
 
   reuseGeneration(): void {

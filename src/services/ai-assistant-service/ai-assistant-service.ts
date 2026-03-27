@@ -16,6 +16,23 @@ export class AiAssistantService {
 
   ResultsHistorySubject: BehaviorSubject<ResultAiAssistant[] | null> = new BehaviorSubject<ResultAiAssistant[] | null>(null);
   currentResultsHistory$ = this.ResultsHistorySubject.asObservable();
+
+  constructor() {
+    // Observer automatico: quando resultSubject cambia, aggiorna lo storico
+    this.currentResult$.subscribe((updated) => {
+      if (updated && updated.id > 0) {
+        const history = this.ResultsHistorySubject.value ?? [];
+        const existingIndex = history.findIndex(item => item.id === updated.id);
+        
+        if (existingIndex >= 0) {
+          const nextHistory = [...history];
+          nextHistory[existingIndex] = { ...updated };
+          this.ResultsHistorySubject.next(nextHistory);
+        }
+      }
+    });
+  }
+
   setCurrentResult(result: ResultAiAssistant | null): void {
     this.resultSubject.next(result ? { ...result } : null);
   }
@@ -115,6 +132,14 @@ export class AiAssistantService {
   }
 
   setEvaluation(id: number, evaluation: number) : void { //numero di GeneratedDatum
+    const current = this.resultSubject.value;
+    if (!current) return;
+
+    const updated: ResultAiAssistant = {
+      ...current,
+      evaluation: evaluation
+    };
+    this.resultSubject.next(updated);
     console.log(`Valutazione per generazione ${id} impostata a ${evaluation}`);
   }
   // todo implementare
@@ -125,6 +150,7 @@ export class AiAssistantService {
     };
     console.log('Ehi sto modificando l\'immagine wohoo');
     this.resultSubject.next(updated);
+
   }
   // todo implementare
   modifyContentLocal(result: ResultAiAssistant, newContent: string) : void {
