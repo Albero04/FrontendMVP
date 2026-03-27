@@ -10,6 +10,7 @@
     [disabled]="disabled"
     [class]="class"
     [(ngModel)]="value"
+    [readOnly]="!editable"
     (ngModelChange)="onValueChange($event)"
     autocomplete="off"
   />

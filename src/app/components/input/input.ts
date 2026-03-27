@@ -9,6 +9,7 @@ import { InputTextModule } from "primeng/inputtext";
   styleUrl: "./input.css",
 })
 export class InputComponent {
+  @Input() editable: boolean = false;
   @Input() label: string = "";
   @Input() value: string | number | undefined= "";
   @Input() placeholder: string = "";

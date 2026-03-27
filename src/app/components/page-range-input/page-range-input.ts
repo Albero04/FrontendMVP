@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './page-range-input.css',
 })
 export class PageRangeInput {
+  @Input() editable: boolean = false;
   @Input() page_start: number | undefined;
   @Input() page_end: number | undefined;
   @Input() page_min: number = 1;

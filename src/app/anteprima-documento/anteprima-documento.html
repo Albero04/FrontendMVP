@@ -1,7 +1,17 @@
 <div class="header"></div>
 <div class="preview-layout d-flex flex-wrap gap-5">
     <div class="doc-summary-container">
-        <bb-doc-summary [result]="result" [pages]="pages" (openOriginalPdf)="handleOpenOriginalPdf()" (openSplitPdf)="handleOpenSplitPdf()"></bb-doc-summary>
+        @if (isEditable){
+            <div class="d-flex justify-content-end gap-2">
+                <app-button label="Annulla Modifiche" class="btn btn-secondary" (action)="isEditable=!isEditable"></app-button>
+                <app-button label="Salva Modifiche" class="btn btn-primary" (action)="isEditable=!isEditable;saveChanges()"></app-button>
+            </div>
+        }@else {
+            <div class="d-flex justify-content-end">
+                <app-button label="Modifica" (action)="enableEditing()"></app-button>
+            </div>
+        }
+        <bb-doc-summary [editable]="isEditable" [result]="result" [pages]="pages" (openOriginalPdf)="handleOpenOriginalPdf()" (openSplitPdf)="handleOpenSplitPdf()"></bb-doc-summary>
     </div>
 
     <div class="info-container">

@@ -9,16 +9,18 @@ import { MessageService } from 'primeng/api';
 import { SendDocumentDialog,SendDocumentData } from '../components/send-document-dialog/send-document-dialog';
 import { ToastModule } from 'primeng/toast';
 import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-anteprima-documento',
-  imports: [DocSummary, ExtractedEmployeeInfo, Button, ToastModule],
+  imports: [DocSummary, ExtractedEmployeeInfo, Button, ToastModule, CommonModule],
   providers: [DialogService,MessageService],
   templateUrl: './anteprima-documento.html',
   styleUrl: './anteprima-documento.css',
 })
 export class AnteprimaDocumento {
   aiService = inject(AiCoPilotService);
+  isEditable: boolean = false;
   // todo ho idea che diventaerà un observable prima o poi...(quando cambi le pagine estratte fa ripartire l'analisi...)
   result = (history.state?.result as ResultSplit | null) ?? null;
   pages: number = history.state?.pages;
@@ -93,5 +95,15 @@ export class AnteprimaDocumento {
 
       });
     }
+  }
+
+  enableEditing(): void{
+    this.isEditable = true;
+    console.log(this.isEditable);
+  }
+
+
+  saveChanges(): void{
+    
   }
 }

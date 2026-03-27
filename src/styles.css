@@ -20,6 +20,7 @@
   --bg-light: #f8f9fa;
   --p-textarea-border-color: #b2b2b2 !important;
   --p-inputtext-border-radius: 0.75rem !important;
+  --bs-primary-rgb:  rgba(93, 93, 95, 0.851) !important;
 }
 
 
@@ -105,7 +106,7 @@ body{
   --p-datepicker-today-color: white !important;
 }
 
-
+/* status pill */
 :root{
   --p-tag-pronto-background: #009DFF !important;
   --p-tag-inviato-background: #00CC4B !important;

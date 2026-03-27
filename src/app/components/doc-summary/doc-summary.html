@@ -1,4 +1,4 @@
-<div class="bg-white my-4">
+<div class="bg-white my-4" [ngClass]="editable ? 'border 1px border-primary' : ''" >
     <div class="card p-4">
 
         <!-- TOP ROW -->
@@ -29,22 +29,22 @@
 
                 <div class="mb-3">
                     <label class="label">Categoria</label>
-                    <app-input [value]="result?.category ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="result?.category ?? 'Non trovato'"></app-input>
                 </div>
 
                 <div class="mb-3">
                     <label class="label">Azienda</label>
-                    <app-input [value]="result?.company ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="result?.company ?? 'Non trovato'"></app-input>
                 </div>
 
                 <div class="mb-3">
                     <label class="label">Reparto</label>
-                    <app-input [value]="result?.department ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="result?.department ?? 'Non trovato'"></app-input>
                 </div>
 
                 <div class="mb-3">
                     <label class="label">Mese/Anno</label>
-                    <app-input [value]="result?.month_year ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="result?.month_year ?? 'Non trovato'"></app-input>
                 </div>
 
             </div>
@@ -53,13 +53,13 @@
         <div class="row mt-3">
             <div class="col-8 mb-3">
                 <label class="label">Nome documento</label>
-                <app-input [value]="result?.name ?? 'Non trovato'"></app-input>
+                <app-input [editable]="editable" [value]="result?.name ?? 'Non trovato'"></app-input>
             </div>
 
             <div class="col-md-5">
                 <label class="label">Pagine estratte</label>
                 <!-- todo aggiungere pagine del documento originale a ResultSplit -->
-                <bb-page-range-input class="d-flex gap-2" [page_min]="1" [page_max]="pages" [page_start]="result?.page_start" [page_end]="result?.page_end"></bb-page-range-input>
+                <bb-page-range-input [editable]="editable" class="d-flex gap-2" [page_min]="1" [page_max]="pages" [page_start]="result?.page_start" [page_end]="result?.page_end"></bb-page-range-input>
             </div>
         </div>
 
