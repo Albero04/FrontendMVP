@@ -7,6 +7,7 @@ import { Button } from '../components/button/button';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { SendDocumentDialog,SendDocumentData } from '../components/send-document-dialog/send-document-dialog';
+import { SelectEmployeesDialog, SelectEmployeeDialogResult } from '../components/select-employees-dialog/select-employees-dialog';
 import { ToastModule } from 'primeng/toast';
 import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot-service';
 import { CommonModule } from '@angular/common';
@@ -40,7 +41,40 @@ export class AnteprimaDocumento {
   }
 // todo: questi due metodi sono da implementare, per ora loggano solo l'azione richiesta, ma in futuro dovranno interagire con i servizi per modificare lo stato dell'applicazione e mostrare le modifiche all'utente
   handleEditExtractedEmployeeInfo(): void {
-    console.log('Modifica destinatario estratto');
+    if (!this.result) {
+      return;
+    }
+
+    this.aiService.fetchEmployeesByCompany(this.result.company);
+
+    this.ref = this.dialogService.open(SelectEmployeesDialog, {
+      header: 'Modifica dipendente',
+      width: '55%',
+      contentStyle: { overflow: 'auto' },
+      closable: true,
+      autoZIndex: true,
+      data: {
+        extractedEmployeeName: this.result.recipientName,
+        employees$: this.aiService.employees$,
+      }
+    });
+
+    if (this.ref) {
+      this.ref.onClose.subscribe((selectedEmployee: SelectEmployeeDialogResult | undefined) => {
+        if (!selectedEmployee || !this.result) {
+          return;
+        }
+
+        this.result.recipientId = selectedEmployee.id;
+        this.result.recipientName = selectedEmployee.name;
+        this.result.recipientEmail = selectedEmployee.email || '';
+        this.result.recipientCode = selectedEmployee.employeeCode || '';
+
+        this.extractedEmployeeRows = this.buildExtractedEmployeeRows(this.result);
+        this.aiService.updateResult(this.result);
+        this.messageService.add({severity:'success', summary: 'Dipendente aggiornato'});
+      });
+    }
   }
 
   handleRemoveExtractedEmployeeRow(rowIndex: number): void {

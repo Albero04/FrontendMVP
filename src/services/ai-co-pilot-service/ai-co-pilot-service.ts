@@ -18,6 +18,9 @@ export class AiCoPilotService {
   private categorySubject = new BehaviorSubject<string[]>([]);
   category$ = this.categorySubject.asObservable();
 
+  private employeesSubject = new BehaviorSubject<{ id: number; name: string; email?: string; employeeCode?: string }[]>([]);
+  employees$ = this.employeesSubject.asObservable();
+
 
   public uploadFiles(files: File[], company: string, department: string, category: string, competence_period: string): void {
     for (const file of files) {
@@ -172,6 +175,19 @@ export class AiCoPilotService {
 
   fetchEmployeesByCompany(idCompany: string) : void {
     //todo implementare con chiamata al backend
+    const mockEmployees = [
+      { id: 1, name: 'Mario Rossi', email: 'mario.rossi@azienda.it', employeeCode: 'EMP001' },
+      { id: 2, name: 'Giulia Bianchi', email: 'giulia.bianchi@azienda.it', employeeCode: 'EMP002' },
+      { id: 3, name: 'Luca Verdi', email: 'luca.verdi@azienda.it', employeeCode: 'EMP003' },
+      { id: 4, name: 'Sara Neri', email: 'sara.neri@azienda.it', employeeCode: 'EMP004' },
+    ];
+
+    if (!idCompany) {
+      this.employeesSubject.next([]);
+      return;
+    }
+
+    this.employeesSubject.next(mockEmployees);
   }
 
   //todo modifica data di un result
