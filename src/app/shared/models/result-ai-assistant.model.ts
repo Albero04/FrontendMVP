@@ -3,7 +3,7 @@ import { Result } from './result.model';
 export interface ResultAiAssistant extends Result {
 	title: string;
 	content: string;
-	imagePath: string;
+	imagePath: string | null;
 	tone: Tone;
 	style: Style;
 	data: Date;
