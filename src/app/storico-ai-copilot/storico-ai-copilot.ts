@@ -15,6 +15,7 @@ import {State} from '../shared/models/result-split.model';
   styleUrl: './storico-ai-copilot.css',
 })
 export class StoricoAiCopilot {
+  pages: number = 0;
   router = inject(Router);
   Documents: any[] = [];
   FilteredDocuments: any[] = [];
@@ -190,11 +191,13 @@ export class StoricoAiCopilot {
       month_year: 'Settembre 2024',
       category: 'Cedolino',
       data: new Date('2024, 9, 11'),
+      parentId: 111
     }
       if (result) {
         this.router.navigate(['/anteprima-documento'], {
           state: {
-            result: result
+            result: result,
+            pages: this.pages //todo passare le pagine del documento originale, rispetto il ResultSplit cliccato nello storico
           }
         });
       }

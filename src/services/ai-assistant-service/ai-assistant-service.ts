@@ -1,8 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResultAiAssistant } from '../../app/shared/models/result-ai-assistant.model';
-import { Tone } from '../../app/shared/models/result-ai-assistant.model';
-import { Style } from '../../app/shared/models/result-ai-assistant.model';
+import { Tone, Style, Company } from '../../app/shared/models/result-ai-assistant.model';
 import { ResultAiAssistantSerializer } from '../../app/shared/serializers/result-ai-assistant.serializer';
 import { BehaviorSubject } from 'rxjs';
 import { AnalyticsAbstractService } from '../analytics-abstract-service';
@@ -15,13 +14,13 @@ export class AiAssistantService {
   private resultSubject : BehaviorSubject<ResultAiAssistant | null> = new BehaviorSubject<ResultAiAssistant | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
-  private tonesSubject = new BehaviorSubject<{ id: number; name: string }[]>([]);
+  private tonesSubject = new BehaviorSubject<Tone[]>([]);
   tones$ = this.tonesSubject.asObservable();
 
-  private stylesSubject = new BehaviorSubject<{ id: number; name: string }[]>([]);
+  private stylesSubject = new BehaviorSubject<Style[]>([]);
   styles$ = this.stylesSubject.asObservable();
 
-  private companiesSubject = new BehaviorSubject<{ id: number; name: string }[]>([]);
+  private companiesSubject = new BehaviorSubject<Company[]>([]);
   companies$ = this.companiesSubject.asObservable();
 
   // todo implementare con la vera chiamata al backend: string o id?
@@ -77,7 +76,7 @@ export class AiAssistantService {
   // todo implementare
   reuse(id: number) : void {}
   // todo implementare
-  duplicate(tone: Tone, style: Style, company: { id: number; name: string }, prompt: string) : void {
+  duplicate(tone: Tone, style: Style, company: Company, prompt: string) : void {
     //porta alla pagina di genreazione
     this.router.navigate(['/generatore'], {
       state: {
@@ -132,7 +131,7 @@ export class AiAssistantService {
   }
 
   // todo implementare chiamata al backend
-  requireGeneration(prompt: string, tono: { id: number; name: string }, stile: { id: number; name: string }, id?: number): number {
+  requireGeneration(prompt: string, tono: Tone, stile: Style, id?: number): number {
     console.log('Rigenerazione richiesta');
     //la chiamata al backend OVVIAMENTE viene fatta passando solo il number id, non anche name
     const pendingResult: ResultAiAssistant = {

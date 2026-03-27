@@ -17,6 +17,7 @@ export interface ResultSplit extends Result {
     month_year: string; // o forse number
     category: string;  // sicuramente altro tipo
     data: Date;
+    parentId: number;
 }
 
 export enum State {
