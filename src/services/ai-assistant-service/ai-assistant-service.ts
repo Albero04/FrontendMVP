@@ -203,7 +203,7 @@ export class AiAssistantService {
         content: 'Contenuto della generazione 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
         imagePath: null,
         tone: { id: 1, name: 'Simpatico' },
-        style: { id: 1, name: 'Creativo' },
+        style: { id: 3, name: 'Articolato' },
         company: { id: 2, name: 'AlbertoSrl' },
         data: new Date('2024-09-11'),
         prompt: 'Prompt della generazione 1',
