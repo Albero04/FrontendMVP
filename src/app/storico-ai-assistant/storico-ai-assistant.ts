@@ -67,8 +67,13 @@ export class StoricoAiAssistant {
       }
     ];
 
-    this.Generazioni = this.aiService.getResultsHistory();
-    this.GenerazioniFiltrate = [...this.Generazioni];
+    this.aiService.fetchResultsHistory();
+    this.aiService.currentResultsHistory$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((results) => {
+        this.Generazioni = results ?? [];
+        this.GenerazioniFiltrate = [...this.Generazioni];
+      });
   }
 
   NavigateToGeneratore(){

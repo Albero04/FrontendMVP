@@ -1,6 +1,6 @@
 @if (localResult(); as result) {
     <div class="menu">
-        @if(result.isPost && isEditable){
+        @if(!result.isPost && isEditable){
             <div class="actions">
                 <app-button label="Annulla Modifiche" class="btn btn-secondary" [fluid]="true" (action)="isEditable=!isEditable"></app-button>
                 <app-button label="Salva" class="btn btn-primary" [fluid]="true" (action)="isEditable=!isEditable;saveChanges()"></app-button>

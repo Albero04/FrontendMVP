@@ -14,6 +14,8 @@ export class AiAssistantService {
   private resultSubject : BehaviorSubject<ResultAiAssistant | null> = new BehaviorSubject<ResultAiAssistant | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
+  ResultsHistorySubject: BehaviorSubject<ResultAiAssistant[] | null> = new BehaviorSubject<ResultAiAssistant[] | null>(null);
+  currentResultsHistory$ = this.ResultsHistorySubject.asObservable();
   setCurrentResult(result: ResultAiAssistant | null): void {
     this.resultSubject.next(result ? { ...result } : null);
   }
@@ -149,7 +151,8 @@ export class AiAssistantService {
 
     //chiamata al backend per creare un nuovo post con i dati di result
 
-    //se va a buon fine aggiunge il risultato alla lista dei 
+    //se va a buon fine aggiunge il risultato alla lista dei currentResultsHistory (simulando l'aggiunta del nuovo post alla cronologia delle generazioni) e reindirizza alla pagina dello storico
+    this.ResultsHistorySubject.next([...(this.ResultsHistorySubject.value || []), result]);
     console.log('Creazione post richiesta con i seguenti dati:', result);
   }
 
@@ -180,7 +183,11 @@ export class AiAssistantService {
   getGeneration(jobid: number) : void {}
 
 
-  fetchResultsHistory(): ResultAiAssistant[] {
+  fetchResultsHistory(): void {
+    if ((this.ResultsHistorySubject.value ?? []).length > 0) {
+      return;
+    }
+
     // chiamata al backend per ottenere la lista delle generazioni passate
     // per ora mocko i dati
     const mockData: ResultAiAssistant[] = [
@@ -213,11 +220,8 @@ export class AiAssistantService {
       }
     ];
 
-    return mockData;
+    this.ResultsHistorySubject.next(mockData);
   }
 
-  getResultsHistory(): ResultAiAssistant[] {
-    return this.fetchResultsHistory();
-  }
 
 }

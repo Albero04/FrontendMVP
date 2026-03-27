@@ -67,8 +67,11 @@ export class RisultatoGenerazione {
     this.aiService.requireGeneration(this.localResult()?.prompt ?? '', this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' },this.localResult()?.company ?? { id: 0, name: '' }, id);
   }
   onSalva(): void {
-    //crea il post, mettendo tutte le nuove modifiche
-    console.log('Salvataggio richiesto');
+    const current = this.localResult();
+    if (!current) return;
+
+    this.aiService.createPost(current);
+    this.router.navigate(['/storico-ai-assistant']);
   }
   deleteGeneration(): void {
     this.aiService.removeGeneration(this.localResult()?.id ?? 0);
@@ -77,22 +80,29 @@ export class RisultatoGenerazione {
 
   //fa le chiamate al servizio (e quindi al backend) solo se ci sono stata modifiche effettive
   saveChanges(): void {
-    const current = this.localResult();
+    let current = this.localResult();
     if (!current) return;
 
     if (this.pendingImagePath !== null) {
       this.aiService.modifyImageLocal(current, this.pendingImagePath);
+      current = { ...current, imagePath: this.pendingImagePath };
       this.pendingImagePath =null;
     }
 
     if (this.pendingTitle !== null) {
       this.aiService.modifyTitleLocal(current, this.pendingTitle);
+      current = { ...current, title: this.pendingTitle };
       this.pendingTitle =null;
     }
     if (this.pendingContent !== null) {
       this.aiService.modifyContentLocal(current, this.pendingContent);
+      current = { ...current, content: this.pendingContent };
       this.pendingContent =null;
     }
+
+    this.localResult.set(current);
+    this.aiService.createPost(current);
+    this.router.navigate(['/storico-ai-assistant']);
   }
 
   // questo fa due cose: aggiorna l'anteprima locale (motivo per cui il signal serviva scrivibile) e setta pendingImagePath, predisponendo un salvataggio vero
