@@ -76,6 +76,7 @@ export class StoricoAiAssistant {
   }
 
   openGenerationResult(result: ResultAiAssistant): void {
+    this.aiService.setCurrentResult(result);
     this.router.navigate(['/risultato-generazione'], {
       state: { result }
     });

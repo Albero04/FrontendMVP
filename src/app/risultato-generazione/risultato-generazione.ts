@@ -51,6 +51,10 @@ export class RisultatoGenerazione {
 
   //cosa particolare che permette di sincronizzare il localResult con serviceResult
   constructor() { 
+    if (this.initialResult) {
+      this.aiService.setCurrentResult(this.initialResult);
+    }
+
     effect(() => {
       const r = this.serviceResult();
       if (r) {
