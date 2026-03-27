@@ -41,7 +41,7 @@ export class Generatore {
 
  
   generate() {
-    this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedStyle); // Invia la richiesta di generazione al servizio
+    this.aiService.requireGeneration(this.prompt, this.selectedTone, this.selectedCompany, this.selectedStyle); // Invia la richiesta di generazione al servizio
     this.aiService.currentResult$.subscribe(result => {
       if (result) {
         this.router.navigate(['/risultato-generazione'], {

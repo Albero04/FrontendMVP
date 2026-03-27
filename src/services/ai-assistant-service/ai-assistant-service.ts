@@ -74,18 +74,38 @@ export class AiAssistantService {
     this.stylesSubject.next(this.stylesSubject.value.filter(s => s.id !== id));
   }
   // todo implementare
-  reuse(id: number) : void {}
-  // todo implementare
+  reuse(tone: Tone, style: Style, company: Company, prompt: string) : void {
+
+    const pendingResult: ResultAiAssistant = {
+        id: -1, // id temporaneo, sarà aggiornato una volta ricevuto il risultato dal backend
+        title: '',
+        content: '',
+        imagePath: '',
+        tone: tone,
+        style: style,
+        company: company,
+        data: new Date(),
+        prompt: prompt,
+        evaluation: -1
+    };
+
+    this.resultSubject.next(pendingResult);
+    //chiamata backend
+    //la view deve portare alla pagina di risultato-generazione dopo aver riceveuto il risultato della generazione con i parametri specificati
+  }
+  // forse è da TOGLIERE COMPLETAMENTE
   duplicate(tone: Tone, style: Style, company: Company, prompt: string) : void {
-    //porta alla pagina di genreazione
-    this.router.navigate(['/generatore'], {
+    //porta alla pagina di generazione
+
+    // il reindirizzamento va gestito nella view, un esempio di come dovrebbe venire è:
+    /* this.router.navigate(['/generatore'], {
       state: {
       tone,
       style,
       company,
       prompt
       }
-    });
+    }); */
   }
   // todo implementare
   removeGeneration(id: number) : void {
@@ -131,7 +151,7 @@ export class AiAssistantService {
   }
 
   // todo implementare chiamata al backend
-  requireGeneration(prompt: string, tono: Tone, stile: Style, id?: number): number {
+  requireGeneration(prompt: string, tone: Tone, style: Style, company: Company, id?: number): number {
     console.log('Rigenerazione richiesta');
     //la chiamata al backend OVVIAMENTE viene fatta passando solo il number id, non anche name
     const pendingResult: ResultAiAssistant = {
@@ -139,8 +159,9 @@ export class AiAssistantService {
         title: '',
         content: '',
         imagePath: '',
-        tone: tono,
-        style: stile,
+        tone: tone,
+        style: style,
+        company: company,
         data: new Date(),
         prompt: prompt,
         evaluation: -1
@@ -167,6 +188,7 @@ export class AiAssistantService {
         imagePath: 'path/to/image1.jpg',
         tone: { id: 1, name: 'Simpatico' },
         style: { id: 1, name: 'Creativo' },
+        company: { id: 2, name: 'AlbertoSrl' },
         data: new Date('2024-09-11'),
         prompt: 'Prompt della generazione 1',
         evaluation: 4
@@ -178,6 +200,7 @@ export class AiAssistantService {
         imagePath: 'path/to/image2.jpg',
         tone: { id: 2, name: 'Formale' },
         style: { id: 2, name: 'Essenziale' },
+        company: { id: 3, name: 'PiruzSrl' },
         data: new Date('2024-09-12'),
         prompt: 'Prompt della generazione 2',
         evaluation: 5

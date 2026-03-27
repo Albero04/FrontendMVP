@@ -6,6 +6,7 @@ export interface ResultAiAssistant extends Result {
 	imagePath: string | null;
 	tone: Tone;
 	style: Style;
+	company: Company;
 	data: Date;
 	prompt: string;
 	evaluation: number;

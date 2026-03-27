@@ -62,7 +62,7 @@ export class RisultatoGenerazione {
   }
 
   onRigenera(id: number): void {
-    this.aiService.requireGeneration(this.localResult()?.prompt ?? '', this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' }, id);
+    this.aiService.requireGeneration(this.localResult()?.prompt ?? '', this.localResult()?.tone ?? { id: 0, name: '' }, this.localResult()?.style ?? { id: 0, name: '' },this.localResult()?.company ?? { id: 0, name: '' }, id);
   }
   onSalva(): void {
     //crea il post, mettendo tutte le nuove modifiche

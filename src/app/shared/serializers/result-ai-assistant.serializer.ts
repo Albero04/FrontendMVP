@@ -16,6 +16,7 @@ export class ResultAiAssistantSerializer extends ResultSerializer<ResultAiAssist
       imagePath: this.asString(source['imagePath']), //da ricordare che il backend potrebbe non restituire un imagePath (immagine precedentemente tolta dall'utente e salvato così), deve essere messo null
       tone: { id: this.asNumber(source['toneID']), name: this.asString(source['toneName']) } as Tone,
       style: { id: this.asNumber(source['styleID']), name: this.asString(source['styleName']) } as Style,
+      company: { id: this.asNumber(source['companyID']), name: this.asString(source['companyName']) },
       data: this.asDate(source['data']),
       prompt: this.asString(source['prompt']),
       evaluation: this.asNumber(source['evaluation'], 0)
