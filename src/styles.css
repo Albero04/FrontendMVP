@@ -124,3 +124,10 @@ body{
   white-space: nowrap;
   vertical-align: middle;
 }
+
+
+:root{
+  --p-inputtext-disabled-background: #f8f9fa !important;
+  --p-textarea-disabled-background: #f8f9fa !important;
+  --p-select-disabled-background: #f8f9fa !important;
+}
