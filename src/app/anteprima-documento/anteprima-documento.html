@@ -4,7 +4,7 @@
         @if (isEditable){
             <div class="d-flex justify-content-end gap-2">
                    <app-button label="Annulla Modifiche" class="btn btn-secondary" (action)="cancelEditing()"></app-button>
-                   <app-button label="Salva Modifiche" class="btn btn-primary" (action)="saveChanges()"></app-button>
+                   <app-button label="Salva Modifiche" class="btn btn-primary" [disabled]="!hasPendingModifications" (action)="saveChanges()"></app-button>
             </div>
         }@else {
             <div class="d-flex justify-content-end">

@@ -109,7 +109,25 @@ export class AnteprimaDocumento {
     this.messageService.add({severity:'info', summary: 'Modifiche annullate'});
   }
 
+  get hasPendingModifications(): boolean {
+    return Object.keys(this.pendingModifications).length > 0;
+  }
+
+  private normalizeValue(value: string | number | undefined | null): string {
+    return value === undefined || value === null ? '' : String(value);
+  }
+
   onFieldModified(event: { field: keyof ResultSplit; value: string | number | undefined }): void {
+    const originalValue = this.result ? this.result[event.field] : undefined;
+    const incoming = this.normalizeValue(event.value);
+    const original = this.normalizeValue(originalValue as string | number | undefined);
+
+    if (incoming === original) {
+      const { [event.field]: _, ...rest } = this.pendingModifications;
+      this.pendingModifications = rest;
+      return;
+    }
+
     this.pendingModifications = {
       ...this.pendingModifications,
       [event.field]: event.value,
@@ -121,7 +139,7 @@ export class AnteprimaDocumento {
       return;
     }
 
-    if (Object.keys(this.pendingModifications).length === 0) {
+    if (!this.hasPendingModifications) {
       this.isEditable = false;
       return;
     }
