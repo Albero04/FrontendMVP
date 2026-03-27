@@ -15,7 +15,7 @@
     </div>
 
     <div class="info-container">
-        <div>
+        <div class="extracted-info-container">
             <bb-extracted-employee-info
                 [rows]="extractedEmployeeRows"
                 (editRequested)="handleEditExtractedEmployeeInfo()"
@@ -34,10 +34,6 @@
                     (rowRemoved)="handleRemoveOtherExtractedDocumentRow($event)"
                 ></app-other-extract-documents>
             </div>
-
-        </div>
-
-        <div>
 
         </div>
     </div>
