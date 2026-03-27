@@ -15,10 +15,30 @@ import { CommonModule } from '@angular/common';
 export class DocSummary {
   @Input() editable: boolean = false;
   @Input() result: ResultSplit | null = null;
+  @Input() pendingModifications: Partial<ResultSplit> = {};
   @Input() pages: number = 0;
   @Output() openOriginalPdf = new EventEmitter<void>();
   @Output() openSplitPdf = new EventEmitter<void>();
+  @Output() fieldModified = new EventEmitter<{ field: keyof ResultSplit; value: string | number | undefined }>();
 
   pdfUrl: string = 'prova.pdf';
+
+  getFieldValue(field: keyof ResultSplit, fallback: string = 'Non trovato'): string | number {
+    const modified = this.pendingModifications[field];
+    if (modified !== undefined && modified !== null) {
+      return modified as string | number;
+    }
+
+    const original = this.result?.[field];
+    if (original !== undefined && original !== null && `${original}`.length > 0) {
+      return original as string | number;
+    }
+
+    return fallback;
+  }
+
+  onFieldChange(field: keyof ResultSplit, value: string | number | undefined): void {
+    this.fieldModified.emit({ field, value });
+  }
 
 }

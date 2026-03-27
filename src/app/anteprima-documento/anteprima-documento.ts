@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DocSummary } from '../components/doc-summary/doc-summary';
 import { ExtractedEmployeeInfo, ExtractedEmployeeInfoRow } from '../components/extracted-employee-info/extracted-employee-info';
 import { ResultSplit } from '../shared/models/result-split.model';
@@ -23,6 +23,7 @@ export class AnteprimaDocumento {
   isEditable: boolean = false;
   // todo ho idea che diventaerà un observable prima o poi...(quando cambi le pagine estratte fa ripartire l'analisi...)
   result = (history.state?.result as ResultSplit | null) ?? null;
+  pendingModifications: Partial<ResultSplit> = {};
   pages: number = history.state?.pages;
   extractedEmployeeRows: ExtractedEmployeeInfoRow[] = [];
   
@@ -98,12 +99,37 @@ export class AnteprimaDocumento {
   }
 
   enableEditing(): void{
+    this.pendingModifications = {};
     this.isEditable = true;
-    console.log(this.isEditable);
   }
 
+  cancelEditing(): void {
+    this.pendingModifications = {};
+    this.isEditable = false;
+    this.messageService.add({severity:'info', summary: 'Modifiche annullate'});
+  }
 
-  saveChanges(): void{
-    
+  onFieldModified(event: { field: keyof ResultSplit; value: string | number | undefined }): void {
+    this.pendingModifications = {
+      ...this.pendingModifications,
+      [event.field]: event.value,
+    };
+  }
+
+  saveChanges(): void {
+    if (!this.result) {
+      return;
+    }
+
+    if (Object.keys(this.pendingModifications).length === 0) {
+      this.isEditable = false;
+      return;
+    }
+
+    Object.assign(this.result, this.pendingModifications);
+    this.aiService.updateResult(this.result);
+    this.pendingModifications = {};
+    this.messageService.add({severity:'success', summary: 'Modifiche salvate'});
+    this.isEditable = false;
   }
 }

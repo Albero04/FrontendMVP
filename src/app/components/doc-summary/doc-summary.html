@@ -29,22 +29,22 @@
 
                 <div class="mb-3">
                     <label class="label">Categoria</label>
-                    <app-input [editable]="editable" [value]="result?.category ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="getFieldValue('category')" (valueChange)="onFieldChange('category', $event)"></app-input>
                 </div>
 
                 <div class="mb-3">
                     <label class="label">Azienda</label>
-                    <app-input [editable]="editable" [value]="result?.company ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="getFieldValue('company')" (valueChange)="onFieldChange('company', $event)"></app-input>
                 </div>
 
                 <div class="mb-3">
                     <label class="label">Reparto</label>
-                    <app-input [editable]="editable" [value]="result?.department ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="getFieldValue('department')" (valueChange)="onFieldChange('department', $event)"></app-input>
                 </div>
 
                 <div class="mb-3">
                     <label class="label">Mese/Anno</label>
-                    <app-input [editable]="editable" [value]="result?.month_year ?? 'Non trovato'"></app-input>
+                    <app-input [editable]="editable" [value]="getFieldValue('month_year')" (valueChange)="onFieldChange('month_year', $event)"></app-input>
                 </div>
 
             </div>
@@ -53,7 +53,7 @@
         <div class="row mt-3">
             <div class="col-8 mb-3">
                 <label class="label">Nome documento</label>
-                <app-input [editable]="editable" [value]="result?.name ?? 'Non trovato'"></app-input>
+                <app-input [editable]="editable" [value]="getFieldValue('name')" (valueChange)="onFieldChange('name', $event)"></app-input>
             </div>
 
             <div class="col-md-5">

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 
 import { ResultAiCopilotSerializer } from '../../app/shared/serializers/result-ai-copilot.serializer';
-import { ResultAiCopilot } from '../../app/shared/models/result-ai-copilot.model';
+import { ResultSplit } from '../../app/shared/models/result-split.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AiCoPilotService {
   private serializer = inject(ResultAiCopilotSerializer);
-  private resultSubject : BehaviorSubject<ResultAiCopilot | null> = new BehaviorSubject<ResultAiCopilot | null>(null);
+  private resultSubject : BehaviorSubject<ResultSplit | null> = new BehaviorSubject<ResultSplit | null>(null);
   currentResult$ = this.resultSubject.asObservable();
 
   private templatesSubject = new BehaviorSubject<{ name: string; content: string }[]>([]);
@@ -178,5 +178,9 @@ export class AiCoPilotService {
   //todo modifica categoria di un result
   // todo modifica azienda di un result
   // todo modifica dipartimento di un result
+
+  updateResult(result: ResultSplit): void {
+    this.resultSubject.next(result);
+  }
 
 }

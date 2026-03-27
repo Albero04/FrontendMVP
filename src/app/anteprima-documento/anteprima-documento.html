@@ -3,15 +3,15 @@
     <div class="doc-summary-container">
         @if (isEditable){
             <div class="d-flex justify-content-end gap-2">
-                <app-button label="Annulla Modifiche" class="btn btn-secondary" (action)="isEditable=!isEditable"></app-button>
-                <app-button label="Salva Modifiche" class="btn btn-primary" (action)="isEditable=!isEditable;saveChanges()"></app-button>
+                   <app-button label="Annulla Modifiche" class="btn btn-secondary" (action)="cancelEditing()"></app-button>
+                   <app-button label="Salva Modifiche" class="btn btn-primary" (action)="saveChanges()"></app-button>
             </div>
         }@else {
             <div class="d-flex justify-content-end">
                 <app-button label="Modifica" (action)="enableEditing()"></app-button>
             </div>
         }
-        <bb-doc-summary [editable]="isEditable" [result]="result" [pages]="pages" (openOriginalPdf)="handleOpenOriginalPdf()" (openSplitPdf)="handleOpenSplitPdf()"></bb-doc-summary>
+            <bb-doc-summary [editable]="isEditable" [result]="result" [pendingModifications]="pendingModifications" [pages]="pages" (openOriginalPdf)="handleOpenOriginalPdf()" (openSplitPdf)="handleOpenSplitPdf()" (fieldModified)="onFieldModified($event)"></bb-doc-summary>
     </div>
 
     <div class="info-container">
