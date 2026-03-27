@@ -20,6 +20,9 @@ export class AiCoPilotService {
 
   private employeesSubject = new BehaviorSubject<{ id: number; name: string; email?: string; employeeCode?: string }[]>([]);
   employees$ = this.employeesSubject.asObservable();
+// aggiunto MA VEDIAMO SE VA BENE; SERVE PER ALTRI DOCUMENTI ESTRATTI
+  private otherExtractedDocumentsSubject = new BehaviorSubject<{ id: number; destinatario: string; confidenza: number }[]>([]);
+  otherExtractedDocuments$ = this.otherExtractedDocumentsSubject.asObservable();
 
 
   public uploadFiles(files: File[], company: string, department: string, category: string, competence_period: string): void {
@@ -118,10 +121,87 @@ export class AiCoPilotService {
       //poi faccio anche addDepartment 
   }
 
-  public getDocumentsByParent() : void {
+  public getDocumentsByParent(parentId: number, currentResultId?: number) : void {
     //todo implementare con chiamata al backend
     //serializer
     //BISOGNA USARE I WEBSOCKET ANCHE QUI EHH, PRECHÈ LO USIAMO PER PRENDERE DOCUMENTI PER PADRE MA È POSSIBILE CHE NON SIANO STATI PROCESSATI
+    if (!parentId) {
+      this.otherExtractedDocumentsSubject.next([]);
+      return;
+    }
+
+    // Mock: simula ResultSplit dal backend
+    const mockResultSplits: ResultSplit[] = [
+      {
+        name: 'Result 1',
+        state: 'Pronto' as any,
+        confidence: 96,
+        recipientId: parentId * 10 + 1,
+        recipientName: 'Anna Blu',
+        recipientEmail: 'anna.blu@azienda.it',
+        recipientCode: 'EMP010',
+        time_Analysis: 1200,
+        page_end: 5,
+        page_start: 1,
+        company: 'AziendaA',
+        department: 'HR',
+        month_year: '202603',
+        category: 'Buste paga',
+        data: new Date(),
+        parentId: parentId,
+        id: parentId * 10 + 1,
+      } as ResultSplit,
+      {
+        name: 'Result 2',
+        state: 'Pronto' as any,
+        confidence: 91,
+        recipientId: parentId * 10 + 2,
+        recipientName: 'Paolo Neri',
+        recipientEmail: 'paolo.neri@azienda.it',
+        recipientCode: 'EMP011',
+        time_Analysis: 1100,
+        page_end: 4,
+        page_start: 1,
+        company: 'AziendaA',
+        department: 'Finance',
+        month_year: '202603',
+        category: 'Cedolini',
+        data: new Date(),
+        parentId: parentId,
+        id: parentId * 10 + 2,
+      } as ResultSplit,
+      {
+        name: 'Result 3',
+        state: 'Pronto' as any,
+        confidence: 87,
+        recipientId: parentId * 10 + 3,
+        recipientName: 'Lucia Verdi',
+        recipientEmail: 'lucia.verdi@azienda.it',
+        recipientCode: 'EMP012',
+        time_Analysis: 1000,
+        page_end: 3,
+        page_start: 1,
+        company: 'AziendaA',
+        department: 'Operations',
+        month_year: '202603',
+        category: 'Stipendi',
+        data: new Date(),
+        parentId: parentId,
+        id: parentId * 10 + 3,
+      } as ResultSplit,
+    ];
+
+    // Escludere il result corrente dalla lista
+    const filtered = mockResultSplits.filter(r => r.recipientId !== currentResultId);
+
+    // Mappare a OtherExtractDocumentRow
+    const displayRows = filtered.map(r => ({
+      id: r.recipientId,
+      destinatario: r.recipientName,
+      confidenza: r.confidence,
+    }));
+
+    this.otherExtractedDocumentsSubject.next(displayRows);
   }
 
 

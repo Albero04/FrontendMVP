@@ -8,13 +8,14 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { SendDocumentDialog,SendDocumentData } from '../components/send-document-dialog/send-document-dialog';
 import { SelectEmployeesDialog, SelectEmployeeDialogResult } from '../components/select-employees-dialog/select-employees-dialog';
+import { OtherExtractDocuments, OtherExtractDocumentRow } from '../components/other-extraxt-documents/other-extract-documents';
 import { ToastModule } from 'primeng/toast';
 import { AiCoPilotService } from '../../services/ai-co-pilot-service/ai-co-pilot-service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-anteprima-documento',
-  imports: [DocSummary, ExtractedEmployeeInfo, Button, ToastModule, CommonModule],
+  imports: [DocSummary, ExtractedEmployeeInfo, OtherExtractDocuments, Button, ToastModule, CommonModule],
   providers: [DialogService,MessageService],
   templateUrl: './anteprima-documento.html',
   styleUrl: './anteprima-documento.css',
@@ -27,10 +28,22 @@ export class AnteprimaDocumento {
   pendingModifications: Partial<ResultSplit> = {};
   pages: number = history.state?.pages;
   extractedEmployeeRows: ExtractedEmployeeInfoRow[] = [];
+  otherExtractedDocumentRows: OtherExtractDocumentRow[] = [];
   
   ngOnInit() {
     this.aiService.fetchTemplates();
     this.extractedEmployeeRows = this.buildExtractedEmployeeRows(this.result);
+    this.aiService.otherExtractedDocuments$.subscribe((rows) => {
+      this.otherExtractedDocumentRows = rows;
+    });
+
+    const parentId = this.result?.parentId;
+    const currentResultId = this.result?.recipientId;
+    if (parentId) {
+      this.aiService.getDocumentsByParent(parentId, currentResultId);
+    } else {
+      this.otherExtractedDocumentRows = [];
+    }
   }
   handleOpenOriginalPdf(): void {
     this.aiService.getOriginalPdfById(1);//todo sostituire con id del documento 
@@ -49,7 +62,7 @@ export class AnteprimaDocumento {
 
     this.ref = this.dialogService.open(SelectEmployeesDialog, {
       header: 'Modifica dipendente',
-      width: '55%',
+      width: '42rem',
       contentStyle: { overflow: 'auto' },
       closable: true,
       autoZIndex: true,
@@ -79,6 +92,10 @@ export class AnteprimaDocumento {
 
   handleRemoveExtractedEmployeeRow(rowIndex: number): void {
     this.extractedEmployeeRows = this.extractedEmployeeRows.filter((_, index) => index !== rowIndex);
+  }
+
+  handleRemoveOtherExtractedDocumentRow(rowIndex: number): void {
+    this.otherExtractedDocumentRows = this.otherExtractedDocumentRows.filter((_, index) => index !== rowIndex);
   }
 
   dialogService = inject(DialogService);

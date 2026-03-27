@@ -16,3 +16,16 @@
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
 }
+
+.other-info-container {
+    flex: 1 1 0;
+    min-width: 420px;
+    /* da commentare quando si fanno effettivamente quei widget */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.other-documents-section {
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+}
